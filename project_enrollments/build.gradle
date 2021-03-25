@@ -40,3 +40,9 @@ dependencies {
 application {
 	mainClassName = 'edu.odu.cs.cs350.project_enrollments.ProjectEnrollments'
 }
+
+jar {
+	manifest {
+		attributes 'Main-Class': 'edu.odu.cs.cs350.project_enrollments.ProjectEnrollments'
+	}
+}
