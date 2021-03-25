@@ -40,37 +40,37 @@ public class eSnapshot {
 	
 	public eSnapshot(String s) {
 		
-		List<String> fields = new ArrayList<String>();
+		String[] fields = s.split(",");
 		
-		seats = a;
-		CRN = b;
-		subj = c;
-		crse = d;
-		title = e;
-		cr_hrs = f;
-		xlst_cap = g;
-		enr = h;
-		link = i;
-		xlst_group = j;
-		sched_type = k;
-		campus = l;
-		insm = m;
-		print = n;
-		time = o;
-		days = p;
-		bldg = q;
-		room = r;
-		override = s;
-		instructor = t;
-		overall_cap = u;
-		overall_enr = v;
-		ptrm_start = w;
-		ptrm_end = x;
-		wl_cap = y;
-		wl = z;
-		wl_remain = aa;
-		notes = ab;
-		comments = ac;
-		coll = ad;
+		seats = fields[0];
+		CRN = fields[1];
+		subj = fields[2];
+		crse = fields[3];
+		title = fields[4];
+		cr_hrs = fields[5];
+		xlst_cap = fields[6];
+		enr = fields[7];
+		link = fields[8];
+		xlst_group = fields[9];
+		sched_type = fields[10];
+		campus = fields[11];
+		insm = fields[12];
+		print = fields[13];
+		time = fields[14];
+		days = fields[15];
+		bldg = fields[16];
+		room = fields[17];
+		override = fields[18];
+		instructor = fields[19];
+		overall_cap = fields[20];
+		overall_enr = fields[21];
+		ptrm_start = fields[22];
+		ptrm_end = fields[23];
+		wl_cap = fields[24];
+		wl = fields[25];
+		wl_remain = fields[26];
+		notes = fields[27];
+		comments = fields[28];
+		coll = fields[29];
 	}
 }
