@@ -24,8 +24,6 @@ public class ProjectEnrollments {
 //			System.exit(1);
 //		}
 		
-		
-		
 		List<String> histDirs = new ArrayList<String>();
 		
 		// The last two arguments to the program are the current semester dir
@@ -34,31 +32,24 @@ public class ProjectEnrollments {
 			histDirs.add(args[i]);
 		}
 		
-		int currDirIndex = args.length-2;
-		int exportPathIndex = args.length-1;
-		String currDir = args[currDirIndex];
-		String exportPath = args[exportPathIndex];
-		// Testing
-		System.out.println("CURRDIR=" + currDir);
-		System.out.println("EXPORTPATH=" + exportPath);
- 		
-		// Testing
-		int i = 0;
-		for (String s : args) {
-			System.out.printf("%d\t%s\n", i++, s);
-		}		
-		System.out.printf("%d total args\n", args.length);
-		
-		System.out.println("Historical Semester directories:");
-		for (String s : histDirs) {
-			System.out.println(s);
-		}
-		for(String s : histDirs) {		
-			if(FileImports.exception(s) == false) {
-				FileImports.findFile(s);
-			}
-		
+//		int currDirIndex = args.length-2;
+//		int exportPathIndex = args.length-1;
+//		String currDir = args[currDirIndex];
+//		String exportPath = args[exportPathIndex];
+
+//		System.out.println("CURRDIR=" + currDir);
+//		System.out.println("EXPORTPATH=" + exportPath);
+// 		
+//		int i = 0;
+//		for (String s : args) {
+//			System.out.printf("%d\t%s\n", i++, s);
+//		}		
+//		System.out.printf("%d total args\n", args.length);
+//		
+//		System.out.println("Historical Semester directories:");
+//		for (String s : histDirs) {
+//			System.out.println(s);
+//		}
 	}
 
-}
 }
