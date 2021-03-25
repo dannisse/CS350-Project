@@ -37,16 +37,19 @@ public class FileImports {
 	    			Scanner sc = new Scanner(new File(path + file.getName()));
 	    			//sc.useDelimiter(",");
 	    			while(sc.hasNextLine()) {
-	    				/*for(int i = 0; i < 29; i++) {
-	    					data.add(sc.next());
-	    				}*/
+	    				//if(sc.nextLine().contains("XLST")) {
+	    					
+	    				//}
 	    				String currLine = sc.nextLine();
 	    				data.add(new eSnapshot(currLine));
-	    				System.out.println(currLine);
-	    				String s = sc.next() + ",";
-	    				System.out.print(s);
+	    				data.get(data.size()-1).print();
+	    				System.out.println("\n");
+	    				//System.out.println(currLine);
+	    				//String s = sc.next() + ",";
+	    				//System.out.print(s);
+	    				//System.exit(0);
 	    			}
-	    
+	    			
 	    			sc.close();
 	    			}
 	    		}catch (FileNotFoundException e) {
