@@ -42,9 +42,8 @@ public class FileImports {
 	    				}*/
 	    				String currLine = sc.nextLine();
 	    				data.add(new eSnapshot(currLine));
-	    				System.out.println(currLine);
-	    				String s = sc.next() + ",";
-	    				System.out.print(s);
+	    				data.get(data.size()-1).print();
+	    				System.exit(0);
 	    			}
 	    
 	    			sc.close();
