@@ -19,6 +19,14 @@ public class ProjectEnrollments {
 		for (int i = 0; i < args.length-2; i++) {
 			histDirs.add(args[i]);
 		}
+		
+		int currDirIndex = args.length-2;
+		int exportPathIndex = args.length-1;
+		String currDir = args[currDirIndex];
+		String exportPath = args[exportPathIndex];
+		// Testing
+		System.out.println("CURRDIR=" + currDir);
+		System.out.println("EXPORTPATH=" + exportPath);
  		
 		// Testing
 		int i = 0;
