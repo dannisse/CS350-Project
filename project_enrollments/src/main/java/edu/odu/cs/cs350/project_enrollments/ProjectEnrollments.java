@@ -1,27 +1,28 @@
 package edu.odu.cs.cs350.project_enrollments;
 
-import java.io.*;
+//import java.io.*;
 import java.util.*;
 
 public class ProjectEnrollments {
 
 	public static void main(String[] args) {
-		
-	    /*Scanner sc = new Scanner(new File(path + "2016-02-01.csv"));
-	    sc.useDelimiter(",");
-
-	    while(sc.hasNext()) {
-	        String s = sc.next() + ",";
-	        System.out.print(s);
-	    }
-
-	    sc.close();*/
-		
-		if (args.length < 3) {
-			System.out.println("Too few arugments.");
-			System.out.println("Usage: java -jar program.jar [historical semester directories] [current semester directory] [excel file output location]");
-			System.exit(1);
+	    
+		if (args.length != 0) {
+			System.out.println(args[0]);
+			String path = args[0];
+			path = FileImports.sanitizePath(path);
+			if(FileImports.exception(path) == false) {
+				FileImports.findFile(path);
+			}
 		}
+			
+		
+		
+//		if (args.length < 3) {
+//			System.out.println("Too few arugments.");
+//			System.out.println("Usage: java -jar program.jar [historical semester directories] [current semester directory] [excel file output location]");
+//			System.exit(1);
+//		}
 		
 		
 		
