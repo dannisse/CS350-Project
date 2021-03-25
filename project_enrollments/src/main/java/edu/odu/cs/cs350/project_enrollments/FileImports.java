@@ -31,11 +31,6 @@ public class FileImports {
 	    try
 	    {
 	        fileScanner = new Scanner(new File(path + "dates.txt"));
-	        while(fileScanner .hasNextLine())
-	        {
-	            String eachLine= fileScanner.nextLine();
-	            String[] wordsFromFile = eachLine.split("\\W");
-	        }
 	    }
 	    catch(FileNotFoundException e)
 	    {
