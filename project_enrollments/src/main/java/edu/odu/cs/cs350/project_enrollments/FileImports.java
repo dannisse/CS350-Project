@@ -1,5 +1,6 @@
 package edu.odu.cs.cs350.project_enrollments;
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class FileImports {
 		File directoryPath = new File(path);	    
 	    File filesList[] = directoryPath.listFiles();
 	    
-	    List<String> data;
+	    List<eSnapshot> data = new ArrayList<eSnapshot>();
 	    
 	    for(File file : filesList) {
 	    		System.out.println("File name: "+file.getName() + "\n");
@@ -34,11 +35,14 @@ public class FileImports {
 	    		try {
 	    			if("dates.txt" != file.getName()) {
 	    			Scanner sc = new Scanner(new File(path + file.getName()));
-	    			sc.useDelimiter(",");
-	    			while(sc.hasNext()) {
+	    			//sc.useDelimiter(",");
+	    			while(sc.hasNextLine()) {
 	    				/*for(int i = 0; i < 29; i++) {
 	    					data.add(sc.next());
 	    				}*/
+	    				String currLine = sc.nextLine();
+	    				data.add(new eSnapshot(currLine));
+	    				System.out.println(currLine);
 	    				String s = sc.next() + ",";
 	    				System.out.print(s);
 	    			}

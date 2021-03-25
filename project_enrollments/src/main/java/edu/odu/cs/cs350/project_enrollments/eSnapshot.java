@@ -1,5 +1,9 @@
 package edu.odu.cs.cs350.project_enrollments;
 
+import java.util.List;
+import java.util.ArrayList;
+
+
 public class eSnapshot {
 	private String seats;
 	private String CRN;
@@ -30,16 +34,14 @@ public class eSnapshot {
 	private String wl_remain;
 	private String notes;
 	private String comments;
-	private String coll;
+	private String coll;		
+		
+	}
 	
-	public eSnapshot(String a, String b, String c, String d
-			,String e, String f,String g, String h,
-			String i, String j,String k, String l,
-			String m, String n,String o, String p,
-			String q, String r,String s, String t,
-			String u, String v,String w, String x,
-			String y, String z,String aa, String ab,
-			String ac, String ad) {
+	public eSnapshot(String s) {
+		
+		List<String> fields = new ArrayList<String>();
+		
 		seats = a;
 		CRN = b;
 		subj = c;
@@ -70,6 +72,5 @@ public class eSnapshot {
 		notes = ab;
 		comments = ac;
 		coll = ad;
-		
 	}
 }
