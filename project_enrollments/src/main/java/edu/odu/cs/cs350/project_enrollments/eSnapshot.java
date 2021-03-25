@@ -36,7 +36,6 @@ public class eSnapshot {
 	private String comments;
 	private String coll;		
 		
-	}
 	
 	public eSnapshot(String s) {
 		
