@@ -2,8 +2,6 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class FileImports {
@@ -19,7 +17,6 @@ public class FileImports {
 			//System.out.println("concatted");
 			//System.out.println(path);
 		}
-		//int lastCharIndex = path.length()-1;
 		return path;
 	}
 	
