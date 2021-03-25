@@ -2,12 +2,16 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileImports {
 	public static void findFile(String path) {	
 	    File directoryPath = new File(path);	    
 	    File filesList[] = directoryPath.listFiles();
+	    
+	    List<String> data;
 	    
 	    for(File file : filesList) {
 	    		System.out.println("File name: "+file.getName() + "\n");
@@ -17,6 +21,9 @@ public class FileImports {
 	    			Scanner sc = new Scanner(new File(path + file.getName()));
 	    			sc.useDelimiter(",");
 	    			while(sc.hasNext()) {
+	    				/*for(int i = 0; i < 29; i++) {
+	    					data.add(sc.next());
+	    				}*/
 	    				String s = sc.next() + ",";
 	    				System.out.print(s);
 	    			}
