@@ -6,11 +6,6 @@ import java.util.*;
 public class ProjectEnrollments {
 
 	public static void main(String[] args) {
-	    
-	    String path = args[0];
-		
-		if(FileImports.exception(path) == false) {
-			FileImports.findFile(path);
 		
 	    /*Scanner sc = new Scanner(new File(path + "2016-02-01.csv"));
 	    sc.useDelimiter(",");
@@ -27,6 +22,8 @@ public class ProjectEnrollments {
 			System.out.println("Usage: java -jar program.jar [historical semester directories] [current semester directory] [excel file output location]");
 			System.exit(1);
 		}
+		
+		
 		
 		List<String> histDirs = new ArrayList<String>();
 		
@@ -55,6 +52,12 @@ public class ProjectEnrollments {
 		for (String s : histDirs) {
 			System.out.println(s);
 		}
+		for(String s : histDirs) {		
+			if(FileImports.exception(s) == false) {
+				FileImports.findFile(s);
+			}
+		
 	}
 
+}
 }
