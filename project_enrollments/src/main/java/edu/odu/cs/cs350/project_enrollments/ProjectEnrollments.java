@@ -14,8 +14,6 @@ public class ProjectEnrollments {
 				FileImports.findFile(path);
 			}
 		}
-			
-		
 		
 //		if (args.length < 3) {
 //			System.out.println("Too few arugments.");
@@ -31,6 +29,7 @@ public class ProjectEnrollments {
 			histDirs.add(args[i]);
 		}
 		
+
 //		int currDirIndex = args.length-2;
 //		int exportPathIndex = args.length-1;
 //		String currDir = args[currDirIndex];
@@ -50,5 +49,4 @@ public class ProjectEnrollments {
 //			System.out.println(s);
 //		}
 	}
-
 }
