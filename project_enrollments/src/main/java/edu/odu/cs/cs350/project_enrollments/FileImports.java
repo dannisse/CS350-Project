@@ -7,8 +7,23 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FileImports {
+	
+	// If a path string doesn't end in a / or \, add a / to the end of it.
+	public static String sanitizePath(String path) {
+		//System.out.println("PATH=" + path);
+		if (path.length() == 0) {
+			System.exit(1);
+		}
+		if (!path.endsWith("/") && !path.endsWith("\\")) {
+			path = path.concat("/");
+			//System.out.println("concatted");
+			//System.out.println(path);
+		}
+		return path;
+	}
+	
 	public static void findFile(String path) {	
-	    File directoryPath = new File(path);	    
+		File directoryPath = new File(path);	    
 	    File filesList[] = directoryPath.listFiles();
 	    
 	    List<String> data;
@@ -33,7 +48,6 @@ public class FileImports {
 	    		}catch (FileNotFoundException e) {
 	    			System.err.println("File not Found");
 	    		}
-	    
 	    }
 	}
 	
