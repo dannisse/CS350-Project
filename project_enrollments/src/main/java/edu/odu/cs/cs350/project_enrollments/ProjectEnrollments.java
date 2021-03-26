@@ -50,6 +50,9 @@ public class ProjectEnrollments {
 //		for (String s : histDirs) {
 //			System.out.println(s);
 //		}
+		
+/* 	    System.out.println("Current Semester Directories:");
+		 {		System.out.println(s);
 	}
-
+*/
 }
