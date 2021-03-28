@@ -29,17 +29,21 @@ public class FileImports {
 	    
 	    List<eSnapshot> data = new ArrayList<eSnapshot>();
 	    
-	    for(File file : filesList) {
-	    		System.out.println("File name: "+file.getName() + "\n");
+	    Scanner sc = null;
 	    
+	    for(File file : filesList) {
+	    		//System.out.println("File name: "+file.getName() + "\n");
+
 	    		try {
-	    			if("dates.txt" != file.getName()) {
-	    			Scanner sc = new Scanner(new File(path + file.getName()));
+	    			sc = new Scanner(new File(path + file.getName()));
 	    			//sc.useDelimiter(",");
+	    			String t = file.getName();
+	    			if(!t.equals("dates.txt")) {
 	    			while(sc.hasNextLine()) {
 	    				//if(sc.nextLine().contains("XLST")) {
 	    					
 	    				//}
+	    		
 	    				String currLine = sc.nextLine();
 	    				data.add(new eSnapshot(currLine));
 	    				data.get(data.size()-1).print();
@@ -49,9 +53,8 @@ public class FileImports {
 	    				//System.out.print(s);
 	    				//System.exit(0);
 	    			}
-	    			
-	    			sc.close();
 	    			}
+	    			sc.close();
 	    		}catch (FileNotFoundException e) {
 	    			System.err.println("File not Found");
 	    		}

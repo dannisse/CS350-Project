@@ -4,14 +4,15 @@ import java.util.*;
 
 public class ProjectEnrollments {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Throwable {
 	    
 		if (args.length != 0) {
 			System.out.println(args[0]);
 			String path = args[0];
 			path = FileImports.sanitizePath(path);
 			if(FileImports.exception(path) == false) {
-				FileImports.findFile(path);
+				//FileImports.findFile(path);
+				SummaryReport.deadlineD(path);
 			}
 		}
 		
@@ -30,7 +31,7 @@ public class ProjectEnrollments {
 		}
 		
 
-		int currDirIndex = args.length-2;
+		/*int currDirIndex = args.length-2;
 		int exportPathIndex = args.length-1;
 		String currDir = args[currDirIndex];
 		String exportPath = args[exportPathIndex];
@@ -47,6 +48,6 @@ public class ProjectEnrollments {
 		System.out.println("Historical Semester directories:");
 		for (String s : histDirs) {
 			System.out.println(s);
-		}
+		}*/
 	}
 }
