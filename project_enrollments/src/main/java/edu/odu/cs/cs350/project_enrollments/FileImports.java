@@ -23,11 +23,11 @@ public class FileImports {
 		return path;
 	}
 	
-	public static void findFile(String path) {	
+	public static void findFile(String path, ArrayList<eSnapshot> data) {	
 		File directoryPath = new File(path);	    
 	    File filesList[] = directoryPath.listFiles();
 	    
-	    List<eSnapshot> data = new ArrayList<eSnapshot>();
+	    
 	    
 	    Scanner sc = null;
 	    
@@ -44,15 +44,18 @@ public class FileImports {
 	    					
 	    				//}
 	    		
-	    				String currLine = sc.nextLine();
+	    				String currLine = sc.nextLine(); 			
+	    				if(!currLine.contains("CRN,SUBJ,CRSE,XLST CAP,ENR,LINK,XLST GROUP,OVERALL CAP,OVERALL ENR")) {
+	    				//System.out.print(currLine + "\n");
 	    				data.add(new eSnapshot(currLine));
-	    				data.get(data.size()-1).print();
-	    				System.out.println("\n");
+	    				//data.get(data.size()-1).print();
+	    				//System.out.println("\n");
 	    				//System.out.println(currLine);
 	    				//String s = sc.next() + ",";
 	    				//System.out.print(s);
 	    				//System.exit(0);
-	    			}
+	    				}
+	    				}
 	    			}
 	    			sc.close();
 	    		}catch (FileNotFoundException e) {

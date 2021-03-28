@@ -5,14 +5,20 @@ import java.util.*;
 public class ProjectEnrollments {
 
 	public static void main(String[] args) throws Throwable {
-	    
+		ArrayList<eSnapshot> data = new ArrayList<eSnapshot>();
+		
 		if (args.length != 0) {
-			System.out.println(args[0]);
+			//System.out.println(args[0]);
 			String path = args[0];
 			path = FileImports.sanitizePath(path);
 			if(FileImports.exception(path) == false) {
-				//FileImports.findFile(path);
+				FileImports.findFile(path, data);
 				SummaryReport.deadlineD(path);
+				SummaryReport.sReport();
+				eSnapshot.mathFR(data);
+				//for(int i = 0; i<data.size(); i++) {
+					//data.get(i).print();
+				//}
 			}
 		}
 		

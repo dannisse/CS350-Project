@@ -2,10 +2,12 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class eSnapshot {
-	private String seats;
+	/*private String seats;
 	private String CRN;
 	private String subj;
 	private String crse;
@@ -39,7 +41,43 @@ public class eSnapshot {
 	private String blank1;	
 	private String blank2;	
 	private String blank3;	
-	private String blank4;
+	private String blank4;*/
+	
+	public String seats;
+	public String CRN;
+	public String subj;
+	public String crse;
+	public String title;
+	public String cr_hrs;
+	public String xlst_cap;
+	public String enr;
+	public String link;
+	public String xlst_group;
+	public String sched_type;
+	public String campus;
+	public String insm;
+	public String print;
+	public String time;
+	public String days;
+	public String bldg;
+	public String room;
+	public String override;
+	public String instructor;
+	public String overall_cap;
+	public String overall_enr;
+	public String ptrm_start;
+	public String ptrm_end;
+	public String wl_cap;
+	public String wl;
+	public String wl_remain;
+	public String notes;
+	public String comments;
+	public String coll;	
+	
+	public String blank1;	
+	public String blank2;	
+	public String blank3;	
+	public String blank4;
 		
 		
 	public eSnapshot(String s) {
@@ -92,6 +130,18 @@ public class eSnapshot {
 		//coll = fields[33];*/
 	}
 	
+	public eSnapshot(eSnapshot rhs) {
+		this.CRN = rhs.CRN;
+		this.subj = rhs.subj;
+		this.crse = rhs.crse;
+		this.xlst_cap = rhs.xlst_cap;
+		this.enr = rhs.enr;
+		this.link = rhs.link;
+		this.xlst_group = rhs.xlst_group;
+		this.overall_cap = rhs.overall_cap;
+		this.overall_enr = rhs.overall_enr;
+	}
+	
 	public void print() {
 		//System.out.println("SEATS="+seats);
 		System.out.println("CRN="+CRN);
@@ -124,6 +174,70 @@ public class eSnapshot {
 		//System.out.println("COMMENTS="+comments);
 		//System.out.println("COLL="+coll);	
 	}
+	public static Comparator<eSnapshot> eSnapNum = new Comparator<eSnapshot>() {
 
+		public int compare(eSnapshot s1, eSnapshot s2) {
+
+		   int num1 = s1.getNum();
+		   int num2 = s2.getNum();
+		   
+		   return num1-num2;
+
+	   }};
+	
+	
+	public static void mathFR(ArrayList<eSnapshot> data) {
+		ArrayList<eSnapshot> alpha = new ArrayList<eSnapshot>();
+		int enr[];
+		int j = data.size();
+		for(int i = 0; i < data.size(); i++) {
+			//System.out.print(data.get(i).getCourse() + "\n");
+			Collections.sort(data, eSnapshot.eSnapNum);
+			if(i+1 <= j-1) {
+				if(data.get(i).getCourse().equals(data.get(i).getCourse())){
+					//sum = data.get(i).getEnr()+data.get(i+1).getEnr();
+				}
+				if(!data.get(i).getCourse().equals(data.get(i+1).getCourse())) {
+				alpha.add(new eSnapshot(data.get(i)));
+					//System.out.print(data.get(i) + "\n");
+			}
+		}
+			else
+				alpha.add(data.get(j-1));
+				//System.out.print(data.get(j-1).getCourse() + "\n");
+			
+		}
+		Collections.sort(alpha, eSnapshot.eSnapNum);
+		
+		for(int i = 0; i < alpha.size(); i++) {
+			System.out.print(alpha.get(i).getCourse() + "\n");
+			}
+	}
+	
+	public String getCourse() {
+		return (subj+crse);
+	}
+	
+	public int getNum() {
+		int i = Integer.parseInt(crse.substring(0,3));
+		return i;
+	}
+	
+	public int getEnr() {
+		return Integer.parseInt(enr);
+	}
+	
+	public void setEnr(String x) {
+		this.enr = x;
+	}
+	/*
+	public String getProj() {
+		return (subj+crse);
+	}
+	
+	
+	public String getCap() {
+		return ;
+	}*/
 	
 }
