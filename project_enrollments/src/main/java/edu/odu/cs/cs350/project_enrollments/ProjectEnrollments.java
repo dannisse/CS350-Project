@@ -17,7 +17,6 @@ public class ProjectEnrollments {
 		}
 			
 		
-		
 //		if (args.length < 3) {
 //			System.out.println("Too few arugments.");
 //			System.out.println("Usage: java -jar program.jar [historical semester directories] [current semester directory] [excel file output location]");
