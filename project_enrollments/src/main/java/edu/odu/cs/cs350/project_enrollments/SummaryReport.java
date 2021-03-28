@@ -33,7 +33,7 @@ public class SummaryReport {
 				d=d.substring(0,10);
 				System.out.print("Snap format: " + d + "\n");
 				//d3 = sdformat.parse(d);
-				d3 = sdformat.parse("2021-2-19");
+				d3 = sdformat.parse("2021-12-19");
 				System.out.print("Snap Date: " + d3 + "\n");
 			}
 			if(t.equals("dates.txt")) {		
@@ -49,12 +49,17 @@ public class SummaryReport {
 				perc = diff;
 				
 				System.out.print("difference: " + diff + "\n");
-				diffInMillies = Math.abs(d3.getTime() - d1.getTime());
+				diffInMillies = (d3.getTime() - d1.getTime());
 				diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 				System.out.print("Third: " + diff + "\n");
 				System.out.print("percentage: " + diff + " " + perc + "\n");
 				long st = (diff*100)/perc;
-				System.out.print("percentage: %" + st);
+				if(st <= 0){
+					System.out.print("percentage: %" + 0);
+				}else if(st >= 100){
+					System.out.print("percentage: %" + 100);
+				}else
+					System.out.print("percentage: %" + st);
 				System.exit(0);
 			}
 			
