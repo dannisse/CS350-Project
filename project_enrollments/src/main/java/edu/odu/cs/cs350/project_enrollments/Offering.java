@@ -1,8 +1,10 @@
 package edu.odu.cs.cs350.project_enrollments;
 
+import java.util.Vector;
+
 /*
  * Object that will contain all the information for each individual offerings. 
- * (each unique CRN in CSV files)
+ * (each unique class offering in CSV files)
  * 
  *  - This will be created when a CSV file is being scanned and a row (section) has data that isn't already recorded
  */
@@ -49,6 +51,12 @@ public class Offering {
 	 */
 	private int overallEnr;
 	
+	/*
+	 * A vector that contains ever section that is a part of this course
+	 *
+	 *	- Holds the actual object 'Section'
+	 */
+	private Vector<Section> sectionList = new Vector<Section>();
 	
 	
 	
@@ -87,5 +95,16 @@ public class Offering {
 	public void setXListGroup(String in) { this.xListGroup = in; }
 	public void setOverallCap(int in) { this.overallCap = in; }
 	public void setOverallEnr(int in) { this.overallEnr = in; }
+	
+	
+	/*
+	 * Add to sectionList
+	 * 
+	 * Param: Section to add
+	 */
+	public void addSection(Section in)
+	{
+		this.sectionList.add(in);
+	}
 	
 }
