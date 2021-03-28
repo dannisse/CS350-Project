@@ -3,7 +3,6 @@ package edu.odu.cs.cs350.project_enrollments;
 import java.util.List;
 import java.util.ArrayList;
 
-
 public class eSnapshot {
 	private String seats;
 	private String CRN;
@@ -34,7 +33,12 @@ public class eSnapshot {
 	private String wl_remain;
 	private String notes;
 	private String comments;
+<<<<<<< HEAD
 	private String coll;	
+=======
+	private String coll;		
+		
+>>>>>>> branch 'parsing-csvs-old' of https://forge350.cs.odu.edu/alovitz/blue1.git
 	
 	private String blank1;	
 	private String blank2;	
@@ -93,6 +97,7 @@ public class eSnapshot {
 	}
 	
 	public void print() {
+<<<<<<< HEAD
 		//System.out.println("SEATS="+seats);
 		System.out.println("CRN="+CRN);
 		System.out.println("SUBJ="+subj);
@@ -126,4 +131,37 @@ public class eSnapshot {
 	}
 
 	
+=======
+		System.out.println("SEATS="+seats);
+		System.out.println("CRN="+CRN);
+		System.out.println("SUBJ="+subj);
+		System.out.println("CRSE="+crse);
+		System.out.println("TITLE="+title);
+		System.out.println("CR_HRS="+cr_hrs);
+		System.out.println("XLST_CAP="+xlst_cap);
+		System.out.println("ENR="+enr);
+		System.out.println("LINK="+link);
+		System.out.println("XLST_GROUP="+xlst_group);
+		System.out.println("SCHED_TYPE="+sched_type);
+		System.out.println("CAMPUS="+campus);
+		System.out.println("INSM="+insm);
+		System.out.println("PRINT="+print);
+		System.out.println("TIME="+time);
+		System.out.println("DAYS="+days);
+		System.out.println("BLDG="+bldg);
+		System.out.println("ROOM="+room);
+		System.out.println("OVERRIDE="+override);
+		System.out.println("INSTRUCTOR="+instructor);
+		System.out.println("OVERALL_CAP="+overall_cap);
+		System.out.println("OVERALL_ENR="+overall_enr);
+		System.out.println("PTRM_START="+ptrm_start);
+		System.out.println("PTRM_END="+ptrm_end);
+		System.out.println("WL_CAP="+wl_cap);
+		System.out.println("WL="+wl);
+		System.out.println("WL_REMAIN="+wl_remain);
+		System.out.println("NOTES="+notes);
+		System.out.println("COMMENTS="+comments);
+		System.out.println("COLL="+coll);	
+	}
+>>>>>>> branch 'parsing-csvs-old' of https://forge350.cs.odu.edu/alovitz/blue1.git
 }

@@ -43,11 +43,15 @@ public class FileImports {
 	    				String currLine = sc.nextLine();
 	    				data.add(new eSnapshot(currLine));
 	    				data.get(data.size()-1).print();
+<<<<<<< HEAD
 	    				System.out.println("\n");
 	    				//System.out.println(currLine);
 	    				//String s = sc.next() + ",";
 	    				//System.out.print(s);
 	    				//System.exit(0);
+=======
+	    				System.exit(0);
+>>>>>>> branch 'parsing-csvs-old' of https://forge350.cs.odu.edu/alovitz/blue1.git
 	    			}
 	    			
 	    			sc.close();
