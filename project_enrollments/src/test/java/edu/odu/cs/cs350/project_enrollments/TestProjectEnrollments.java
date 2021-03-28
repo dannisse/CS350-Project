@@ -8,8 +8,18 @@ import java.nio.file.Path;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.Before;
-import org.junit.Test; 
+//import org.junit.Test; 
 
-public class TestProjectEnrollments {
+public class TestProjectEnrollments {	
 
+	ProjectEnrollments defaultProjectEnrollments;
+	
+
+	@Before
+	public void setup()
+	{
+		defaultProjectEnrollments  = new ProjectEnrollments();
+	}
+	
+	
 }
