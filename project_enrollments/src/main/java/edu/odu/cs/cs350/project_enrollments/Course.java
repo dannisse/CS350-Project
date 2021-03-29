@@ -93,6 +93,9 @@ public class Course {
 	public void addOffering(Offering in)
 	{
 		this.offeringList.addElement(in);
+		
+		// Update Actual Enrolled
+		this.actualEnrollment += in.getEnrolled();
 	}
 	
 	/*

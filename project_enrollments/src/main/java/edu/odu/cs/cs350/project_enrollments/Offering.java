@@ -86,7 +86,8 @@ public class Offering {
 		this.subject 		= fields[2];
 		this.courseNumber 	= fields[3];
 		this.crossListCap 	= Integer.parseInt(fields[6]);
-		this.enrolled 		= Integer.parseInt(fields[7]);
+		//this.enrolled 		= Integer.parseInt(fields[7]); // This will be calculated in addSection method
+		this.enrolled		= 0;
 		this.link 			= fields[8];
 		this.xListGroup 	= fields[9];
 		
@@ -143,6 +144,9 @@ public class Offering {
 	public void addSection(Section in)
 	{
 		this.sectionList.addElement(in);
+		
+		// Update Actual Enrollment
+		this.enrolled += Integer.parseInt(in.enr);
 	}
 	
 	/*
@@ -151,11 +155,11 @@ public class Offering {
 	public void display()
 	{
 		
-		System.out.println("\t[Offering]   " + this.subject + this.courseNumber + " -> " + this.instructor +  "\n");
+		System.out.println("\t[Offering]   Enrolled: " + this.enrolled + " | " + this.subject + this.courseNumber + " -> " + this.instructor +  "\n");
 		
 		for( Section section : this.sectionList )
 		{
-			System.out.println("\t\t[Section]   " + section.getCourse() + " " + section.CRN + " -> " + this.getInstructor() );
+			System.out.println("\t\t[Section]   Enrolled: " + Integer.parseInt(section.enr) + " | " + section.getCourse() + " " + section.CRN + " -> " + this.getInstructor() );
 		}
 	}
 	
