@@ -1,9 +1,10 @@
 package edu.odu.cs.cs350.project_enrollments;
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileImports {
@@ -19,28 +20,50 @@ public class FileImports {
 			//System.out.println("concatted");
 			//System.out.println(path);
 		}
-		//int lastCharIndex = path.length()-1;
 		return path;
 	}
 	
-	public static void findFile(String path) {	
+	public static void findFile(String path, ArrayList<eSnapshot> data) {	
 		File directoryPath = new File(path);	    
 	    File filesList[] = directoryPath.listFiles();
+	    
+	    
+	    
 	    Scanner sc = null;
+	    
 	    for(File file : filesList) {
-	    		System.out.println("File name: "+file.getName());
-	    		sc= new Scanner(file.getName());
-	    		sc.useDelimiter(",");
+	    		//System.out.println("File name: "+file.getName() + "\n");
+
+	    		try {
+	    			sc = new Scanner(new File(path + file.getName()));
+	    			//sc.useDelimiter(",");
+	    			String t = file.getName();
+	    			if(!t.equals("dates.txt")) {
+	    			while(sc.hasNextLine()) {
+	    				//if(sc.nextLine().contains("XLST")) {
+	    					
+	    				//}
 	    		
-	    		String input;
-	    		StringBuffer sb = new StringBuffer();
-	    		while(sc.hasNext()) {
-	    			input = sc.nextLine();
-	                sb.append(input+" ");
-	    	    }
-	    	    sc.close();
+	    				String currLine = sc.nextLine(); 			
+	    				if(!currLine.contains("CRN,SUBJ,CRSE,XLST CAP,ENR,LINK,XLST GROUP,OVERALL CAP,OVERALL ENR")) {
+	    				//System.out.print(currLine + "\n");
+	    				data.add(new eSnapshot(currLine));
+	    				//data.get(data.size()-1).print();
+	    				//System.out.println("\n");
+	    				//System.out.println(currLine);
+	    				//String s = sc.next() + ",";
+	    				//System.out.print(s);
+	    				//System.exit(0);
+	    				}
+	    				}
+	    			}
+	    			sc.close();
+	    		}catch (FileNotFoundException e) {
+	    			System.err.println("File not Found");
+	    		}
 	    }
 	}
+	
 	public static boolean exception(String path) {
 		Scanner fileScanner = null;
 		boolean verdict = false;

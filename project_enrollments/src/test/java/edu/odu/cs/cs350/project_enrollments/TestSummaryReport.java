@@ -11,20 +11,21 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.Before;
 //import org.junit.Test; 
 
-public class TestProjectEnrollments {
-	
-	
-	ProjectEnrollments defaultProjectEnrollments;
-	
+public class TestSummaryReport {
 
+	
+	SummaryReport defaultSummaryReport;
+	
+	
 	@Before
 	public void setup()
 	{
-		defaultProjectEnrollments  = new ProjectEnrollments();
+		defaultSummaryReport  = new SummaryReport();
 	}
 	
 	
-	
-	
-	
+	@Test
+	public void TestDeadline(){
+		
+	}
 }
