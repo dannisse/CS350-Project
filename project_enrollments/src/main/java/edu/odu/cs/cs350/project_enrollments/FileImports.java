@@ -8,6 +8,7 @@ import java.util.List;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.Objects;
 
 public class FileImports {
 	
@@ -25,7 +26,7 @@ public class FileImports {
 		return path;
 	}
 	
-	public static void findFile(String path, ArrayList<eSnapshot> data) {	
+	public static void findFile(String path, ArrayList<Offering> data) {	
 		File directoryPath = new File(path);	    
 	    File filesList[] = directoryPath.listFiles();
 	    
@@ -76,22 +77,50 @@ public class FileImports {
 	    					 * 	|-> If the row scanned doesn't match data from the previous one (course # and/or teacher)  -> create a new offering object and add that section to the offerings list
 	    					 * 			and update the current offering
 	    					 */
-		    					if(currOffering == null || (newSection.getCourse() != currOffering.getCourse() || newSection.instructor != currOffering.getInstructor()) )
-		    					{	
-		    						// Create new offering 
-		    						newOffering = new Offering(fields);
-		    						
-		    						// Update current offering
-		    						currOffering = newOffering;
-		    						
-		    						// Add section to the list of sections under that offering
-		    						currOffering.addSection(newSection);
-		    						
+	    					if(currOffering == null || ( !newSection.getCourse().equals(currOffering.getCourse()) || !newSection.instructor.equals(currOffering.getInstructor()) ) )
+	    					{	
+	    						
+	    						
+    						/*
+    						 * Testing output
+	    						 
+	    						if(currOffering != null)
+	    						{
+	    							System.out.println(newSection.instructor + " ==> " + currOffering.getInstructor());
+	    							System.out.println("\t" + newSection.getCourse() + " ==> " + currOffering.getCourse());
+	    							
+	    							if(!newSection.instructor.equals(currOffering.getInstructor()))
+	    							{
+	    								System.out.println("\t\t Teachers don't match");
+	    							}
+	    							if(!newSection.getCourse().equals(currOffering.getCourse()))
+	    							{
+	    								System.out.println("\t\t Courses don't match");
+	    							}
+	    						}
+    						*/
+	    						
+	    					
+	    						
+		    					// Add currOffering to data
+	    						// - the offering is done processing at this point and is about to be changed
+		    					if(currOffering != null)
+		    					{
+		    						data.add(currOffering);
 		    					}
+		    					
+	    						// Create new offering 
+	    						newOffering = new Offering(fields);
+	    						
+	    						// Update current offering
+	    						currOffering = newOffering;
+	    						
+	    					}
 	    					
+	    					// Add section to the list of sections under that offering
+    						currOffering.addSection(newSection);
 	    					
-	    					
-		    				data.add(newSection);
+	    						    					
 		    				
 		    				//data.get(data.size()-1).print();
 		    				

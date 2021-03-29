@@ -6,6 +6,7 @@ public class ProjectEnrollments {
 
 	public static void main(String[] args) throws Throwable {
 		
+		/*
 		ArrayList<eSnapshot> data = new ArrayList<eSnapshot>();
 		if (args.length != 0) {
 			//System.out.println(args[0]);
@@ -21,6 +22,47 @@ public class ProjectEnrollments {
 				//}
 			}
 		}
+		*/
+		
+		
+		/*
+		 * Course is a list of offerings. Offerings hold a list of sections.
+		 */
+		
+		// Current course
+		ArrayList<Offering> currCourse = new ArrayList<Offering>();
+		// Add to currCourse
+		if (args.length != 0) {
+			String path = args[0];
+			path = FileImports.sanitizePath(path);
+			if(FileImports.exception(path) == false) {
+				FileImports.findFile(path, currCourse);
+			}
+		}
+		
+		// Historical course
+		ArrayList<Offering> historicalCourse = new ArrayList<Offering>();
+		// Add to historicalCourse
+		if (args.length != 0) {
+			String path = args[1];
+			path = FileImports.sanitizePath(path);
+			if(FileImports.exception(path) == false) {
+				FileImports.findFile(path, historicalCourse);
+			}
+		}
+		
+		
+		
+		System.out.println("LIST SIZE: " + currCourse.size());
+		System.out.println("HISTORICAL LIST SIZE: " + historicalCourse.size());
+		// Print courses
+		for(Offering curr : currCourse)
+		{
+			System.out.println("==============");
+			curr.display();
+		}
+		
+		
 		
 		if (args.length < 3) {
 			System.out.println("Too few arugments.");

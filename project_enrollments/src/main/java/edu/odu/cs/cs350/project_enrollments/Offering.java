@@ -113,7 +113,7 @@ public class Offering {
 	public String getSubject() { return this.subject; }
 	public String getCourseNumber() { return this.courseNumber; }
 	
-	public String getCourse() { return (this.subject + this.courseNumber);} // Get full course name e.g. 
+	public String getCourse() { return (this.subject + this.courseNumber);} // Get full course name e.g. CS350
 	
 	public int getCrossListCap() { return this.crossListCap; }
 	public int getEnrolled() { return this.enrolled; }
@@ -142,7 +142,7 @@ public class Offering {
 	 */
 	public void addSection(eSnapshot in)
 	{
-		this.sectionList.add(in);
+		this.sectionList.addElement(in);
 	}
 	
 	/*
@@ -153,9 +153,9 @@ public class Offering {
 		
 		System.out.println(this.subject + this.courseNumber + " -> " + this.instructor);
 		
-		for( eSnapshot section : sectionList )
+		for( eSnapshot section : this.sectionList )
 		{
-			System.out.println("\tsection : " + section.getCourse() + " " + section.CRN + " -> " + this.getInstructor() );
+			System.out.println("\tsection [" + this.sectionList.size() + "]: " + section.getCourse() + " " + section.CRN + " -> " + this.getInstructor() );
 		}
 	}
 	
