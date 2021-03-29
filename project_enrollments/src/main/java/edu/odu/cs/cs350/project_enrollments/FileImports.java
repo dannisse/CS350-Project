@@ -3,8 +3,13 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
+=======
+import java.nio.file.Path;
+import java.nio.file.Paths;
+>>>>>>> offerings
 import java.util.Scanner;
 
 public class FileImports {
@@ -26,6 +31,7 @@ public class FileImports {
 	public static void findFile(String path, ArrayList<eSnapshot> data) {	
 		File directoryPath = new File(path);	    
 	    File filesList[] = directoryPath.listFiles();
+<<<<<<< HEAD
 	    
 	    
 	    
@@ -75,9 +81,23 @@ public class FileImports {
 	    		}catch (FileNotFoundException e) {
 	    			System.err.println("File not Found");
 	    		}
+=======
+	    Scanner sc = null;
+	    for(File file : filesList) {
+	    		System.out.println("File name: "+file.getName());
+	    		sc= new Scanner(file.getName());
+	    		sc.useDelimiter(",");
+	    		
+	    		String input;
+	    		StringBuffer sb = new StringBuffer();
+	    		while(sc.hasNext()) {
+	    			input = sc.nextLine();
+	                sb.append(input+" ");
+	    	    }
+	    	    sc.close();
+>>>>>>> offerings
 	    }
 	}
-	
 	public static boolean exception(String path) {
 		Scanner fileScanner = null;
 		boolean verdict = false;
