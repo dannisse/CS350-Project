@@ -26,40 +26,43 @@ public class ProjectEnrollments {
 		
 		
 		/*
-		 * Course is a list of offerings. Offerings hold a list of sections.
+		 * Semester is a list of courses in one directory.
 		 */
 		
-		// Current course
-		ArrayList<Offering> currCourse = new ArrayList<Offering>();
+		// Current Semester
+		ArrayList<Course> currSemester = new ArrayList<Course>();
 		// Add to currCourse
 		if (args.length != 0) {
 			String path = args[0];
 			path = FileImports.sanitizePath(path);
 			if(FileImports.exception(path) == false) {
-				FileImports.findFile(path, currCourse);
+				FileImports.findFile(path, currSemester);
 			}
 		}
 		
 		// Historical course
-		ArrayList<Offering> historicalCourse = new ArrayList<Offering>();
+		ArrayList<Course> historicalSemester = new ArrayList<Course>();
 		// Add to historicalCourse
 		if (args.length != 0) {
 			String path = args[1];
 			path = FileImports.sanitizePath(path);
 			if(FileImports.exception(path) == false) {
-				FileImports.findFile(path, historicalCourse);
+				FileImports.findFile(path, historicalSemester);
 			}
 		}
 		
 		
-		
-		System.out.println("LIST SIZE: " + currCourse.size());
-		System.out.println("HISTORICAL LIST SIZE: " + historicalCourse.size());
-		// Print courses
-		for(Offering curr : currCourse)
+		// Print semester courses
+		System.out.println("LIST SIZE: " + currSemester.size());
+		System.out.println("HISTORICAL LIST SIZE: " + historicalSemester.size());
+		for(Course curr : currSemester)
 		{
-			System.out.println("==============");
-			curr.display();
+			if(curr != null)
+			{
+				System.out.println("==============");
+				curr.display();
+			}
+			
 		}
 		
 		

@@ -26,12 +26,16 @@ public class FileImports {
 		return path;
 	}
 	
-	public static void findFile(String path, ArrayList<Offering> data) {	
+	public static void findFile(String path, ArrayList<Course> data) {	
 		File directoryPath = new File(path);	    
 	    File filesList[] = directoryPath.listFiles();
 	    
+	    // Used for creating a new Offering when needed
 	    Offering newOffering = null;
 	    Offering currOffering = null;
+	    
+	    // Used for creating and updating a new Course when needed
+	    Course currCourse = null;
 	    
 	    Scanner sc = null;
 	    
@@ -100,15 +104,25 @@ public class FileImports {
 	    						}
     						*/
 	    						
-	    					
 	    						
-		    					// Add currOffering to data
+	    						
+		    					// Add currOffering to the currCourse
 	    						// - the offering is done processing at this point and is about to be changed
 		    					if(currOffering != null)
 		    					{
-		    						data.add(currOffering);
+		    						currCourse.addOffering(currOffering);
 		    					}
 		    					
+		    					
+		    					// If the Course title does not match the previous one OR this is the first entry (currOffering == null), then we need to create a new Course object
+	    						//		- Add the currCourse to data first
+		    					if( currOffering == null ||  !newSection.getCourse().equals( currOffering.getCourse() ) )
+	    						{
+		    						data.add(currCourse);
+	    							currCourse = new Course(newSection.getCourse());
+	    						}
+		    					
+	    						
 	    						// Create new offering 
 	    						newOffering = new Offering(fields);
 	    						

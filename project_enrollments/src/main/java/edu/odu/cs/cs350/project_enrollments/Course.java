@@ -105,7 +105,7 @@ public class Course {
 		
 		for( Offering offering : this.offeringList )
 		{
-			System.out.println("\tsection [" + this.offeringList.size() + "]: " + offering.getCourse() );
+			System.out.println( "\n\t Offering [" + offering.getCourse() + "]: " + offering.getInstructor() );
 		}
 	}
 	
