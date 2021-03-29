@@ -72,7 +72,7 @@ public class SummaryReport {
 	
 	public static void sReport() {
 		System.out.print(st + "% of enrollment period has elapsed. \n");
-		System.out.print(" Course\t Enrollment\t Projected\tCap \n");
+		System.out.print(" Course\tEnrollment\tProjected\tCap \n");
 		
 	}
 }
