@@ -58,7 +58,7 @@ public class FileImports {
 		    				
 		    				//System.out.println("removed quotations\t" + currLine);
 		    				
-		    				// Now we can parse the internal "," delimeters.
+		    				// Now we can parse the internal "," delimiters.
 		    				// If you simply split it by commas, then you would split 
 		    				// Fields that have names like LASTNAM,FIRSTINITIAL, when you
 		    				// really need this as one field
@@ -82,7 +82,7 @@ public class FileImports {
 		    				/*
 	    					 * Create new section (eSnapshot)
 	    					 */
-	    					eSnapshot newSection = new eSnapshot(fields);
+	    					Section newSection = new Section(fields);
 	    					
 	    					/*
 	    					 * CREATE NEW OFFERING AND COURSE

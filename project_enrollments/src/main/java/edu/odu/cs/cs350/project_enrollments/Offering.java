@@ -62,7 +62,7 @@ public class Offering {
 	 *
 	 *	- Holds the actual object 'Section'
 	 */
-	private Vector<eSnapshot> sectionList = new Vector<eSnapshot>();
+	private Vector<Section> sectionList = new Vector<Section>();
 	
 	
 	
@@ -140,7 +140,7 @@ public class Offering {
 	 * 
 	 * Param: Section to add
 	 */
-	public void addSection(eSnapshot in)
+	public void addSection(Section in)
 	{
 		this.sectionList.addElement(in);
 	}
@@ -153,7 +153,7 @@ public class Offering {
 		
 		System.out.println("\t[Offering]   " + this.subject + this.courseNumber + " -> " + this.instructor +  "\n");
 		
-		for( eSnapshot section : this.sectionList )
+		for( Section section : this.sectionList )
 		{
 			System.out.println("\t\t[Section]   " + section.getCourse() + " " + section.CRN + " -> " + this.getInstructor() );
 		}
