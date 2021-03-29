@@ -54,18 +54,20 @@ public class FileImports {
 		    				String[] fields = currLine.split("\",\"");
 		    				
 		    				//System.out.println(fields.length);
-		    				
 		    				//System.out.print("LINE\t" + currLine + "\n");
 		    				//System.out.print("PARSED\t");
-		    				for (int i = 0; i < fields.length; i++) {
-		    					System.out.print(fields[i]+",");
-		    				}
-		    				System.out.print("\n");
+		    				
+		    				
+		    				//for (int i = 0; i < fields.length; i++) {
+		    				//	System.out.print(fields[i]+",");
+		    				//}
+		    				//System.out.print("\n");
 		    				
 		    				data.add(new eSnapshot(fields));
-		    				data.get(data.size()-1).print();
 		    				
-		    				System.out.println();
+		    				//data.get(data.size()-1).print();
+		    				
+		    				//System.out.println();
 		    				//System.exit(0);
 		    			}
 		    		}

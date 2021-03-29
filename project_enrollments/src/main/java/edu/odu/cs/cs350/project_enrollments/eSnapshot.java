@@ -80,22 +80,19 @@ public class eSnapshot {
 	public String blank4;
 		
 		
-	public eSnapshot(String[] fields) {
-		
-		//String[] fields = s.split(",");
-		
+	public eSnapshot(String[] fields) {		
 		seats = fields[0];
-		CRN = fields[1];	// important
-		subj = fields[2];	// imp
-		crse = fields[3];	// imp
+		CRN = fields[1];
+		subj = fields[2];
+		crse = fields[3];
 		title = fields[4];
 		cr_hrs = fields[5];
 		xlst_cap = fields[6];	
-		enr = fields[7];	// important
-		link = fields[8];	// important
-		xlst_group = fields[9];	// imp
+		enr = fields[7];
+		link = fields[8];
+		xlst_group = fields[9];
 		sched_type = fields[10];
-		campus = fields[12];	// skip index on purpose
+		campus = fields[12];	// skip forwards one on purpose
 		insm = fields[13];
 		print = fields[14];
 		time = fields[15];
@@ -104,13 +101,15 @@ public class eSnapshot {
 		room = fields[18];
 		override = fields[19];
 		instructor = fields[20];
-		overall_cap = fields[22];	// skip index on purpose
-		overall_enr = fields[23];	//important
-		ptrm_start = fields[26];	// skip 2 forwards
+		overall_cap = fields[22];	// skip forwards one
+		overall_enr = fields[23];
+		ptrm_start = fields[26];	// skip forwards two
 		ptrm_end = fields[27];
 		wl_cap = fields[28];
 		wl = fields[29];
 		wl_remain = fields[30];
+		
+		// We can effectively disregard these latter fields.
 		//notes = fields[31];
 		//comments = fields[31];
 		//coll = fields[32];
