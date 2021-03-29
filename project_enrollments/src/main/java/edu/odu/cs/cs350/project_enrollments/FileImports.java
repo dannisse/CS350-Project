@@ -71,20 +71,7 @@ public class FileImports {
 		    					 * 			and update the current offering
 		    					 */
 			    					if(currOffering == null || (newSection.getCourse() != currOffering.getCourse() || newSection.instructor != currOffering.getInstructor()) )
-			    					{
-			    						if (currOffering != null)
-			    						{
-			    							if(newSection.getCourse() != currOffering.getCourse())
-				    						{
-				    							System.out.println(newSection.getCourse() + " DAMN " + currOffering.getCourse());
-				    						}
-				    						if( newSection.instructor != currOffering.getInstructor() )
-				    						{
-				    							System.out.println("Poo");
-				    						}
-			    						}
-			    						
-			    						
+			    					{	
 			    						// Create new offering 
 			    						newOffering = new Offering(currLine);
 			    						
