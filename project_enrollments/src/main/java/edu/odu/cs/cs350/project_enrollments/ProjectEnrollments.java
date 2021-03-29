@@ -32,7 +32,7 @@ public class ProjectEnrollments {
 		/*
 		 * Current Semester Courses Setup
 		 */
-		Map<String, Course > currSemester = new HashMap<String, Course >();
+		SortedMap<String, Course > currSemester = new TreeMap<String, Course >();
 		// Add to currCourse
 		if (args.length != 0) {
 			String path = args[0];
@@ -45,7 +45,7 @@ public class ProjectEnrollments {
 		/*
 		 * Historical Semester Courses Setup
 		 */
-		Map<String, Course > historicalSemester = new HashMap<String, Course >();
+		SortedMap<String, Course > historicalSemester = new TreeMap<String, Course >();
 		// Add to historicalCourse
 		if (args.length != 0) {
 			String path = args[1];
