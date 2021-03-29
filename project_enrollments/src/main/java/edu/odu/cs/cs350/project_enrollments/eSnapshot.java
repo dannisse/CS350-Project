@@ -6,43 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
-public class eSnapshot {
-	/*private String seats;
-	private String CRN;
-	private String subj;
-	private String crse;
-	private String title;
-	private String cr_hrs;
-	private String xlst_cap;
-	private String enr;
-	private String link;
-	private String xlst_group;
-	private String sched_type;
-	private String campus;
-	private String insm;
-	private String print;
-	private String time;
-	private String days;
-	private String bldg;
-	private String room;
-	private String override;
-	private String instructor;
-	private String overall_cap;
-	private String overall_enr;
-	private String ptrm_start;
-	private String ptrm_end;
-	private String wl_cap;
-	private String wl;
-	private String wl_remain;
-	private String notes;
-	private String comments;
-	private String coll;	
-	
-	private String blank1;	
-	private String blank2;	
-	private String blank3;	
-	private String blank4;*/
-	
+public class eSnapshot {	
 	public String seats;
 	public String CRN;
 	public String subj;
@@ -72,13 +36,7 @@ public class eSnapshot {
 	public String wl_remain;
 	public String notes;
 	public String comments;
-	public String coll;	
-	
-	public String blank1;	
-	public String blank2;	
-	public String blank3;	
-	public String blank4;
-		
+	public String coll;			
 		
 	public eSnapshot(String[] fields) {		
 		seats = fields[0];
@@ -272,7 +230,4 @@ public class eSnapshot {
 	public String getCRN() {
 		return CRN;
 	}
-	
-	
-	
 }
