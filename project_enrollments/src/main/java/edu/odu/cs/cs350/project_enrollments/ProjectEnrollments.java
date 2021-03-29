@@ -37,7 +37,7 @@ public class ProjectEnrollments {
 		if (args.length != 0) {
 			String path = args[0];
 			path = FileImports.sanitizePath(path);
-			if(FileImports.exception(path) == false) {
+			if(!FileImports.missingDates(path)) {
 				FileImports.findFile(path, currSemester);
 			}
 		}
@@ -50,7 +50,7 @@ public class ProjectEnrollments {
 		if (args.length != 0) {
 			String path = args[1];
 			path = FileImports.sanitizePath(path);
-			if(FileImports.exception(path) == false) {
+			if(!FileImports.missingDates(path)) {
 				FileImports.findFile(path, historicalSemester);
 			}
 		}

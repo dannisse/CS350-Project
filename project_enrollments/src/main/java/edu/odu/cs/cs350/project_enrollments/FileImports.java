@@ -154,7 +154,7 @@ public class FileImports {
 	    		}
 	    }
 	}
-	public static boolean exception(String path) {
+	public static boolean missingDates(String path) {
 		Scanner fileScanner = null;
 		boolean verdict = false;
 	    try
