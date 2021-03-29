@@ -29,8 +29,10 @@ public class ProjectEnrollments {
 		 * Semester is a list of courses in one directory.
 		 */
 		
-		// Current Semester
-		ArrayList<Course> currSemester = new ArrayList<Course>();
+		/*
+		 * Current Semester Courses Setup
+		 */
+		Map<String, Course > currSemester = new HashMap<String, Course >();
 		// Add to currCourse
 		if (args.length != 0) {
 			String path = args[0];
@@ -40,8 +42,10 @@ public class ProjectEnrollments {
 			}
 		}
 		
-		// Historical course
-		ArrayList<Course> historicalSemester = new ArrayList<Course>();
+		/*
+		 * Historical Semester Courses Setup
+		 */
+		Map<String, Course > historicalSemester = new HashMap<String, Course >();
 		// Add to historicalCourse
 		if (args.length != 0) {
 			String path = args[1];
@@ -52,18 +56,19 @@ public class ProjectEnrollments {
 		}
 		
 		
-		// Print semester courses
+		/*
+		 * Print Semester
+		 */
+		for (String key : currSemester.keySet()) {
+			
+			System.out.println("=======================================\n");
+			currSemester.get(key).display();
+		}
+		
 		System.out.println("LIST SIZE: " + currSemester.size());
 		System.out.println("HISTORICAL LIST SIZE: " + historicalSemester.size());
-		for(Course curr : currSemester)
-		{
-			if(curr != null)
-			{
-				System.out.println("==============");
-				curr.display();
-			}
-			
-		}
+		
+		
 		
 		
 		

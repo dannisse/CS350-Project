@@ -101,12 +101,14 @@ public class Course {
 	public void display()
 	{
 		
-		System.out.println(this.courseTitle + "\t|\t" +  this.actualEnrollment + "\t|\t" +  this.enrollmentCap + "\t|\t" + this.projectedEnrollment);
+		System.out.println("[Course]   " + this.courseTitle + "\t|\t" +  this.actualEnrollment + "\t|\t" +  this.enrollmentCap + "\t|\t" + this.projectedEnrollment + "\n");
 		
 		for( Offering offering : this.offeringList )
 		{
-			System.out.println( "\n\t Offering [" + offering.getCourse() + "]: " + offering.getInstructor() );
+			offering.display();
+			System.out.println("\n");
 		}
+		System.out.println("\n");
 	}
 	
 }

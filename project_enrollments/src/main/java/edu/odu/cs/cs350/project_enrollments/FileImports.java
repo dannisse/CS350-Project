@@ -4,6 +4,8 @@ package edu.odu.cs.cs350.project_enrollments;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,7 +28,7 @@ public class FileImports {
 		return path;
 	}
 	
-	public static void findFile(String path, ArrayList<Course> data) {	
+	public static void findFile(String path, Map<String, Course > data) {	
 		File directoryPath = new File(path);	    
 	    File filesList[] = directoryPath.listFiles();
 	    
@@ -36,6 +38,7 @@ public class FileImports {
 	    
 	    // Used for creating and updating a new Course when needed
 	    Course currCourse = null;
+	    ArrayList<Course> tempCourses = null;
 	    
 	    Scanner sc = null;
 	    
@@ -71,12 +74,19 @@ public class FileImports {
 		    				//}		    				
 		    				
 		    				
+		    				
+		    				
+		    				
+		    				
+		    				
 		    				/*
 	    					 * Create new section (eSnapshot)
 	    					 */
 	    					eSnapshot newSection = new eSnapshot(fields);
 	    					
 	    					/*
+	    					 * CREATE NEW OFFERING AND COURSE
+	    					 * 
 	    					 * If currOffering is null
 	    					 * 	|-> If the row scanned doesn't match data from the previous one (course # and/or teacher)  -> create a new offering object and add that section to the offerings list
 	    					 * 			and update the current offering
@@ -84,42 +94,38 @@ public class FileImports {
 	    					if(currOffering == null || ( !newSection.getCourse().equals(currOffering.getCourse()) || !newSection.instructor.equals(currOffering.getInstructor()) ) )
 	    					{	
 	    						
-	    						
-    						/*
-    						 * Testing output
-	    						 
-	    						if(currOffering != null)
-	    						{
-	    							System.out.println(newSection.instructor + " ==> " + currOffering.getInstructor());
-	    							System.out.println("\t" + newSection.getCourse() + " ==> " + currOffering.getCourse());
-	    							
-	    							if(!newSection.instructor.equals(currOffering.getInstructor()))
-	    							{
-	    								System.out.println("\t\t Teachers don't match");
-	    							}
-	    							if(!newSection.getCourse().equals(currOffering.getCourse()))
-	    							{
-	    								System.out.println("\t\t Courses don't match");
-	    							}
-	    						}
-    						*/
+	    	
 	    						
 	    						
-	    						
-		    					// Add currOffering to the currCourse
-	    						// - the offering is done processing at this point and is about to be changed
+	    						/*
+	    						 * Add currOffering to the currCourse
+	    						 * 		- the offering is done processing at this point and is about to be changed
+	    						 */
+
 		    					if(currOffering != null)
 		    					{
 		    						currCourse.addOffering(currOffering);
 		    					}
 		    					
 		    					
-		    					// If the Course title does not match the previous one OR this is the first entry (currOffering == null), then we need to create a new Course object
-	    						//		- Add the currCourse to data first
+		    					/*
+		    					 * If the Course title does not match the previous one OR this is the first entry (currOffering == null), then we need to create a new Course object
+		    					 * 		- Add the currCourse to data first
+		    					 */
 		    					if( currOffering == null ||  !newSection.getCourse().equals( currOffering.getCourse() ) )
 	    						{
-		    						data.add(currCourse);
-	    							currCourse = new Course(newSection.getCourse());
+		    						
+		    						String courseTitle = newSection.getCourse();
+		    						
+		    						// If it's not null, that means the Course is done processing. Add it to the data
+		    						if(currOffering != null)
+    								{
+		    							data.put(courseTitle, currCourse);
+    								}
+		    						
+		    						currCourse = new Course(courseTitle);
+		    						
+	    							
 	    						}
 		    					
 	    						

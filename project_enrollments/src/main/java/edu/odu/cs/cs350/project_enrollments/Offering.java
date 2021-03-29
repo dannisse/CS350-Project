@@ -151,11 +151,11 @@ public class Offering {
 	public void display()
 	{
 		
-		System.out.println(this.subject + this.courseNumber + " -> " + this.instructor);
+		System.out.println("\t[Offering]   " + this.subject + this.courseNumber + " -> " + this.instructor +  "\n");
 		
 		for( eSnapshot section : this.sectionList )
 		{
-			System.out.println("\tsection [" + this.sectionList.size() + "]: " + section.getCourse() + " " + section.CRN + " -> " + this.getInstructor() );
+			System.out.println("\t\t[Section]   " + section.getCourse() + " " + section.CRN + " -> " + this.getInstructor() );
 		}
 	}
 	
