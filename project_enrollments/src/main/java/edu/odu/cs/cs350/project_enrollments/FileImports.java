@@ -29,7 +29,8 @@ public class FileImports {
 		File directoryPath = new File(path);	    
 	    File filesList[] = directoryPath.listFiles();
 	    
-	    
+	    Offering newOffering = null;
+	    Offering currOffering = null;
 	    
 	    Scanner sc = null;
 	    
@@ -62,10 +63,35 @@ public class FileImports {
 		    				
 		    				//for (int i = 0; i < fields.length; i++) {
 		    				//	System.out.print(fields[i]+",");
-		    				//}
-		    				//System.out.print("\n");
+		    				//}		    				
 		    				
-		    				data.add(new eSnapshot(fields));
+		    				
+		    				/*
+	    					 * Create new section (eSnapshot)
+	    					 */
+	    					eSnapshot newSection = new eSnapshot(fields);
+	    					
+	    					/*
+	    					 * If currOffering is null
+	    					 * 	|-> If the row scanned doesn't match data from the previous one (course # and/or teacher)  -> create a new offering object and add that section to the offerings list
+	    					 * 			and update the current offering
+	    					 */
+		    					if(currOffering == null || (newSection.getCourse() != currOffering.getCourse() || newSection.instructor != currOffering.getInstructor()) )
+		    					{	
+		    						// Create new offering 
+		    						newOffering = new Offering(fields);
+		    						
+		    						// Update current offering
+		    						currOffering = newOffering;
+		    						
+		    						// Add section to the list of sections under that offering
+		    						currOffering.addSection(newSection);
+		    						
+		    					}
+	    					
+	    					
+	    					
+		    				data.add(newSection);
 		    				
 		    				//data.get(data.size()-1).print();
 		    				
