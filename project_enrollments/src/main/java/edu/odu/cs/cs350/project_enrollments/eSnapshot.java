@@ -170,33 +170,73 @@ public class eSnapshot {
 		   return num1-num2;
 
 	   }};
+	   
+	   public static Comparator<eSnapshot> eSnapCRN = new Comparator<eSnapshot>() {
+
+			public int compare(eSnapshot s1, eSnapshot s2) {
+
+			   int num1 = s1.getCRNum();
+			   int num2 = s2.getCRNum();
+			   
+			   return num1-num2;
+
+		   }};
 	
 	
 	public static void mathFR(ArrayList<eSnapshot> data) {
 		ArrayList<eSnapshot> alpha = new ArrayList<eSnapshot>();
-		int enr[];
+		int sum = 0;
+		int capSum = 0;
+		
+		char spec = ' ';
+		
 		int j = data.size();
+		Collections.sort(data, eSnapshot.eSnapCRN);
+		Collections.sort(data, eSnapshot.eSnapNum);
 		for(int i = 0; i < data.size(); i++) {
 			//System.out.print(data.get(i).getCourse() + "\n");
-			Collections.sort(data, eSnapshot.eSnapNum);
+			
 			if(i+1 <= j-1) {
-				if(data.get(i).getCourse().equals(data.get(i).getCourse())){
-					//sum = data.get(i).getEnr()+data.get(i+1).getEnr();
+				
+				
+				if(data.get(i).getCourse().equals(data.get(i+1).getCourse())){
+					sum = sum+data.get(i).getEnr();
+					if(!data.get(i).getCRN().equals(data.get(i+1).getCRN())){
+						if(data.get(i).getCap().equals("")) {
+							data.get(i).setCap(0);
+						}
+					capSum = capSum+(Integer.parseInt(data.get(i).getCap()));
+					//System.out.print(data.get(i).getEnr() + "\n");
+					//System.out.print(data.get(i).getCap() + "\n");
+					
+					}
 				}
 				if(!data.get(i).getCourse().equals(data.get(i+1).getCourse())) {
+				
 				alpha.add(new eSnapshot(data.get(i)));
+				//System.out.print("i =" + i + "\n");
+				alpha.get(alpha.size()-1).setEnr(sum);
+				alpha.get(alpha.size()-1).setCap(capSum);
+				//System.out.print(data.get(i).getCourse()+ "   and    " +data.get(i+1).getCourse() + "  " + sum + "\n"  );
+				//System.out.print(data.get(i).getCourse() + " sum: " + capSum + "\n");
+				sum =0;
+				capSum = 0;
+				//System.out.print(sum + "\n");
+				
 					//System.out.print(data.get(i) + "\n");
-			}
-		}
+			}	
+				
+		}			
 			else
 				alpha.add(data.get(j-1));
+				
 				//System.out.print(data.get(j-1).getCourse() + "\n");
 			
 		}
 		Collections.sort(alpha, eSnapshot.eSnapNum);
 		
 		for(int i = 0; i < alpha.size(); i++) {
-			System.out.print(alpha.get(i).getCourse() + "\n");
+			System.out.print(spec + alpha.get(i).getCourse() + "\t" + alpha.get(i).getEnr() + "\t\t\t\t" + alpha.get(i).getCap() + "\n");
 			}
 	}
 	
@@ -209,21 +249,31 @@ public class eSnapshot {
 		return i;
 	}
 	
+	public int getCRNum() {
+		int i = Integer.parseInt(CRN);
+		return i;
+	}
+	
 	public int getEnr() {
 		return Integer.parseInt(enr);
 	}
 	
-	public void setEnr(String x) {
-		this.enr = x;
+	public void setEnr(int x) {
+		this.enr = String.valueOf(x);
 	}
-	/*
-	public String getProj() {
-		return (subj+crse);
-	}
-	
 	
 	public String getCap() {
-		return ;
-	}*/
+		return overall_cap;
+	}
+	
+	public void setCap(int x) {
+		this.overall_cap = String.valueOf(x);
+	}
+	
+	public String getCRN() {
+		return CRN;
+	}
+	
+	
 	
 }
