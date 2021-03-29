@@ -13,9 +13,9 @@ public class ProjectEnrollments {
 			path = FileImports.sanitizePath(path);
 			if(FileImports.exception(path) == false) {
 				FileImports.findFile(path, data);
-				SummaryReport.deadlineD(path);
-				SummaryReport.sReport();
-				eSnapshot.mathFR(data);
+				//SummaryReport.deadlineD(path);
+				//SummaryReport.sReport();
+				//eSnapshot.mathFR(data);
 				//for(int i = 0; i<data.size(); i++) {
 					//data.get(i).print();
 				//}

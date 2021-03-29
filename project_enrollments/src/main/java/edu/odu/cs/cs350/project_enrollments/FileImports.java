@@ -32,31 +32,43 @@ public class FileImports {
 	    Scanner sc = null;
 	    
 	    for(File file : filesList) {
-	    		//System.out.println("File name: "+file.getName() + "\n");
+	    		System.out.println("File name: "+file.getName() + "\n");
 
 	    		try {
 	    			sc = new Scanner(new File(path + file.getName()));
-	    			//sc.useDelimiter(",");
 	    			String t = file.getName();
 	    			if(!t.equals("dates.txt")) {
-	    			while(sc.hasNextLine()) {
-	    				//if(sc.nextLine().contains("XLST")) {
-	    					
-	    				//}
-	    		
-	    				String currLine = sc.nextLine(); 			
-	    				if(!currLine.contains("CRN,SUBJ,CRSE,XLST CAP,ENR,LINK,XLST GROUP,OVERALL CAP,OVERALL ENR")) {
-	    				//System.out.print(currLine + "\n");
-	    				data.add(new eSnapshot(currLine));
-	    				//data.get(data.size()-1).print();
-	    				//System.out.println("\n");
-	    				//System.out.println(currLine);
-	    				//String s = sc.next() + ",";
-	    				//System.out.print(s);
-	    				//System.exit(0);
-	    				}
-	    				}
-	    			}
+	    				String currLine = sc.nextLine();	// header line
+		    			while(sc.hasNextLine()) {
+		    				currLine = sc.nextLine();
+		    				
+		    				// Remove the first and last " characters
+		    				currLine = currLine.substring(1, currLine.length()-1);
+		    				
+		    				//System.out.println("removed quotations\t" + currLine);
+		    				
+		    				// Now we can parse the internal "," delimeters.
+		    				// If you simply split it by commas, then you would split 
+		    				// Fields that have names like LASTNAM,FIRSTINITIAL, when you
+		    				// really need this as one field
+		    				String[] fields = currLine.split("\",\"");
+		    				
+		    				//System.out.println(fields.length);
+		    				
+		    				//System.out.print("LINE\t" + currLine + "\n");
+		    				//System.out.print("PARSED\t");
+		    				for (int i = 0; i < fields.length; i++) {
+		    					System.out.print(fields[i]+",");
+		    				}
+		    				System.out.print("\n");
+		    				
+		    				data.add(new eSnapshot(fields));
+		    				data.get(data.size()-1).print();
+		    				
+		    				System.out.println();
+		    				//System.exit(0);
+		    			}
+		    		}
 	    			sc.close();
 	    		}catch (FileNotFoundException e) {
 	    			System.err.println("File not Found");
