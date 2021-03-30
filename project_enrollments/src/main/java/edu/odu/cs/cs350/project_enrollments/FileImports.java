@@ -4,13 +4,11 @@ package edu.odu.cs.cs350.project_enrollments;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+//import java.util.HashMap;
+//import java.util.Map;
+//import java.util.List;
 import java.util.Scanner;
-import java.util.Objects;
+//import java.util.Objects;
 
 public class FileImports {
 	
@@ -57,6 +55,8 @@ public class FileImports {
 		return newSection;
 	}
 	
+	// get all the sections in .csv file. there is one section per line in the file.
+	// @param f a .csv file
 	public static ArrayList<Section> getAllSections(File f) {
 		ArrayList<Section> sections = null;
 		Scanner s = null;
@@ -79,89 +79,90 @@ public class FileImports {
 	
 	
 	
-	public static void REFACTORTHIS(String path) {		    	    
-	    // Used for creating a new Offering when needed
-	    Offering newOffering = null;
-	    Offering currOffering = null;
-	    
-	    // Used for creating and updating a new Course when needed
-	    Course currCourse = null;
-	    ArrayList<Course> tempCourses = null;
-	    
-	    Scanner sc = null;
-	    
-	    ArrayList<File> filesList = getFiles(path);
-	    
-	    for(File file : filesList) {
-	    		System.out.println("File name: "+file.getName() + "\n");
-
-	    		try {
-	    			sc = new Scanner(new File(path + file.getName()));
-	    			String t = file.getName();
-	    			if(!t.equals("dates.txt")) {
-	    				String currLine = sc.nextLine();	// header line
-		    			while(sc.hasNextLine()) {
-		    				currLine = sc.nextLine();
-		    				
-		    				Section newSection = extractSection(sc.nextLine());
-
-	    					
-	    					/*
-	    					 * CREATE NEW OFFERING AND COURSE
-	    					 * 
-	    					 * If currOffering is null
-	    					 * 	|-> If the row scanned doesn't match data from the previous one (course # and/or teacher)  -> create a new offering object and add that section to the offerings list
-	    					 * 			and update the current offering
-	    					 */
-	    					if(currOffering == null 
-	    							|| !newSection.getCourse().equals(currOffering.getCourse())
-	    							|| !newSection.instructor.equals(currOffering.getInstructor())) {	
-
-	    						/*
-	    						 * Add currOffering to the currCourse
-	    						 * 		- the offering is done processing at this point and is about to be changed
-	    						 */
-
-		    					if(currOffering != null) {
-		    						currCourse.addOffering(currOffering);
-		    					}
-		    					
-		    					
-		    					/*
-		    					 * If the Course title does not match the previous one OR this is the first entry (currOffering == null), then we need to create a new Course object
-		    					 * 		- Add the currCourse to data first
-		    					 */
-		    					if(currOffering == null || !newSection.getCourse().equals(currOffering.getCourse())) {
-		    						
-		    						String courseTitle = newSection.getCourse();
-		    						
-		    						// If it's not null, that means the Course is done processing. Add it to the data
-		    						if(currOffering != null) {
-		    						//	data.put(courseTitle, currCourse);
-    								}
-		    						
-		    						currCourse = new Course(courseTitle);
-	    						}
-		    					
-	    						
-	    						// Create new offering 
-	    						//newOffering = new Offering(fields);
-	    						
-	    						// Update current offering
-	    						currOffering = newOffering;
-	    						
-	    					}
-	    					
-	    					// Add section to the list of sections under that offering
-    						currOffering.addSection(newSection);
-		    			}
-		    		}
-	    			sc.close();
-	    		} catch (FileNotFoundException e) {
-	    			System.err.println("File not Found");
-	    		}
-	    	}
-	}
+//	public static void REFACTORTHIS(String path) {		    	    
+//	    // Used for creating a new Offering when needed
+//	    Offering newOffering = null;
+//	    Offering currOffering = null;
+//	    
+//	    // Used for creating and updating a new Course when needed
+//	    Course currCourse = null;
+//	    //ArrayList<Course> tempCourses = null;
+//	    
+//	    Scanner sc = null;
+//	    
+//	    ArrayList<File> filesList = getFiles(path);
+//	    
+//	    for(File file : filesList) {
+//	    		System.out.println("File name: "+file.getName() + "\n");
+//
+//	    		try {
+//	    			sc = new Scanner(new File(path + file.getName()));
+//	    			String t = file.getName();
+//	    			if(!t.equals("dates.txt")) {
+//	    				String currLine = sc.nextLine();	// header line
+//		    			while(sc.hasNextLine()) {
+//		    				currLine = sc.nextLine();
+//		    				
+//		    				Section newSection = extractSection(sc.nextLine());
+//
+//	    					
+//	    					/*
+//	    					 * CREATE NEW OFFERING AND COURSE
+//	    					 * 
+//	    					 * If currOffering is null
+//	    					 * 	|-> If the row scanned doesn't match data from the previous one (course # and/or teacher)  -> create a new offering object and add that section to the offerings list
+//	    					 * 			and update the current offering
+//	    					 */
+//	    					if(currOffering == null 
+//	    							|| !newSection.getCourse().equals(currOffering.getCourse())
+//	    							|| !newSection.instructor.equals(currOffering.getInstructor())) {	
+//
+//	    						/*
+//	    						 * Add currOffering to the currCourse
+//	    						 * 		- the offering is done processing at this point and is about to be changed
+//	    						 */
+//
+//		    					if(currOffering != null) {
+//		    						currCourse.addOffering(currOffering);
+//		    					}
+//		    					
+//		    					
+//		    					/*
+//		    					 * If the Course title does not match the previous one OR this is the first entry (currOffering == null), then we need to create a new Course object
+//		    					 * 		- Add the currCourse to data first
+//		    					 */
+//		    					if(currOffering == null || !newSection.getCourse().equals(currOffering.getCourse())) {
+//		    						
+//		    						String courseTitle = newSection.getCourse();
+//		    						
+//		    						// If it's not null, that means the Course is done processing. Add it to the data
+//		    						if(currOffering != null) {
+//		    						//	data.put(courseTitle, currCourse);
+//    								}
+//		    						
+//		    						currCourse = new Course(courseTitle);
+//	    						}
+//		    					
+//	    						
+//	    						// Create new offering 
+//	    						//newOffering = new Offering(fields);
+//	    						
+//	    						// Update current offering
+//	    						currOffering = newOffering;
+//	    						
+//	    					}
+//	    					
+//	    					// Add section to the list of sections under that offering
+//    						currOffering.addSection(newSection);
+//		    			}
+//		    		}
+//	    			sc.close();
+//	    		} catch (FileNotFoundException e) {
+//	    			System.err.println("File not Found");
+//	    		}
+//	    	}
+//	}
+	
 	
 	// Returns true if directory path does not contain a dates.txt file.
 	// Return false if the file is present.

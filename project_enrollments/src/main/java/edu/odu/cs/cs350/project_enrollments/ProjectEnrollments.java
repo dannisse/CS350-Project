@@ -25,36 +25,33 @@ public class ProjectEnrollments {
 		}
 		*/
 		
+		if (args.length == 0) {
+			System.exit(1);
+		}
+
+		// A semester is collection of snapshots. A snapshot is a collection of section information on a certain day. 
+		ArrayList<Semester> histSems = new ArrayList<Semester>();
 		
-		/*
-		 * Semester is a list of courses in one directory.
-		 */
+		// import historical semesters. this needs to work with URLs
+		for (int i = 0; i < args.length-2; i++) {
+			String path = FileImports.sanitizePath(args[i]);
+			if (FileImports.containsDates(path)) {
+				//todo: need to give semester name and start and end dates
+				Semester sem = new Semester();
+				ArrayList<File> filesList = FileImports.getFiles(path);
+				for (File f: filesList) {
+					Snapshot snap = new Snapshot(f);
+					sem.addSnapshot(snap);
+				}
+				histSems.add(sem);
+			}
+		}
 		
 		/*
 		 * Current Semester Courses Setup
 		 */
 		SortedMap<String, Course > currSemester = new TreeMap<String, Course >();
 		// Add to currCourse
-		
-		if (args.length == 0) {
-			System.exit(1);
-		}
-		
-		//ArrayList<Section> sections = new ArrayList<Section>();
-		// A semester is collection of snapshots. A snapshot is a collection of sections. 
-		ArrayList<ArrayList<Section>> semester = new ArrayList<ArrayList<Section>>();
-		
-		for (int i = 0; i < args.length-2; i++) {
-			String path = FileImports.sanitizePath(args[i]);
-			if (FileImports.containsDates(path)) {
-				ArrayList<File> filesList = FileImports.getFiles(path);
-				for (File f: filesList) {
-					semester.add(i, FileImports.getAllSections(f));
-				}
-			}
-		}
-		
-		
 		
 		/*
 		 * Historical Semester Courses Setup
@@ -68,7 +65,6 @@ public class ProjectEnrollments {
 				//FileImports.getCSVFiles(path, historicalSemester);
 			}
 		}
-		
 		
 		/*
 		 * Print Semester
@@ -85,14 +81,13 @@ public class ProjectEnrollments {
 		
 		
 		
-		
+		/*
 		if (args.length < 3) {
 			System.out.println("Too few arugments.");
 			System.out.println("Usage: java -jar program.jar [historical semester directories] [current semester directory] [excel file output location]");
 			System.exit(1);
 		}
 
-		
 		List<String> histDirs = new ArrayList<String>();
 		
 		// The last two arguments to the program are the current semester dir
@@ -101,7 +96,7 @@ public class ProjectEnrollments {
 			histDirs.add(args[i]);
 		}
 
-		/*int currDirIndex = args.length-2;
+		int currDirIndex = args.length-2;
 		int exportPathIndex = args.length-1;
 		String currDir = args[currDirIndex];
 		String exportPath = args[exportPathIndex];
@@ -118,6 +113,7 @@ public class ProjectEnrollments {
 		System.out.println("Historical Semester directories:");
 		for (String s : histDirs) {
 			System.out.println(s);
-		}*/
+		}
+		*/
 	}
 }
