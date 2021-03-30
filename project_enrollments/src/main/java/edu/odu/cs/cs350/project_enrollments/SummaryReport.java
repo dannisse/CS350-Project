@@ -73,7 +73,7 @@ public class SummaryReport {
 	public static void sReport(SortedMap<String, Course > in) {
 		// % of enrollment period
 		System.out.print(st + "% of enrollment period has elapsed. \n");
-		System.out.println("\n");
+		System.out.println("\n"); 
 		
 		// Header
 		System.out.format("%-14s%-14s%-14s%-14s", "Course", "Enrollment", "Projected", "Cap");

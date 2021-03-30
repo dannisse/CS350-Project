@@ -64,7 +64,7 @@ public class ProjectEnrollments {
 			
 			System.out.println("=======================================\n");
 			currSemester.get(key).display();
-		}
+		} 
 		
 		System.out.println("LIST SIZE: " + currSemester.size());
 		System.out.println("HISTORICAL LIST SIZE: " + historicalSemester.size() + "\n\n");
