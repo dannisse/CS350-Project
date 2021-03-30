@@ -80,7 +80,7 @@ public class ProjectEnrollments {
 		String path = args[0];
 		path = FileImports.sanitizePath(path);
 		SummaryReport.deadlineD(path);
-		SummaryReport.sReport(currSemester);
+		SummaryReport.sReport(currSemester); 
 		
 		
 		/*

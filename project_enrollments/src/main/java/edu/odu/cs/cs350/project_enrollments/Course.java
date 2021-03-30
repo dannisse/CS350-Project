@@ -114,4 +114,10 @@ public class Course {
 		System.out.println("\n");
 	}
 	
+	public void displayCLI()
+	{
+		System.out.format("%-14s%-14s%-14s%-14s", this.courseTitle, this.actualEnrollment, this.projectedEnrollment, this.enrollmentCap);
+		System.out.println("\n");
+	}
+	
 }

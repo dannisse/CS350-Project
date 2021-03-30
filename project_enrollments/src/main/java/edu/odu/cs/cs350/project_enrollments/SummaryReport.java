@@ -73,7 +73,7 @@ public class SummaryReport {
 	public static void sReport(SortedMap<String, Course > in) {
 		// % of enrollment period
 		System.out.print(st + "% of enrollment period has elapsed. \n");
-		System.out.println("\n"); 
+		System.out.println("\n");  
 		
 		// Header
 		System.out.format("%-14s%-14s%-14s%-14s", "Course", "Enrollment", "Projected", "Cap");
@@ -81,12 +81,11 @@ public class SummaryReport {
 		
 		// Semester Courses
 		for (String key : in.keySet()) {
-			String courseTitle = key;
-			int actualEnrolled = in.get(key).getActualEnrolled();
-			int projectedEnrollment = in.get(key).getProjectedEnrollment();
-			int enrollmentCap = in.get(key).getEnrollmentCap();
-			System.out.format("%-14s%-14s%-14s%-14s", courseTitle, actualEnrolled, projectedEnrollment, enrollmentCap);
-			System.out.println("\n");
+			//String courseTitle = key;
+			//int actualEnrolled = in.get(key).getActualEnrolled();
+			//int projectedEnrollment = in.get(key).getProjectedEnrollment();
+			//int enrollmentCap = in.get(key).getEnrollmentCap();
+			in.get(key).displayCLI();
 		}
 	}
 }
