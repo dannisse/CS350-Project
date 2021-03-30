@@ -41,6 +41,7 @@ public class ProjectEnrollments {
 		}
 		
 		//ArrayList<Section> sections = new ArrayList<Section>();
+		// A semester is collection of snapshots. A snapshot is a collection of sections. 
 		ArrayList<ArrayList<Section>> semester = new ArrayList<ArrayList<Section>>();
 		
 		for (int i = 0; i < args.length-2; i++) {
