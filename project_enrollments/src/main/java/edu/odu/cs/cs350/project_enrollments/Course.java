@@ -97,6 +97,8 @@ public class Course {
 		this.offeringList.addElement(in);
 		// Update actual enrollment
 		this.actualEnrollment += in.getEnrolled();
+		// Update cap
+		this.enrollmentCap += in.getOverallCap();
 	}
 	
 	/*
@@ -115,4 +117,20 @@ public class Course {
 		System.out.println("\n");
 	}
 	
+	/*
+	 * Displat for the summary report
+	 */
+	public void displayCLI()
+	{
+		// Ast is an asterisk that only displays if enrollment is more than cap
+		String ast = "";
+		if(this.actualEnrollment > this.enrollmentCap)
+		{
+			ast = "*";
+		}
+		
+		System.out.format("%-14s%-14s%-14s%-14s", (ast + this.courseTitle), this.actualEnrollment, this.projectedEnrollment, this.enrollmentCap);
+		System.out.println("\n");
+	}
+
 }

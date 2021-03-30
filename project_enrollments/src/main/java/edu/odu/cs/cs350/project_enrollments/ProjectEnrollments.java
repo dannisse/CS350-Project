@@ -101,14 +101,18 @@ public class ProjectEnrollments {
 		
 		/*
 		 * Historical Semester
+		 * 
+		 * @TODO MAKE IT SO IT READS EVERY SEMESTER IN SEMESESTERS LIST
+		 * IT IS CURRENTLY ONLY DOING THE LAST ONE ADDED
 		 */
+		ArrayList<Snapshot> histSnapshots = histSems.get(histSems.size()-1).getSnapshots();
+		Snapshot lastHistSnapshot = histSnapshots.get(histSnapshots.size() - 1);
+		ArrayList<Section> histSections = lastHistSnapshot.getSections();
 		
-		// List holding courses in this semester 
-		ArrayList<Course> histCourses = new ArrayList<Course>();
+		SortedMap<String, Course > histSemesterList = new TreeMap<String, Course >();
+		generateOfferingsAndCourses(histSections, histSemesterList);
 		
-		// Go through 
-		
-		
+
 		/*
 		 * 
 		 * Current Semester
@@ -117,7 +121,7 @@ public class ProjectEnrollments {
 		ArrayList<Snapshot> currSnapshots = currSemester.getSnapshots();
 		Snapshot lastCurrSnapshot = currSnapshots.get(currSnapshots.size() - 1);
 		ArrayList<Section> currSections = lastCurrSnapshot.getSections();
-		//ArrayList<Course> currCourses = generateOfferingsAndCourses(currSections);
+		
 		SortedMap<String, Course > currSemesterList = new TreeMap<String, Course >();
 		generateOfferingsAndCourses(currSections, currSemesterList);
 		
@@ -130,6 +134,24 @@ public class ProjectEnrollments {
 			System.out.println("=======================================\n");
 			currSemesterList.get(key).display();
 		}
+		
+		
+		
+		
+		/*
+		 * 
+		 * CLI Output
+		 * 
+		 */
+		
+		String pathCurrDir = args[args.length-2];
+		pathCurrDir = FileImports.sanitizePath(pathCurrDir);
+		SummaryReport.deadlineD(pathCurrDir);
+		SummaryReport.sReport(currSemesterList);
+
+		
+		
+		
 		
 		
 		
@@ -279,8 +301,13 @@ public class ProjectEnrollments {
 	}
 	
 	
-	
-	
+	/*
+	 * Generate projected enrollment to currentSemester Course Map based of historicalSemester Course Map
+	 */
+	public static void generateProjectEnrollment(SortedMap<String, Course > currIn, SortedMap<String, Course > histIn)
+	{
+		
+	}
 	
 	
 }

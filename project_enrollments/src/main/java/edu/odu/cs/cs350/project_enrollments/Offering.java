@@ -91,11 +91,15 @@ public class Offering {
 		this.xListGroup 	= in.xlst_group;
 		
 		// Some sections' overallCap cell is blank. So we need execption handling to prevent errors when doing parseInt on it 
+		// Going to calculate this as we add sections
+		/*
 		try{
 			this.overallCap = Integer.parseInt(in.overall_cap);
 		} catch(NumberFormatException ex){
 		    this.overallCap = 0;
 		}
+		*/
+		this.overallCap 	= 0;
 		
 		this.overallEnr 	= Integer.parseInt(in.overall_enr);
 		this.instructor		= in.instructor;
@@ -170,6 +174,12 @@ public class Offering {
 		this.sectionList.addElement(in);
 		// Update enrollment
 		this.enrolled += in.getEnr();
+		
+		// Updat cap. Some sections' overallCap cell is blank. So we need execption handling to prevent errors when doing parseInt on it 
+		try{
+			this.overallCap += Integer.parseInt(in.getCap());
+		} catch(NumberFormatException ex){
+		}
 	}
 	
 	/*
@@ -178,7 +188,7 @@ public class Offering {
 	public void display()
 	{
 		
-		System.out.println("\t[Offering]   " + this.subject + this.courseNumber + " -> " + this.instructor +  "\n");
+		System.out.println("\t[Offering]   " + this.overallCap + " | " + this.subject + this.courseNumber + " -> " + this.instructor +  "\n");
 		
 		for( Section section : this.sectionList )
 		{
