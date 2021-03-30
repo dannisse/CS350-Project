@@ -1,6 +1,7 @@
 package edu.odu.cs.cs350.project_enrollments;
 
 import java.util.*;
+import java.io.File;
 
 public class ProjectEnrollments {
 
@@ -34,13 +35,25 @@ public class ProjectEnrollments {
 		 */
 		SortedMap<String, Course > currSemester = new TreeMap<String, Course >();
 		// Add to currCourse
-		if (args.length != 0) {
-			String path = args[0];
-			path = FileImports.sanitizePath(path);
-			if(!FileImports.missingDates(path)) {
-				FileImports.findFile(path, currSemester);
+		
+		if (args.length == 0) {
+			System.exit(1);
+		}
+		
+		//ArrayList<Section> sections = new ArrayList<Section>();
+		ArrayList<ArrayList<Section>> semester = new ArrayList<ArrayList<Section>>();
+		
+		for (int i = 0; i < args.length-2; i++) {
+			String path = FileImports.sanitizePath(args[i]);
+			if (FileImports.containsDates(path)) {
+				ArrayList<File> filesList = FileImports.getFiles(path);
+				for (File f: filesList) {
+					semester.add(i, FileImports.getAllSections(f));
+				}
 			}
 		}
+		
+		
 		
 		/*
 		 * Historical Semester Courses Setup
@@ -50,8 +63,8 @@ public class ProjectEnrollments {
 		if (args.length != 0) {
 			String path = args[1];
 			path = FileImports.sanitizePath(path);
-			if(!FileImports.missingDates(path)) {
-				FileImports.findFile(path, historicalSemester);
+			if(FileImports.containsDates(path)) {
+				//FileImports.getCSVFiles(path, historicalSemester);
 			}
 		}
 		
