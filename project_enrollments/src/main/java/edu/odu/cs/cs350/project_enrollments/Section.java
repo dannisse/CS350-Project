@@ -1,6 +1,6 @@
 package edu.odu.cs.cs350.project_enrollments;
 
-import java.util.List;
+//import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -229,5 +229,13 @@ public class Section {
 	
 	public String getCRN() {
 		return CRN;
+	}
+	
+	/*
+	 * Display for testing purposes
+	 */
+	public void display()
+	{
+		System.out.println(this.getCourse() + " | " + this.getCRN());
 	}
 }
