@@ -50,6 +50,7 @@ public class Course {
 	public Course()
 	{
 		this.courseTitle 	= "";
+		this.actualEnrollment = 0;
 	}
 	
 	/*
@@ -61,6 +62,7 @@ public class Course {
 	{
 		
 		this.courseTitle = in;
+		this.actualEnrollment = 0;
 			
 	}
 	
@@ -93,6 +95,8 @@ public class Course {
 	public void addOffering(Offering in)
 	{
 		this.offeringList.addElement(in);
+		// Update actual enrollment
+		this.actualEnrollment += in.getEnrolled();
 	}
 	
 	/*

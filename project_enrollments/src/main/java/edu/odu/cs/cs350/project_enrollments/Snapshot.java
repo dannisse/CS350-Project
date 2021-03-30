@@ -11,11 +11,9 @@ public class Snapshot {
 
 	// need to test this overall
 	public Snapshot(File f) {
-		String fileName = f.getName();
-		if(!fileName.equals("dates.txt")) {
-			date = f.getName();	// need to test: does this even work? the name should be something like "2019-04-01", or YYYY-MM-DD
-			sections = FileImports.getAllSections(f);
-		}
+		
+		date = f.getName();	// need to test: does this even work? the name should be something like "2019-04-01", or YYYY-MM-DD
+		sections = FileImports.getAllSections(f);
 	}
 	
 	public String getDate() {
@@ -24,5 +22,18 @@ public class Snapshot {
 	
 	public ArrayList<Section> getSections() {
 		return this.sections;
+	}
+	
+	/*
+	 * Display for testing purposes
+	 */
+	public void display()
+	{
+		System.out.println("\t" + this.date + "\n");
+		for(Section sec : this.sections)
+		{
+			System.out.print("\t");
+			sec.display();
+		} 
 	}
 }

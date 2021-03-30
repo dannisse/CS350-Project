@@ -230,4 +230,12 @@ public class Section {
 	public String getCRN() {
 		return CRN;
 	}
+	
+	/*
+	 * Display for testing purposes
+	 */
+	public void display()
+	{
+		System.out.println(this.getCourse() + " | " + this.getCRN());
+	}
 }

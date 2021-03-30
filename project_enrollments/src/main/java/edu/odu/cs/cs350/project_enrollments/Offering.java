@@ -78,6 +78,30 @@ public class Offering {
 	}
 	
 	/*
+	 * Constructor - create an offering object by providing a section
+	 */
+	public Offering(Section in)
+	{
+		this.subject 		= in.subj;
+		this.courseNumber 	= in.crse;
+		this.crossListCap 	= Integer.parseInt(in.xlst_cap);
+		//this.enrolled 		= Integer.parseInt(in.enr);// Gonna update this as we add sections
+		this.enrolled		= 0;
+		this.link 			= in.link;
+		this.xListGroup 	= in.xlst_group;
+		
+		// Some sections' overallCap cell is blank. So we need execption handling to prevent errors when doing parseInt on it 
+		try{
+			this.overallCap = Integer.parseInt(in.overall_cap);
+		} catch(NumberFormatException ex){
+		    this.overallCap = 0;
+		}
+		
+		this.overallEnr 	= Integer.parseInt(in.overall_enr);
+		this.instructor		= in.instructor;
+	}
+	
+	/*
 	 * Constructor - create an offering object by providing a row of data (String) from the CSV file as param. 
 	 */
 	public Offering(String[] fields)
@@ -86,7 +110,8 @@ public class Offering {
 		this.subject 		= fields[2];
 		this.courseNumber 	= fields[3];
 		this.crossListCap 	= Integer.parseInt(fields[6]);
-		this.enrolled 		= Integer.parseInt(fields[7]);
+		//this.enrolled 		= Integer.parseInt(fields[7]); // Gonna update this as we add sections
+		this.enrolled		= 0;
 		this.link 			= fields[8];
 		this.xListGroup 	= fields[9];
 		
@@ -143,6 +168,8 @@ public class Offering {
 	public void addSection(Section in)
 	{
 		this.sectionList.addElement(in);
+		// Update enrollment
+		this.enrolled += in.getEnr();
 	}
 	
 	/*
@@ -155,7 +182,7 @@ public class Offering {
 		
 		for( Section section : this.sectionList )
 		{
-			System.out.println("\t\t[Section]   " + section.getCourse() + " " + section.CRN + " -> " + this.getInstructor() );
+			System.out.println("\t\t[Section]   " + section.enr + " | " + section.getCourse() + " " + section.CRN + " -> " + this.getInstructor() );
 		}
 	}
 	

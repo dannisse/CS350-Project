@@ -40,22 +40,108 @@ public class ProjectEnrollments {
 				Semester sem = new Semester();
 				ArrayList<File> filesList = FileImports.getFiles(path);
 				for (File f: filesList) {
-					Snapshot snap = new Snapshot(f);
-					sem.addSnapshot(snap);
+					String fileName = f.getName();
+					
+					// Make sure we're not adding dates.txt
+					if(!fileName.equals("dates.txt")) {
+						Snapshot snap = new Snapshot(f);
+						sem.addSnapshot(snap);
+					}
 				}
 				histSems.add(sem);
 			}
 		}
 		
 		/*
+		 * Import current semester (second to last argument)
+		 */
+		Semester currSemester = new Semester();
+		String path = FileImports.sanitizePath(args[args.length-2]);
+		if (FileImports.containsDates(path)) {
+			//todo: need to give semester name and start and end dates
+			
+			ArrayList<File> filesList = FileImports.getFiles(path);
+			for (File f: filesList) {
+				String fileName = f.getName();
+				
+				// Make sure we're not adding dates.txt
+				if(!fileName.equals("dates.txt")) {
+					Snapshot snap = new Snapshot(f);
+					currSemester.addSnapshot(snap);
+				}
+			}
+		}
+					
+		
+		/*
+		 * Print histSems for testing purposes
+		 * 
+		 * 	- prints each snapshot and the sections contained in them
+		 
+		for (Semester sem : histSems) {
+			
+			System.out.println("=======================================\n");
+			ArrayList<Snapshot> snp = sem.getSnapshots();
+			for(Snapshot snpsht : snp)
+			{
+				System.out.println(".................\n");
+				snpsht.display();
+			}
+			
+		}
+		*/
+		
+		
+		/*
+		 * Generate Offerings and Course from the last snapshot in the semester
+		 * 
+		 * 	- Generate Offering if course name OR instructor changes
+		 * 	- Generate Course if course name changes
+		 */
+		
+		/*
+		 * Historical Semester
+		 */
+		
+		// List holding courses in this semester 
+		ArrayList<Course> histCourses = new ArrayList<Course>();
+		
+		// Go through 
+		
+		
+		/*
+		 * 
+		 * Current Semester
+		 * 
+		 */
+		ArrayList<Snapshot> currSnapshots = currSemester.getSnapshots();
+		Snapshot lastCurrSnapshot = currSnapshots.get(currSnapshots.size() - 1);
+		ArrayList<Section> currSections = lastCurrSnapshot.getSections();
+		//ArrayList<Course> currCourses = generateOfferingsAndCourses(currSections);
+		SortedMap<String, Course > currSemesterList = new TreeMap<String, Course >();
+		generateOfferingsAndCourses(currSections, currSemesterList);
+		
+		
+		
+		
+		System.out.println("AYYd "+currSemesterList.size());
+		for (String key : currSemesterList.keySet()) {
+			
+			System.out.println("=======================================\n");
+			currSemesterList.get(key).display();
+		}
+		
+		
+		
+		/*
 		 * Current Semester Courses Setup
 		 */
-		SortedMap<String, Course > currSemester = new TreeMap<String, Course >();
+		//SortedMap<String, Course > currSemester = new TreeMap<String, Course >();
 		// Add to currCourse
 		
 		/*
 		 * Historical Semester Courses Setup
-		 */
+		 
 		SortedMap<String, Course > historicalSemester = new TreeMap<String, Course >();
 		// Add to historicalCourse
 		if (args.length != 0) {
@@ -66,9 +152,10 @@ public class ProjectEnrollments {
 			}
 		}
 		
+		*/
 		/*
 		 * Print Semester
-		 */
+		 
 		for (String key : currSemester.keySet()) {
 			
 			System.out.println("=======================================\n");
@@ -77,7 +164,7 @@ public class ProjectEnrollments {
 		
 		System.out.println("LIST SIZE: " + currSemester.size());
 		System.out.println("HISTORICAL LIST SIZE: " + historicalSemester.size());
-		
+		*/
 		
 		
 		
@@ -116,4 +203,84 @@ public class ProjectEnrollments {
 		}
 		*/
 	}
+	
+	
+	
+	/*
+	 * Generate Offerings and Courses
+	 * 
+	 * 	@Param: ArrayList of Sections 
+	 * 	@Param: SortedMap to add courses to
+	 * 	@Returns: A list of generated courses
+	 */
+	
+	public static void generateOfferingsAndCourses(ArrayList<Section> in, SortedMap<String, Course > data) {
+		/*
+		 * Go through each section. 
+		 * 
+		 * If the Course name OR instructor changes -> create a new Offering
+		 * 		- Add list of Sections to that offering
+		 * 	
+		 * If Course name stays the same AND teacher changes -> create new course
+		 * 		- Add list of offerings to that Course
+		 */
+		
+		//Offering newOffering = null;
+	    Offering currOffering = null;
+	    
+	    Course currCourse = null;
+	    
+		//String currCourseName = "";
+		//String currInstructor = ""; 
+		
+		for(Section newSection : in)
+		{
+			if(currOffering == null 
+					|| !newSection.getCourse().equals(currOffering.getCourse())
+					|| !newSection.instructor.equals(currOffering.getInstructor())) {	
+
+				/*
+				 * Add currOffering to the currCourse
+				 * 		- the offering is done processing at this point and is about to be changed
+				 */
+
+				if(currOffering != null) {
+					currCourse.addOffering(currOffering);
+				}
+				
+				
+				/*
+				 * If the Course title does not match the previous one OR this is the first entry (currOffering == null), then we need to create a new Course object
+				 * 		- Add the currCourse to data first
+				 */
+				if(currOffering == null || !newSection.getCourse().equals(currOffering.getCourse())) {
+					
+					String courseTitle = newSection.getCourse();
+					
+					// If it's not null, that means the Course is done processing. Add it to the data
+					if(currOffering != null) {
+						data.put(courseTitle, currCourse);
+					}
+					
+					currCourse = new Course(courseTitle);
+				}
+				
+				
+				// Create new offering 
+
+				currOffering = new Offering(newSection);
+				
+			}
+			
+			// Add Section to Offering
+			currOffering.addSection(newSection);
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
 }
