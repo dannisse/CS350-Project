@@ -168,8 +168,9 @@ public class FileImports {
 	    }
 	    finally
 	    {
-	        if(fileScanner!= null)
+	        if(fileScanner!= null) {
 	            fileScanner.close();
+	        }
 	    }
 		return verdict;
 	}
