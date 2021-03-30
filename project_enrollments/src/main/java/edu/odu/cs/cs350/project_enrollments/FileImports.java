@@ -4,10 +4,13 @@ package edu.odu.cs.cs350.project_enrollments;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.Objects;
 
 public class FileImports {
 	
@@ -25,11 +28,17 @@ public class FileImports {
 		return path;
 	}
 	
-	public static void findFile(String path, ArrayList<eSnapshot> data) {	
+	public static void findFile(String path, Map<String, Course > data) {	
 		File directoryPath = new File(path);	    
 	    File filesList[] = directoryPath.listFiles();
 	    
+	    // Used for creating a new Offering when needed
+	    Offering newOffering = null;
+	    Offering currOffering = null;
 	    
+	    // Used for creating and updating a new Course when needed
+	    Course currCourse = null;
+	    ArrayList<Course> tempCourses = null;
 	    
 	    Scanner sc = null;
 	    
@@ -49,7 +58,7 @@ public class FileImports {
 		    				
 		    				//System.out.println("removed quotations\t" + currLine);
 		    				
-		    				// Now we can parse the internal "," delimeters.
+		    				// Now we can parse the internal "," delimiters.
 		    				// If you simply split it by commas, then you would split 
 		    				// Fields that have names like LASTNAM,FIRSTINITIAL, when you
 		    				// really need this as one field
@@ -62,10 +71,76 @@ public class FileImports {
 		    				
 		    				//for (int i = 0; i < fields.length; i++) {
 		    				//	System.out.print(fields[i]+",");
-		    				//}
-		    				//System.out.print("\n");
+		    				//}		    				
 		    				
-		    				data.add(new eSnapshot(fields));
+		    				
+		    				
+		    				
+		    				
+		    				
+		    				
+		    				/*
+	    					 * Create new section (eSnapshot)
+	    					 */
+	    					Section newSection = new Section(fields);
+	    					
+	    					/*
+	    					 * CREATE NEW OFFERING AND COURSE
+	    					 * 
+	    					 * If currOffering is null
+	    					 * 	|-> If the row scanned doesn't match data from the previous one (course # and/or teacher)  -> create a new offering object and add that section to the offerings list
+	    					 * 			and update the current offering
+	    					 */
+	    					if(currOffering == null || ( !newSection.getCourse().equals(currOffering.getCourse()) || !newSection.instructor.equals(currOffering.getInstructor()) ) )
+	    					{	
+	    						
+	    	
+	    						
+	    						
+	    						/*
+	    						 * Add currOffering to the currCourse
+	    						 * 		- the offering is done processing at this point and is about to be changed
+	    						 */
+
+		    					if(currOffering != null)
+		    					{
+		    						currCourse.addOffering(currOffering);
+		    					}
+		    					
+		    					
+		    					/*
+		    					 * If the Course title does not match the previous one OR this is the first entry (currOffering == null), then we need to create a new Course object
+		    					 * 		- Add the currCourse to data first
+		    					 */
+		    					if( currOffering == null ||  !newSection.getCourse().equals( currOffering.getCourse() ) )
+	    						{
+		    						
+		    						String courseTitle = newSection.getCourse();
+		    						
+		    						// If it's not null, that means the Course is done processing. Add it to the data
+		    						if(currOffering != null)
+    								{
+		    							data.put(courseTitle, currCourse);
+    								}
+		    						
+		    						currCourse = new Course(courseTitle);
+		    						
+	    							
+	    						}
+		    					
+	    						
+	    						// Create new offering 
+	    						newOffering = new Offering(fields);
+	    						
+	    						// Update current offering
+	    						currOffering = newOffering;
+	    						
+	    					}
+	    					
+	    					// Add section to the list of sections under that offering
+    						currOffering.addSection(newSection);
+	    					
+	    						    					
 		    				
 		    				//data.get(data.size()-1).print();
 		    				
@@ -79,7 +154,7 @@ public class FileImports {
 	    		}
 	    }
 	}
-	public static boolean exception(String path) {
+	public static boolean missingDates(String path) {
 		Scanner fileScanner = null;
 		boolean verdict = false;
 	    try
@@ -93,8 +168,9 @@ public class FileImports {
 	    }
 	    finally
 	    {
-	        if(fileScanner!= null)
+	        if(fileScanner!= null) {
 	            fileScanner.close();
+	        }
 	    }
 		return verdict;
 	}
