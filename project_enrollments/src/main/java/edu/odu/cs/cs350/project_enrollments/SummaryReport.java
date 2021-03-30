@@ -2,9 +2,7 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import java.io.File;
 import java.util.*;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import java.util.Date;
 import java.text.*;
 
 public class SummaryReport {
@@ -69,10 +67,26 @@ public class SummaryReport {
 	}
 	
 	
-	
-	public static void sReport() {
+	/*
+	 * The actual output
+	 */
+	public static void sReport(SortedMap<String, Course > in) {
+		// % of enrollment period
 		System.out.print(st + "% of enrollment period has elapsed. \n");
-		System.out.print(" Course\tEnrollment\tProjected\tCap \n");
+		System.out.println("\n");
 		
+		// Header
+		System.out.format("%-14s%-14s%-14s%-14s", "Course", "Enrollment", "Projected", "Cap");
+		System.out.println("\n");
+		
+		// Semester Courses
+		for (String key : in.keySet()) {
+			String courseTitle = key;
+			int actualEnrolled = in.get(key).getActualEnrolled();
+			int projectedEnrollment = in.get(key).getProjectedEnrollment();
+			int enrollmentCap = in.get(key).getEnrollmentCap();
+			System.out.format("%-14s%-14s%-14s%-14s", courseTitle, actualEnrolled, projectedEnrollment, enrollmentCap);
+			System.out.println("\n");
+		}
 	}
 }
