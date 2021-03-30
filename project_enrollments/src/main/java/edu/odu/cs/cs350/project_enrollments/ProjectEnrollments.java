@@ -36,9 +36,9 @@ public class ProjectEnrollments {
 		SortedMap<String, Course > currSemester = new TreeMap<String, Course >();
 		// Add to currCourse
 		if (args.length != 0) {
-			String path = args[1];
+			String path = args[0];
 			path = FileImports.sanitizePath(path);
-			if(FileImports.exception(path) == false) {
+			if(!FileImports.missingDates(path)) {
 				FileImports.findFile(path, currSemester);
 			}
 		}
@@ -49,25 +49,25 @@ public class ProjectEnrollments {
 		SortedMap<String, Course > historicalSemester = new TreeMap<String, Course >();
 		// Add to historicalCourse
 		if (args.length != 0) {
-			String path = args[0];
+			String path = args[1];
 			path = FileImports.sanitizePath(path);
-			if(FileImports.exception(path) == false) {
+			if(!FileImports.missingDates(path)) {
 				FileImports.findFile(path, historicalSemester);
 			}
 		}
 		
 		
 		/*
-		 * Print Semester [Testing Purposes]
+		 * Print Semester
 		 */
 		for (String key : currSemester.keySet()) {
 			
 			System.out.println("=======================================\n");
 			currSemester.get(key).display();
-		} 
+		}
 		
 		System.out.println("LIST SIZE: " + currSemester.size());
-		System.out.println("HISTORICAL LIST SIZE: " + historicalSemester.size() + "\n\n");
+		System.out.println("HISTORICAL LIST SIZE: " + historicalSemester.size());
 		
 		
 		
