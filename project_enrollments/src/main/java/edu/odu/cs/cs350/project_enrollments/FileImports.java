@@ -50,7 +50,6 @@ public class FileImports {
 		// Fields that have names like LASTNAM,FIRSTINITIAL, when you
 		// really need this as one field
 		String[] fields = line.split("\",\"");
-		
 		Section newSection = new Section(fields);
 		return newSection;
 	}
