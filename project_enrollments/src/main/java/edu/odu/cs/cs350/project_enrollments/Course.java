@@ -77,6 +77,7 @@ public class Course {
 	public int getActualEnrolled() { return this.actualEnrollment; }
 	public int getEnrollmentCap() { return this.enrollmentCap; }
 	public int getProjectedEnrollment() { return this.projectedEnrollment; }
+	public int getOfferingListSize() {return this.offeringList.size(); }
 	
 	/*
 	 * SETTERS
