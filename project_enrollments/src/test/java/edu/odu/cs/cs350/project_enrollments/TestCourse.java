@@ -54,6 +54,7 @@ class TestCourse {
 		assertEquals(c2.getEnrollmentCap(), 0);
 		assertEquals(c2.getProjectedEnrollment(), 0);
 		assertEquals(c2.getOfferingListSize(), 0);
+		//Need to test display
 	}
 	
 	@Test
