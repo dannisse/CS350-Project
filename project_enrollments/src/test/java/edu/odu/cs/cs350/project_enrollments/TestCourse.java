@@ -123,4 +123,14 @@ class TestCourse {
 		assertTrue(c2.getOfferingListSize()>0);
 		assertFalse(c2.getOfferingListSize()>1);
 	}
+	
+	@Test
+	void testDisplay() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	void testDisplayCLI() {
+		fail("Not yet implemented");
+	}
 }

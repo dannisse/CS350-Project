@@ -66,6 +66,37 @@ public class Section {
 		wl_cap = fields[28];
 		wl = fields[29];
 		wl_remain = fields[30];
+	}
+		
+		public Section() {		
+			seats = "";
+			CRN = "";
+			subj = "";
+			crse = "";
+			title = "";
+//			cr_hrs = "";
+			xlst_cap = "";
+			enr = "";
+			link = "";
+			xlst_group = "";
+			sched_type = "";
+			campus = "";// skip forwards one on purpose
+			insm = "";
+			print = "";
+			time = "";
+			days = "";
+			bldg = "";
+			room = "";
+			override = "";
+			instructor = "";
+			overall_cap = "";// skip forwards one
+			overall_enr = "";
+			ptrm_start = "";// skip forwards two
+			ptrm_end = "";
+			wl_cap = "";
+			wl = "";
+			wl_remain = "";
+			
 		
 		// We can effectively disregard these latter fields.
 		//notes = fields[31];
@@ -197,6 +228,10 @@ public class Section {
 			}
 	}
 	
+	public String getCrse() {	
+		return crse;
+	}
+	
 	public String getCourse() {
 		return (subj+crse);
 	}
@@ -231,6 +266,9 @@ public class Section {
 		return CRN;
 	}
 	
+	public String getSubj() {
+		return subj;
+	}
 	/*
 	 * Display for testing purposes
 	 */

@@ -150,6 +150,7 @@ public class Offering {
 	public int getOverallCap() { return this.overallCap; }
 	public int getOverallEnr() { return this.overallEnr; }
 	public String getInstructor() { return this.instructor; }
+	public int getSectionListSize() { return this.sectionList.size(); }
 	
 	/*
 	 * SETTERS
