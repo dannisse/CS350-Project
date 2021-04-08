@@ -35,30 +35,38 @@ public class TestFileImports {
 FileImports defaultFileImports;
 	
 	@Before
-	public void setup()
-	{
-		defaultFileImports  = new FileImports();
+	public void setup() throws Exception {
 	}
 	
 	@Test
 	public void TestSanitizePath()
 	{
+		FileImports f1 = new FileImports();
 		//testpath is created to emulate a possible file parameter that the program might run into
 		//the expected path is the expected output when the file is run
 		String TestPath = "C:\\Users\\Documents\\"; 
 		String expectedPath = "C:\\Users\\Documents"; 
 		
 		//checks that the expected path is the correct path with proper / at the end of it
-		assertEquals(defaultFileImports.sanitizePath(expectedPath), TestPath);
+		assertEquals(f1.sanitizePath(TestPath), expectedPath);
 	}
 
+	@Test
+	public void TestGetAllSections()
+	{
+		fail("Not yet implemented");
+	}
 	
-//	@Test
-//	public static boolean TestException()
-//	{	
-	
-	
-//	}
-
-	
+	@Test
+	public  void TestContainsDates()
+	{
+		FileImports f2 = new FileImports();
+		//will test if there is a daes.txt file present or not. if there is a dates.txt file present
+		//it will return false, if there is not a dates.txt file present it will return true
+		String present = "C:\\Users\\Documents\\dates.txt";
+		String notpresent = "C:\\Users\\Documents\\";
+		assertTrue(f2.containsDates(notpresent));
+		assertFalse(f2.containsDates(present));
+		
+	}
 }
