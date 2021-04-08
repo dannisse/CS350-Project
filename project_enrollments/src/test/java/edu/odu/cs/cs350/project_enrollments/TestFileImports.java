@@ -66,9 +66,7 @@ FileImports defaultFileImports;
 	//to see list of objects being created
 	class CountedList extends ArrayList {
 		  private static int counter = 0;
-
 		  private int id = counter++;
-
 		  public CountedList() {
 		    System.out.println("CountedList #" + id);
 		  }
@@ -77,6 +75,6 @@ FileImports defaultFileImports;
 		    return id;
 		  }
 		}
-
+	
 	
 }
