@@ -20,27 +20,14 @@ class testDetailedProjectionReport {
 		fail("Not yet implemented");
 	}
 
-}
+
 
 //shows only lecture classes
-	@Test
-	public void testLecture() {
-	Object getLecture;
-	Object testLecture;
-	assertThat((testLecture).getLecture(), hasItem(hasProperty("Course", is("Lecture"))));
+	@Test 
+	void showLecture() {
+	
+	assertThat((testLecture).getLecture, hasItem(hasProperty("Course", is("Lecture"))));
 	}
 
-	private Matcher hasItem(Object hasProperty) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	private Object hasProperty(String string, Object object) {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-	private Object is(String string) {
-	// TODO Auto-generated method stub
-	return null;
+	
 }}
