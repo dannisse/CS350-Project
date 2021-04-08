@@ -17,5 +17,5 @@ class testDetailedProjectionReport {
 	@test
 	public void testLecture
 	
-	assertThat(testLecture.getMyItems(),
-          hasItem(hasProperty("YourProperty", is("YourValue"))));
+	assertThat(testLecture.getLecture(),
+          hasItem(hasProperty("Course", is("Lecture"))));
