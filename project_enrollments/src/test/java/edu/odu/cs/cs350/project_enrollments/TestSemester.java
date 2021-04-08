@@ -28,7 +28,12 @@ class TestSemester {
 
 	@Test
 	void testSetName() {
-		fail("Not yet implemented");
+	
+		Semester si = new Semester();
+		//fail("Not yet implemented");
+		//si.setName("");  set a name
+		//assertEquals(si.getName(), ""); 
+		//make sure the name u set is equal
 	}
 
 	@Test
