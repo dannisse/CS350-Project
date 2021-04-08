@@ -58,7 +58,13 @@ FileImports defaultFileImports;
 	}
 	
 	@Test
-	public  void TestContainsDates()
+	public void TestExtractSection() {
+		FileImports f1 = new FileImports();
+		
+	}
+	
+	@Test
+	public void TestContainsDates()
 	{
 		FileImports f2 = new FileImports();
 		//will test if there is a daes.txt file present or not. if there is a dates.txt file present
