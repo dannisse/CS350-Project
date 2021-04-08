@@ -50,12 +50,15 @@ class TestSemester {
 	@Test
 	void testSetRegistrationBegin() {
 		fail("Not yet implemented");
+		// si.SetRegistrationBegin("");
+		//assertEquals(si.getRegistrationBegin(), ""); 
+		//make sure the name u set is equal
 	}
 
 	@Test
 	void testSetRegistrationEnd() {
 		fail("Not yet implemented");
-		Semester si = new Semester();
+		//Semester si = new Semester();
 		// si.SetRegistrationEnd("");
 		//assertEquals(si.getRegistrationEnd(), ""); 
 		//make sure the name u set is equal
