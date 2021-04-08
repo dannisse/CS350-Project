@@ -53,9 +53,17 @@ FileImports defaultFileImports;
 	}
 
 	@Test
-	public void TestGetAllSections()
+	public void TestExtractSection()
 	{
-		fail("Not yet implemented");
+		FileImports f1 = new FileImports();
+		
+		String line = "";//need to finish but 
+		String expected = "";
+		//provide a line that can be implemented into the function
+	//	assertThat(expected, f1.extractSection(line));
+		
+		//this will make sure that the seperations are working properly within extractSection
+	//	fail("Not yet implemented");
 	}
 	
 
