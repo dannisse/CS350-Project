@@ -30,9 +30,9 @@ class TestSemester {
 	void testSetName() {
 	
 		Semester si = new Semester();
-		//fail("Not yet implemented");
-		//si.setName("");  set a name
-		//assertEquals(si.getName(), ""); 
+		
+		si.setName("201910");  
+		assertEquals(si.getName(), "201910"); 
 		//make sure the name u set is equal
 	}
 
@@ -49,18 +49,21 @@ class TestSemester {
 
 	@Test
 	void testSetRegistrationBegin() {
-		fail("Not yet implemented");
-		// si.SetRegistrationBegin("");
-		//assertEquals(si.getRegistrationBegin(), ""); 
+	
+		Semester si = new Semester();
+		
+		 si.setRegistrationBegin("18-MAY-20");
+		assertEquals(si.getRegistrationBegin(), "18-MAY-20"); 
 		//make sure the name u set is equal
 	}
 
 	@Test
 	void testSetRegistrationEnd() {
-		fail("Not yet implemented");
-		//Semester si = new Semester();
-		// si.SetRegistrationEnd("");
-		//assertEquals(si.getRegistrationEnd(), ""); 
+		
+		Semester si = new Semester();
+		
+		 si.setRegistrationEnd("07-AUG-20");
+		assertEquals(si.getRegistrationEnd(), "07-AUG-20"); 
 		//make sure the name u set is equal
 
 	}
