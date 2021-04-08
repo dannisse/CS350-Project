@@ -40,6 +40,7 @@ class TestSemester {
 	void testAddSnapshot() {
 		fail("Not yet implemented");
 	}
+	
 
 	@Test
 	void testRemoveSnapshot() {
@@ -54,6 +55,11 @@ class TestSemester {
 	@Test
 	void testSetRegistrationEnd() {
 		fail("Not yet implemented");
+		Semester si = new Semester();
+		// si.SetRegistrationEnd("");
+		//assertEquals(si.getRegistrationEnd(), ""); 
+		//make sure the name u set is equal
+
 	}
 
 }
