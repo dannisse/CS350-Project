@@ -24,7 +24,10 @@ public class TestProjectEnrollments {
 		defaultProjectEnrollments  = new ProjectEnrollments();
 	}
 	
-	
+	@Test
+	public void TestgenerateOfferingsAndCourses() {
+		
+	}
 	
 	
 	
