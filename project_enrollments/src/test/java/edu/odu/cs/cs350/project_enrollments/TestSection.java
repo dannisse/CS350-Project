@@ -51,6 +51,9 @@ class TestSection {
 
 	@Test
 	void testSetCap() {
+		//Section s1 = new Section();
+		//getCap();
+		
 		fail("Not yet implemented");
 	}
 

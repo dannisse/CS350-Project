@@ -31,8 +31,6 @@ class TestSemester {
 		fail("Not yet implemented");
 		Semester s1 = new Semester("201910","18-MAY-20","07-AUG-20");
 		
-		//s1.Semester("201910","18-MAY-20","07-AUG-20");
-		
 		assertEquals("201910" , s1.getName());	
 		assertEquals("18-MAY-20" , s1.getRegistrationBegin());	
 		assertEquals("07-AUG-20" , s1.getRegistrationEnd());	
@@ -65,7 +63,9 @@ class TestSemester {
 	void testRemoveSnapshot() {
 		//fail("Not yet implemented");
 		Semester si = new Semester();
-		si.removeSnapshot(2);
+		//si.addSnapshot();
+		//si.removeSnapshot();
+		//assertEquals();
 		//Expected()
 		
 	}
