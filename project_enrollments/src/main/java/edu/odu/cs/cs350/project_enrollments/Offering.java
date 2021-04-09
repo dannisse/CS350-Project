@@ -163,7 +163,7 @@ public class Offering {
 	/*
 	 * SETTERS
 	 */
-	public void setSubject(String in) { this.subject = in; }
+	public void setSubject(String in) { subject = in; }
 	public void setCourseNumber(String in) { this.courseNumber = in; }
 	public void setCrossListCap(int in) { this.crossListCap = in; }
 	public void setEnrolled(int in) { this.enrolled = in; }

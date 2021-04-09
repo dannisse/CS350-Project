@@ -28,7 +28,7 @@ class TestOffering {
 		assertEquals(o1.getOverallCap(), 0);
 		assertEquals(o1.getOverallEnr(), 0);
 		assertEquals(o1.getInstructor(), "");
-		assertEquals(o1.getCourse(), o1.getSubject()+o1.getCourse());
+		assertEquals(o1.getCourse(), o1.getSubject()+o1.getCourseNumber());
 	}
 
 	@Test
@@ -45,7 +45,7 @@ class TestOffering {
 		//assertEquals(o2.getOverallCap(), 0);
 		//assertEquals(o2.getOverallEnr(), 0);
 		//assertEquals(o2.getInstructor(), "");
-		//assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
+		//assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
 	}
 
 	@Test
@@ -60,6 +60,7 @@ class TestOffering {
 		o2.setSubject("newSubj");
 		
 		assertEquals(o2.getSubject(), "newSubj");
+		
 		assertEquals(o2.getCourseNumber(), "");
 		assertEquals(o2.getCrossListCap(), 0);
 		assertEquals(o2.getEnrolled(), 0);
@@ -67,7 +68,7 @@ class TestOffering {
 		assertEquals(o2.getOverallCap(), 0);
 		assertEquals(o2.getOverallEnr(), 0);
 		assertEquals(o2.getInstructor(), "");
-		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
 	}
 
 	@Test
@@ -85,7 +86,7 @@ class TestOffering {
 		assertEquals(o2.getOverallCap(), 0);
 		assertEquals(o2.getOverallEnr(), 0);
 		assertEquals(o2.getInstructor(), "");
-		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
 	}
 
 	@Test
@@ -103,7 +104,7 @@ class TestOffering {
 		assertEquals(o2.getOverallCap(), 0);
 		assertEquals(o2.getOverallEnr(), 0);
 		assertEquals(o2.getInstructor(), "");
-		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
 	}
 
 	@Test
@@ -121,7 +122,7 @@ class TestOffering {
 		assertEquals(o2.getOverallCap(), 0);
 		assertEquals(o2.getOverallEnr(), 0);
 		assertEquals(o2.getInstructor(), "");
-		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
 	}
 	
 	@Test
@@ -139,7 +140,7 @@ class TestOffering {
 		assertEquals(o2.getOverallCap(), 0);
 		assertEquals(o2.getOverallEnr(), 0);
 		assertEquals(o2.getInstructor(), "");
-		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
 	}
 
 	@Test
@@ -157,7 +158,7 @@ class TestOffering {
 		assertEquals(o2.getOverallEnr(), 9);
 		
 		assertEquals(o2.getInstructor(), "");
-		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
 	}
 
 	@Test
@@ -175,7 +176,7 @@ class TestOffering {
 		assertEquals(o2.getOverallEnr(), 0);
 		assertEquals(o2.getInstructor(), "NewInstructor");
 		
-		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
 	}
 
 	@Test
@@ -187,7 +188,7 @@ class TestOffering {
 		
 		assertEquals(o2.getSubject(), "");
 		assertEquals(o2.getCourseNumber(), "");
-		assertTrue(o2.getCourse()== o2.getSubject()+o2.getCourse());
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
 		assertEquals(o2.getCrossListCap(), 0);
 		assertEquals(o2.getEnrolled(), 0);
 		assertEquals(o2.getXListGroup(), "");
