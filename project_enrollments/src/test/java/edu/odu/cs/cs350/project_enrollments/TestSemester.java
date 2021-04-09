@@ -2,6 +2,8 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
@@ -16,7 +18,9 @@ class TestSemester {
 	void testSemester() {
 		//fail("Not yet implemented");
 		Semester s1 = new Semester();
-		//still need to check that the array existing and empty
+		ArrayList<Snapshot> snapshots = new ArrayList<Snapshot>();
+		
+		assertEquals(snapshots.size(), 0);
 		assertEquals(s1.getName(),"");
 		assertEquals(s1.getRegistrationBegin(), 0);
 		assertEquals(s1.getRegistrationEnd(), 0);
@@ -25,10 +29,15 @@ class TestSemester {
 	@Test
 	void testSemesterStringStringString() {
 		fail("Not yet implemented");
-		//Semester s1 = new Semester();
+		Semester s1 = new Semester("201910","18-MAY-20","07-AUG-20");
 		
-		//Semester("201910","18-MAY-20","07-AUG-20");
-	}
+		//s1.Semester("201910","18-MAY-20","07-AUG-20");
+		
+		assertEquals("201910" , s1.getName());	
+		assertEquals("18-MAY-20" , s1.getRegistrationBegin());	
+		assertEquals("07-AUG-20" , s1.getRegistrationEnd());	
+		}
+	
 
 	@Test
 	void testSemesterSemester() {
@@ -42,7 +51,7 @@ class TestSemester {
 		Semester si = new Semester();
 		
 		si.setName("201910");  
-		assertEquals(si.getName(), "201910"); 
+		assertEquals("201910", si.getName()); 
 		//make sure the name u set is equal
 	}
 
@@ -54,7 +63,7 @@ class TestSemester {
 
 	@Test
 	void testRemoveSnapshot() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 		Semester si = new Semester();
 		si.removeSnapshot(2);
 		//Expected()
@@ -67,7 +76,7 @@ class TestSemester {
 		Semester si = new Semester();
 		
 		 si.setRegistrationBegin("18-MAY-20");
-		assertEquals(si.getRegistrationBegin(), "18-MAY-20"); 
+		assertEquals("18-MAY-20", si.getRegistrationBegin()); 
 		//make sure the name u set is equal
 	}
 
@@ -77,7 +86,7 @@ class TestSemester {
 		Semester si = new Semester();
 		
 		 si.setRegistrationEnd("07-AUG-20");
-		assertEquals(si.getRegistrationEnd(), "07-AUG-20"); 
+		assertEquals( "07-AUG-20", si.getRegistrationEnd()); 
 		//make sure the name u set is equal
 
 	}
