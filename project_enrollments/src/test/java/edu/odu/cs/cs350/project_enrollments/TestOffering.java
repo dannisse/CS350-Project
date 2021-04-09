@@ -2,9 +2,12 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.runners.MethodSorters;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class TestOffering {
 
 	@BeforeEach
@@ -14,18 +17,18 @@ class TestOffering {
 	//NEED TEST FOR DISPLAY
 	
 	@Test
-	void testOffering() {
+	void testOfferingDefault() {
 		Offering o1 = new Offering();
 		
 		assertEquals(o1.getSubject(), "");
 		assertEquals(o1.getCourseNumber(), "");
-		assertTrue(o1.getCourse()== o1.getSubject()+o1.getCourse());
 		assertEquals(o1.getCrossListCap(), 0);
 		assertEquals(o1.getEnrolled(), 0);
 		assertEquals(o1.getXListGroup(), "");
 		assertEquals(o1.getOverallCap(), 0);
 		assertEquals(o1.getOverallEnr(), 0);
 		assertEquals(o1.getInstructor(), "");
+		assertEquals(o1.getCourse(), o1.getSubject()+o1.getCourse());
 	}
 
 	@Test
@@ -34,15 +37,15 @@ class TestOffering {
 		Offering o2 = new Offering(s1);
 	
 		
-		assertEquals(o2.getSubject(), "");
-		assertEquals(o2.getCourseNumber(), "");
-		assertTrue(o2.getCourse()== o2.getSubject()+o2.getCourse());
-		assertEquals(o2.getCrossListCap(), 0);
-		assertEquals(o2.getEnrolled(), 0);
-		assertEquals(o2.getXListGroup(), "");
-		assertEquals(o2.getOverallCap(), 0);
-		assertEquals(o2.getOverallEnr(), 0);
-		assertEquals(o2.getInstructor(), "");
+		//assertEquals(o2.getSubject(), "");
+		//assertEquals(o2.getCourseNumber(), "");
+		//assertEquals(o2.getCrossListCap(), 0);
+		//assertEquals(o2.getEnrolled(), 0);
+		//assertEquals(o2.getXListGroup(), "");
+		//assertEquals(o2.getOverallCap(), 0);
+		//assertEquals(o2.getOverallEnr(), 0);
+		//assertEquals(o2.getInstructor(), "");
+		//assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
 	}
 
 	@Test
@@ -56,17 +59,15 @@ class TestOffering {
 		
 		o2.setSubject("newSubj");
 		
-		assertNotNull(o2.getSubject());
 		assertEquals(o2.getSubject(), "newSubj");
-		
 		assertEquals(o2.getCourseNumber(), "");
-		assertTrue(o2.getCourse()== o2.getSubject()+o2.getCourse());
 		assertEquals(o2.getCrossListCap(), 0);
 		assertEquals(o2.getEnrolled(), 0);
 		assertEquals(o2.getXListGroup(), "");
 		assertEquals(o2.getOverallCap(), 0);
 		assertEquals(o2.getOverallEnr(), 0);
 		assertEquals(o2.getInstructor(), "");
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
 	}
 
 	@Test
@@ -76,49 +77,43 @@ class TestOffering {
 		o2.setCourseNumber("12345");
 		
 		assertEquals(o2.getSubject(), "");
-		assertNotNull(o2.getCourseNumber());
 		assertEquals(o2.getCourseNumber(), "12345");
 		
-		assertTrue(o2.getCourse()== o2.getSubject()+o2.getCourse());
 		assertEquals(o2.getCrossListCap(), 0);
 		assertEquals(o2.getEnrolled(), 0);
 		assertEquals(o2.getXListGroup(), "");
 		assertEquals(o2.getOverallCap(), 0);
 		assertEquals(o2.getOverallEnr(), 0);
 		assertEquals(o2.getInstructor(), "");
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
 	}
 
 	@Test
 	void testSetCrossListCap() {
-		Section s1 = new Section();
-		Offering o2 = new Offering(s1);
-		Offering o1 = new Offering();
+		Offering o2 = new Offering();
 	
 		o2.setCrossListCap(8);
 		
 		assertEquals(o2.getSubject(), "");
 		assertEquals(o2.getCourseNumber(), "");
-		assertTrue(o2.getCourse()== o2.getSubject()+o2.getCourse());
 		assertEquals(o2.getCrossListCap(), 8);
-		assertTrue(o2.getCrossListCap()!=o1.getCrossListCap());
 		
 		assertEquals(o2.getEnrolled(), 0);
 		assertEquals(o2.getXListGroup(), "");
 		assertEquals(o2.getOverallCap(), 0);
 		assertEquals(o2.getOverallEnr(), 0);
 		assertEquals(o2.getInstructor(), "");
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
 	}
 
 	@Test
 	void testSetEnrolled() {
-		Section s1 = new Section();
-		Offering o2 = new Offering(s1);
+		Offering o2 = new Offering();
 	
 		o2.setEnrolled(9);
 		
 		assertEquals(o2.getSubject(), "");
 		assertEquals(o2.getCourseNumber(), "");
-		assertTrue(o2.getCourse()== o2.getSubject()+o2.getCourse());
 		assertEquals(o2.getCrossListCap(), 0);
 		assertEquals(o2.getEnrolled(), 9);
 		
@@ -126,39 +121,35 @@ class TestOffering {
 		assertEquals(o2.getOverallCap(), 0);
 		assertEquals(o2.getOverallEnr(), 0);
 		assertEquals(o2.getInstructor(), "");
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
 	}
-
-	//Continue here
 	
 	@Test
 	void testSetXListGroup() {
-		Section s1 = new Section();
-		Offering o2 = new Offering(s1);
+		Offering o2 = new Offering();
 		
 		o2.setXListGroup("NewXList");
 		
 		assertEquals(o2.getSubject(), "");
 		assertEquals(o2.getCourseNumber(), "");
-		assertTrue(o2.getCourse()== o2.getSubject()+o2.getCourse());
 		assertEquals(o2.getCrossListCap(), 0);
 		assertEquals(o2.getEnrolled(), 0);
-		assertEquals(o2.getXListGroup(), "NewXlist");
+		assertEquals(o2.getXListGroup(), "NewXList");
 		
 		assertEquals(o2.getOverallCap(), 0);
 		assertEquals(o2.getOverallEnr(), 0);
 		assertEquals(o2.getInstructor(), "");
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
 	}
 
 	@Test
 	void testSetOverallEnr() {
-		Section s1 = new Section();
-		Offering o2 = new Offering(s1);
+		Offering o2 = new Offering();
 	
 		o2.setOverallEnr(9);
 		
 		assertEquals(o2.getSubject(), "");
 		assertEquals(o2.getCourseNumber(), "");
-		assertTrue(o2.getCourse()== o2.getSubject()+o2.getCourse());
 		assertEquals(o2.getCrossListCap(), 0);
 		assertEquals(o2.getEnrolled(), 0);
 		assertEquals(o2.getXListGroup(), "");
@@ -166,25 +157,25 @@ class TestOffering {
 		assertEquals(o2.getOverallEnr(), 9);
 		
 		assertEquals(o2.getInstructor(), "");
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
 	}
 
 	@Test
 	void testSetInstructor() {
-		Section s1 = new Section();
-		Offering o2 = new Offering(s1);
+		Offering o2 = new Offering();
 	
 		o2.setInstructor("NewInstructor");
 		
 		assertEquals(o2.getSubject(), "");
 		assertEquals(o2.getCourseNumber(), "");
-		assertTrue(o2.getCourse()== o2.getSubject()+o2.getCourse());
 		assertEquals(o2.getCrossListCap(), 0);
 		assertEquals(o2.getEnrolled(), 0);
 		assertEquals(o2.getXListGroup(), "");
 		assertEquals(o2.getOverallCap(), 0);
 		assertEquals(o2.getOverallEnr(), 0);
-		
 		assertEquals(o2.getInstructor(), "NewInstructor");
+		
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourse());
 	}
 
 	@Test
