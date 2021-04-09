@@ -70,13 +70,13 @@ public class Section {
 		
 		public Section() {		
 			seats = "";
-			CRN = "";
+			CRN = "0";
 			subj = "";
-			crse = "";
+			crse = "000L";
 			title = "";
 //			cr_hrs = "";
 			xlst_cap = "";
-			enr = "";
+			enr = "0";
 			link = "";
 			xlst_group = "";
 			sched_type = "";
