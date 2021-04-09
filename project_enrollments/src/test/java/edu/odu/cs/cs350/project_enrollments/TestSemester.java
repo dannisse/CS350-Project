@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.rules.ExpectedException;
 
 class TestSemester {
 
@@ -13,17 +14,26 @@ class TestSemester {
 
 	@Test
 	void testSemester() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
+		Semester s1 = new Semester();
+		//still need to check that the array existing and empty
+		assertEquals(s1.getName(),"");
+		assertEquals(s1.getRegistrationBegin(), 0);
+		assertEquals(s1.getRegistrationEnd(), 0);
 	}
 
 	@Test
 	void testSemesterStringStringString() {
 		fail("Not yet implemented");
+		//Semester s1 = new Semester();
+		
+		//Semester("201910","18-MAY-20","07-AUG-20");
 	}
 
 	@Test
 	void testSemesterSemester() {
 		fail("Not yet implemented");
+		
 	}
 
 	@Test
@@ -45,6 +55,10 @@ class TestSemester {
 	@Test
 	void testRemoveSnapshot() {
 		fail("Not yet implemented");
+		Semester si = new Semester();
+		si.removeSnapshot(2);
+		//Expected()
+		
 	}
 
 	@Test
