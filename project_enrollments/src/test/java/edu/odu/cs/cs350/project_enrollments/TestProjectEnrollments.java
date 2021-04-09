@@ -26,7 +26,7 @@ public class TestProjectEnrollments {
 	
 	@Test
 	public void TestgenerateOfferingsAndCourses() {
-		
+		fail("not yet implemented");
 	}
 	
 	

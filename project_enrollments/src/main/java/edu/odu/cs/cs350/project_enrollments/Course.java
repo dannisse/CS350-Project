@@ -51,6 +51,8 @@ public class Course {
 	{
 		this.courseTitle 	= "";
 		this.actualEnrollment = 0;
+		projectedEnrollment = 0;
+		enrollmentCap = 0;
 	}
 	
 	/*

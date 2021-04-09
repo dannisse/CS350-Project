@@ -32,6 +32,7 @@ import org.junit.jupiter.api.Test;
 		//assertThat(showLecture, hasItem(hasProperty("Course", is("Lecture"))));
 		
 		//assertThat(showLecture("Course", is("Lecture")));
+			fail("Not yet implemented");
 		}
 		
 		//test for the output

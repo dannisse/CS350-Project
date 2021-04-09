@@ -74,7 +74,7 @@ public class Section {
 			subj = "";
 			crse = "000L";
 			title = "";
-//			cr_hrs = "";
+			cr_hrs = "";
 			xlst_cap = "";
 			enr = "0";
 			link = "";
@@ -99,9 +99,9 @@ public class Section {
 			
 		
 		// We can effectively disregard these latter fields.
-		//notes = fields[31];
-		//comments = fields[31];
-		//coll = fields[32];
+		notes = "";
+		comments = "";
+		coll = "";
 	}
 	
 	public Section(Section rhs) {

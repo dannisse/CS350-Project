@@ -29,6 +29,7 @@ class TestOffering {
 		assertEquals(o1.getOverallEnr(), 0);
 		assertEquals(o1.getInstructor(), "");
 		assertEquals(o1.getCourse(), o1.getSubject()+o1.getCourseNumber());
+		assertEquals(o1.getSectionListSize(), 0);
 	}
 
 	@Test
@@ -37,15 +38,15 @@ class TestOffering {
 		Offering o2 = new Offering(s1);
 	
 		
-		//assertEquals(o2.getSubject(), "");
-		//assertEquals(o2.getCourseNumber(), "");
-		//assertEquals(o2.getCrossListCap(), 0);
-		//assertEquals(o2.getEnrolled(), 0);
-		//assertEquals(o2.getXListGroup(), "");
-		//assertEquals(o2.getOverallCap(), 0);
-		//assertEquals(o2.getOverallEnr(), 0);
-		//assertEquals(o2.getInstructor(), "");
-		//assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
+		assertEquals(o2.getSubject(), "");
+		assertEquals(o2.getCourseNumber(), "");
+		assertEquals(o2.getCrossListCap(), 0);
+		assertEquals(o2.getEnrolled(), 0);
+		assertEquals(o2.getXListGroup(), "");
+		assertEquals(o2.getOverallCap(), 0);
+		assertEquals(o2.getOverallEnr(), 0);
+		assertEquals(o2.getInstructor(), "");
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
 	}
 
 	@Test
@@ -156,6 +157,24 @@ class TestOffering {
 		assertEquals(o2.getXListGroup(), "");
 		assertEquals(o2.getOverallCap(), 0);
 		assertEquals(o2.getOverallEnr(), 9);
+		
+		assertEquals(o2.getInstructor(), "");
+		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
+	}
+	
+	@Test
+	void testSetOverallCap() {
+		Offering o2 = new Offering();
+	
+		o2.setOverallCap(9);
+		
+		assertEquals(o2.getSubject(), "");
+		assertEquals(o2.getCourseNumber(), "");
+		assertEquals(o2.getCrossListCap(), 0);
+		assertEquals(o2.getEnrolled(), 0);
+		assertEquals(o2.getXListGroup(), "");
+		assertEquals(o2.getOverallCap(), 9);
+		assertEquals(o2.getOverallEnr(), 0);
 		
 		assertEquals(o2.getInstructor(), "");
 		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
