@@ -39,6 +39,7 @@ class TestSemester {
 
 	@Test
 	void testSemesterSemester() {
+		
 		fail("Not yet implemented");
 		//also believe this is along the lines of being correct
 		//ArrayList<Snapshot> snapshots;
