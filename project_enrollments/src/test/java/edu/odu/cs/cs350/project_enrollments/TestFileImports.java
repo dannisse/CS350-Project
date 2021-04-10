@@ -40,7 +40,7 @@ FileImports defaultFileImports;
 	}
 	
 	@Test
-	public void TestSanitizePath()
+	public static void TestSanitizePath()
 	{
 		FileImports f1 = new FileImports();
 		//testpath is created to emulate a possible file parameter that the program might run into
@@ -62,6 +62,8 @@ FileImports defaultFileImports;
 		//provide a line that can be implemented into the function
 	//	assertThat(expected, f1.extractSection(line));
 		
+		//needs to also make sure that the " were removed and extraction is working properly
+		
 		//this will make sure that the seperations are working properly within extractSection
 	//	fail("Not yet implemented");
 	}
@@ -69,12 +71,12 @@ FileImports defaultFileImports;
 
 	
 	@Test
-	public void TestContainsDates()
+	public static void TestContainsDates()
 	{
 		
 		FileImports f2 = new FileImports();
 		//will test if there is a dates.txt file present or not. if there is a dates.txt file present
-		//it will return false, if there is not a dates.txt file present it will return true
+		//it will return false, if there is not a dates.txt file, present it will return true
 		String present = "C:\\some:dir\\some:file\\dates.txt";
 		String notpresent = "C:\\Users\\Documents\\";
 		assertTrue(f2.containsDates(notpresent));

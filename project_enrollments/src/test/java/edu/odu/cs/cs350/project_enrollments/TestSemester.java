@@ -1,13 +1,16 @@
 package edu.odu.cs.cs350.project_enrollments;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import java.io.File;
 import java.util.ArrayList;
-
+import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.rules.ExpectedException;
+import org.junit.runners.MethodSorters;
 
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class TestSemester {
 
 	@BeforeEach
@@ -16,7 +19,6 @@ class TestSemester {
 
 	@Test
 	void testSemester() {
-		//fail("Not yet implemented");
 		Semester s1 = new Semester();
 		ArrayList<Snapshot> snapshots = new ArrayList<Snapshot>();
 		
@@ -63,20 +65,29 @@ class TestSemester {
 	@Test
 	void testAddSnapshot() {
 		fail("Not yet implemented");
+		Semester s1 = new Semester();
+		File f = new File ("C:/some:dir/some:file/file.txt");
+		Snapshot snap = new Snapshot(f);
+		
+		s1.addSnapshot(snap);
+		
+		assertEquals(s1.getName(), "file.txt");  //?? i believe this is correct
+		assertEquals(s1.getRegistrationBegin(), 0);
+		assertEquals(s1.getRegistrationEnd(), 0);
 	}
 	
 
 	@Test
 	void testRemoveSnapshot() {
-		//fail("Not yet implemented");
-		Semester si = new Semester();
+		fail("Not yet implemented");
+		//Semester si = new Semester();
 		 //i believe this should work
 		
 		//si.addSnapshot();
 		//assertEquals(2, si.getSnapshots());
 		//try {
 		//	si.getSnapshots(1);
-		//	fail("this was suppposed to fail");
+		//	fail("this was supposed to fail");
 	//	} catch(SnapshotNotFoundException e) {
 			
 	//	}
