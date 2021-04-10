@@ -18,15 +18,19 @@ public class DetailedReport {
 		
 		String[] heading = {"d historical", "date/year", "d current", "date/year", "d projected", "projected"};
 		
-		for (int j = 0; j < 6; j++) {
+		for (String key : hist.keySet()) {
 			int rowNum = 0;
 			int col = 0;
-			XSSFSheet sheet = workbook.createSheet("DPR"+j);
+			XSSFSheet sheet = workbook.createSheet(hist.get(key).getCourseTitle());
 			Row head = sheet.createRow(rowNum++);
 			for (int i = 0; i < 6; i++) {
 				Cell headings = head.createCell(col++);
 				headings.setCellValue(heading[i]);
 			}
+			
+			Row data = sheet.createRow(rowNum++);
+			Cell dHist = data.createCell(1);
+			
 		}
 		try (FileOutputStream outputStream = new FileOutputStream(path)) {
 	        workbook.write(outputStream);

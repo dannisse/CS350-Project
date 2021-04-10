@@ -128,6 +128,13 @@ public class ProjectEnrollments {
 		generateOfferingsAndCourses(currSections, currSemesterList);
 		
 		
+		System.out.println("AYYd "+histSemesterList.size());
+		for (String key : histSemesterList.keySet()) {
+			
+			System.out.println("=======================================\n");
+			histSemesterList.get(key).display();
+			break;
+		}
 		
 		
 		System.out.println("AYYd "+currSemesterList.size());
@@ -135,6 +142,7 @@ public class ProjectEnrollments {
 			
 			System.out.println("=======================================\n");
 			currSemesterList.get(key).display();
+			break;
 		}
 		
 		
@@ -150,8 +158,9 @@ public class ProjectEnrollments {
 		pathCurrDir = FileImports.sanitizePath(pathCurrDir);
 		SummaryReport.deadlineD(pathCurrDir);
 		SummaryReport.sReport(currSemesterList);
+		
 		DetailedReport dr = new DetailedReport();
-	//	dr.createExcel(histSemesterList, currSemesterList, exPath);
+		dr.createExcel(histSemesterList, currSemesterList, exPath);
 
 		
 		

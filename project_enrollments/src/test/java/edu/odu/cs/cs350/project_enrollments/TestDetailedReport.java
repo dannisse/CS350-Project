@@ -37,7 +37,7 @@ import org.junit.jupiter.api.Test;
 		
 		//test for the output
 		@Test
-		public void testDreport(){
+		public void testCreateExcel(){
 			
 			fail("Not yet implemented");
 
