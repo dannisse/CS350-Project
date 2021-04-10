@@ -63,10 +63,16 @@ class TestSemester {
 	void testRemoveSnapshot() {
 		//fail("Not yet implemented");
 		Semester si = new Semester();
+		 //i believe this setup should work
+		
 		//si.addSnapshot();
-		//si.removeSnapshot();
-		//assertEquals();
-		//Expected()
+		//assertEquals(2, si.getSnapshots());
+		//try {
+		//	si.getSnapshots(1);
+		//	fail("this was suppposed to fail");
+	//	} catch(SnapshotNotFoundException e) {
+			
+	//	}
 		
 	}
 
