@@ -39,8 +39,15 @@ class TestSemester {
 
 	@Test
 	void testSemesterSemester() {
-		fail("Not yet implemented");
 		
+		fail("Not yet implemented");
+		//also believe this is along the lines of being correct
+		//ArrayList<Snapshot> snapshots;
+		//Section s1 = new Semester(snapshots);
+		//Section s2 = new Semester(s1);
+		
+		//assertEquals(s2.getName(), s1.getName());
+		//assertEquals(s2.getSnapshots(), s1.getSnapshots());
 	}
 
 	@Test
@@ -63,10 +70,16 @@ class TestSemester {
 	void testRemoveSnapshot() {
 		//fail("Not yet implemented");
 		Semester si = new Semester();
+		 //i believe this should work
+		
 		//si.addSnapshot();
-		//si.removeSnapshot();
-		//assertEquals();
-		//Expected()
+		//assertEquals(2, si.getSnapshots());
+		//try {
+		//	si.getSnapshots(1);
+		//	fail("this was suppposed to fail");
+	//	} catch(SnapshotNotFoundException e) {
+			
+	//	}
 		
 	}
 
