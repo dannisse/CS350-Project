@@ -60,10 +60,12 @@ FileImports defaultFileImports;
 		String line = "";//need to finish but 
 		String expected = "";
 		//provide a line that can be implemented into the function
-	//	assertThat(expected, f1.extractSection(line));
+		//assertThat(expected, f1.extractSection(line));
+		
+		//needs to also make sure that the " were removed and extraction is working properly
 		
 		//this will make sure that the seperations are working properly within extractSection
-	//	fail("Not yet implemented");
+		fail("Not yet implemented");
 	}
 	
 
@@ -71,14 +73,16 @@ FileImports defaultFileImports;
 	@Test
 	public void TestContainsDates()
 	{
-		
-		FileImports f2 = new FileImports();
+		fail("Not yet implemented");
+		//FileImports f2 = new FileImports();
 		//will test if there is a dates.txt file present or not. if there is a dates.txt file present
-		//it will return false, if there is not a dates.txt file present it will return true
-		String present = "C:\\some:dir\\some:file\\dates.txt";
-		String notpresent = "C:\\Users\\Documents\\";
-		assertTrue(f2.containsDates(notpresent));
-		assertFalse(f2.containsDates(present));
+		//it will return false, if there is not a dates.txt file, present it will return true
+		
+		//need to fetch users supplied file directory 
+		//String present = "D:/Documents/dates.txt";	
+		//String notpresent = "D:/Documents/";
+		//assertTrue(f2.containsDates(notpresent));
+		//assertFalse(f2.containsDates(present));
 		
 	}
 }

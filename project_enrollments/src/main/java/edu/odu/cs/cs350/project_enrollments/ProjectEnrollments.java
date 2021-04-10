@@ -151,7 +151,7 @@ public class ProjectEnrollments {
 		SummaryReport.deadlineD(pathCurrDir);
 		SummaryReport.sReport(currSemesterList);
 		DetailedReport dr = new DetailedReport();
-		dr.createExcel(histSemesterList, currSemesterList, exPath);
+	//	dr.createExcel(histSemesterList, currSemesterList, exPath);
 
 		
 		
