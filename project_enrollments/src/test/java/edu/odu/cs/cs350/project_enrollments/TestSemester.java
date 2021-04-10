@@ -71,6 +71,7 @@ class TestSemester {
 		
 		s1.addSnapshot(snap);
 		
+		
 		assertEquals(s1.getName(), "file.txt");  //?? i believe this is correct
 		assertEquals(s1.getRegistrationBegin(), 0);
 		assertEquals(s1.getRegistrationEnd(), 0);

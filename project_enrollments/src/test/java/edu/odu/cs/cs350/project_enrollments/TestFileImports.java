@@ -60,12 +60,12 @@ FileImports defaultFileImports;
 		String line = "";//need to finish but 
 		String expected = "";
 		//provide a line that can be implemented into the function
-	//	assertThat(expected, f1.extractSection(line));
+		//assertThat(expected, f1.extractSection(line));
 		
 		//needs to also make sure that the " were removed and extraction is working properly
 		
 		//this will make sure that the seperations are working properly within extractSection
-	//	fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 	
 
