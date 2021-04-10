@@ -21,7 +21,7 @@ class TestSection {
 		assertEquals(s1.getNum(), 000);
 		assertEquals(s1.getCRNum(), 0);
 		assertEquals(s1.getEnr(), 0);
-		assertEquals(s1.getCap(), "");
+		assertEquals(s1.getCap(), "0");
 		assertEquals(s1.getCRN(), "0");
 		assertEquals(s1.getSubj(), "");
 		assertEquals(s1.getCrse(), "000L");
@@ -73,7 +73,7 @@ class TestSection {
 		assertEquals(s1.getCRNum(), 0);
 		assertEquals(s1.getEnr(), 90);
 		
-		assertEquals(s1.getCap(), "");
+		assertEquals(s1.getCap(), "0");
 		assertEquals(s1.getCRN(), "0");
 		assertEquals(s1.getSubj(), "");
 		assertEquals(s1.getCrse(), "000L");
@@ -98,6 +98,7 @@ class TestSection {
 	
 	@Test
 	void testMathFR() {
+		
 		fail("Not yet implemented");
 	}
 
