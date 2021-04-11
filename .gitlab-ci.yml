@@ -15,6 +15,7 @@ build-it:
       #fi
   only:
     - add_ci_cd # gonna change this to master
+    - master
   artifacts:
     paths:
       - ./project_enrollments.jar
