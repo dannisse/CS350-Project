@@ -2,6 +2,7 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import java.util.*;
 import java.io.File;
+import java.io.IOException;
 
 public class ProjectEnrollments {
 
@@ -33,7 +34,7 @@ public class ProjectEnrollments {
 		ArrayList<Semester> histSems = new ArrayList<Semester>();
 		
 		// import historical semesters. this needs to work with URLs
-		for (int i = 0; i < args.length-2; i++) {
+		for (int i = 0; i < args.length-2; i++) { 
 			String path = FileImports.sanitizePath(args[i]);
 			if (FileImports.containsDates(path)) {
 				//todo: need to give semester name and start and end dates
@@ -71,7 +72,8 @@ public class ProjectEnrollments {
 				}
 			}
 		}
-					
+		
+		String exPath = FileImports.sanitizePath(args[args.length-1]);
 		
 		/*
 		 * Print histSems for testing purposes
@@ -126,6 +128,13 @@ public class ProjectEnrollments {
 		generateOfferingsAndCourses(currSections, currSemesterList);
 		
 		
+		System.out.println("AYYd "+histSemesterList.size());
+		for (String key : histSemesterList.keySet()) {
+			
+			System.out.println("=======================================\n");
+			histSemesterList.get(key).display();
+			break;
+		}
 		
 		
 		System.out.println("AYYd "+currSemesterList.size());
@@ -133,6 +142,7 @@ public class ProjectEnrollments {
 			
 			System.out.println("=======================================\n");
 			currSemesterList.get(key).display();
+			break;
 		}
 		
 		
@@ -148,6 +158,9 @@ public class ProjectEnrollments {
 		pathCurrDir = FileImports.sanitizePath(pathCurrDir);
 		SummaryReport.deadlineD(pathCurrDir);
 		SummaryReport.sReport(currSemesterList);
+		
+		DetailedReport dr = new DetailedReport();
+		dr.createExcel(histSemesterList, currSemesterList, exPath);
 
 		
 		
@@ -236,7 +249,7 @@ public class ProjectEnrollments {
 	 * 	@Returns: A list of generated courses
 	 */
 	
-	public static void generateOfferingsAndCourses(ArrayList<Section> in, SortedMap<String, Course > data) {
+	public static void generateOfferingsAndCourses(ArrayList<Section> in, SortedMap<String, Course > data) throws IOException {
 		/*
 		 * Go through each section. 
 		 * 
@@ -297,6 +310,7 @@ public class ProjectEnrollments {
 			// Add Section to Offering
 			currOffering.addSection(newSection);
 		}
+	
 		
 	}
 	
