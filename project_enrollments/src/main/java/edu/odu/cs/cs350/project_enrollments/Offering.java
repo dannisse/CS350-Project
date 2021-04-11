@@ -75,6 +75,14 @@ public class Offering {
 	public Offering()
 	{
 		this.subject 	= "";
+		courseNumber = "";
+		crossListCap = 0;
+		enrolled = 0;
+		link = "";
+		xListGroup = "";
+		overallCap = 0;
+		overallEnr = 0;
+		instructor = "";
 	}
 	
 	/*
@@ -82,11 +90,11 @@ public class Offering {
 	 */
 	public Offering(Section in)
 	{
-		this.subject 		= in.subj;
-		this.courseNumber 	= in.crse;
-		this.crossListCap 	= Integer.parseInt(in.xlst_cap);
-		//this.enrolled 		= Integer.parseInt(in.enr);// Gonna update this as we add sections
-		this.enrolled		= 0;
+		this.subject 		= in.getSubj();
+		this.courseNumber 	= in.getCrse();
+		this.crossListCap 	= Integer.parseInt(in.xlst_cap); // error  here
+		//this.enrolled 		= in.getEnr();// Gonna update this as we add sections
+		this.enrolled		= in.getEnr();
 		this.link 			= in.link;
 		this.xListGroup 	= in.xlst_group;
 		
@@ -99,7 +107,7 @@ public class Offering {
 		    this.overallCap = 0;
 		}
 		*/
-		this.overallCap 	= 0;
+		//this.overallCap 	= Integer.parseInt(in.getCap());
 		
 		this.overallEnr 	= Integer.parseInt(in.overall_enr);
 		this.instructor		= in.instructor;
@@ -155,7 +163,7 @@ public class Offering {
 	/*
 	 * SETTERS
 	 */
-	public void setSubject(String in) { this.subject = in; }
+	public void setSubject(String in) { subject = in; }
 	public void setCourseNumber(String in) { this.courseNumber = in; }
 	public void setCrossListCap(int in) { this.crossListCap = in; }
 	public void setEnrolled(int in) { this.enrolled = in; }

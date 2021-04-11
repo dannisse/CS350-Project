@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.io.File;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.Before;
@@ -35,30 +36,53 @@ public class TestFileImports {
 FileImports defaultFileImports;
 	
 	@Before
-	public void setup()
-	{
-		defaultFileImports  = new FileImports();
+	public void setup() throws Exception {
 	}
 	
 	@Test
 	public void TestSanitizePath()
 	{
+		FileImports f1 = new FileImports();
 		//testpath is created to emulate a possible file parameter that the program might run into
 		//the expected path is the expected output when the file is run
-		String TestPath = "C:\\Users\\Documents\\"; 
-		String expectedPath = "C:\\Users\\Documents"; 
+		String TestPath = "C:\\some:dir\\some:file\\"; 
+		String expectedPath = "C:\\some:dir\\some:file"; 
 		
 		//checks that the expected path is the correct path with proper / at the end of it
-		assertEquals(defaultFileImports.sanitizePath(expectedPath), TestPath);
+		assertEquals(expectedPath,f1.sanitizePath(TestPath));
 	}
 
+	@Test
+	public void TestExtractSection()
+	{
+		FileImports f1 = new FileImports();
+		
+		String line = "";//need to finish but 
+		String expected = "";
+		//provide a line that can be implemented into the function
+		//assertThat(expected, f1.extractSection(line));
+		
+		//needs to also make sure that the " were removed and extraction is working properly
+		
+		//this will make sure that the seperations are working properly within extractSection
+		fail("Not yet implemented");
+	}
 	
-//	@Test
-//	public static boolean TestException()
-//	{	
-	
-	
-//	}
 
 	
+	@Test
+	public void TestContainsDates()
+	{
+		fail("Not yet implemented");
+		//FileImports f2 = new FileImports();
+		//will test if there is a dates.txt file present or not. if there is a dates.txt file present
+		//it will return false, if there is not a dates.txt file, present it will return true
+		
+		//need to fetch users supplied file directory 
+		//String present = "D:/Documents/dates.txt";	
+		//String notpresent = "D:/Documents/";
+		//assertTrue(f2.containsDates(notpresent));
+		//assertFalse(f2.containsDates(present));
+		
+	}
 }

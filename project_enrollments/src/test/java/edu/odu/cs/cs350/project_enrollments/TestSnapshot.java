@@ -16,4 +16,9 @@ class TestSnapshot {
 		fail("Not yet implemented");
 	}
 
+	
+	@Test
+	void testDisplay() {
+		fail("Not yet implemented");
+	}
 }

@@ -70,13 +70,13 @@ public class Section {
 		
 		public Section() {		
 			seats = "";
-			CRN = "";
+			CRN = "0";
 			subj = "";
-			crse = "";
+			crse = "000L";
 			title = "";
-//			cr_hrs = "";
-			xlst_cap = "";
-			enr = "";
+			cr_hrs = "";
+			xlst_cap = "0";
+			enr = "0";
 			link = "";
 			xlst_group = "";
 			sched_type = "";
@@ -89,8 +89,8 @@ public class Section {
 			room = "";
 			override = "";
 			instructor = "";
-			overall_cap = "";// skip forwards one
-			overall_enr = "";
+			overall_cap = "0";// skip forwards one
+			overall_enr = "0";
 			ptrm_start = "";// skip forwards two
 			ptrm_end = "";
 			wl_cap = "";
@@ -99,9 +99,9 @@ public class Section {
 			
 		
 		// We can effectively disregard these latter fields.
-		//notes = fields[31];
-		//comments = fields[31];
-		//coll = fields[32];
+		notes = "";
+		comments = "";
+		coll = "";
 	}
 	
 	public Section(Section rhs) {
@@ -171,7 +171,7 @@ public class Section {
 		   }};
 	
 	
-	public static void mathFR(ArrayList<Section> data) {
+/*	public static void mathFR(ArrayList<Section> data) {
 		ArrayList<Section> alpha = new ArrayList<Section>();
 		int sum = 0;
 		int capSum = 0;
@@ -226,7 +226,7 @@ public class Section {
 		for(int i = 0; i < alpha.size(); i++) {
 			System.out.print(spec + alpha.get(i).getCourse() + "\t" + alpha.get(i).getEnr() + "\t\t\t\t" + alpha.get(i).getCap() + "\n");
 			}
-	}
+	}*/
 	
 	public String getCrse() {	
 		return crse;
