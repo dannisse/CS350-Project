@@ -1,7 +1,7 @@
 stages:
   - build
 
-build-it:
+$CI_PROJECT_NAME-$CI_PIPELINE_ID:
   tags:
     - blue1
   stage: build
