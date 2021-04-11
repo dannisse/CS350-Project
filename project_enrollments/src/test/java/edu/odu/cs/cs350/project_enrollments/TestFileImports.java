@@ -2,6 +2,7 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -80,7 +81,7 @@ FileImports defaultFileImports;
 	
 	//to see list of objects being created
 	class CountedList extends ArrayList {
-		  private static int counter = 0;
+		  private int counter = 0;
 		  private int id = counter++;
 		  public CountedList() {
 		    System.out.println("CountedList #" + id);
