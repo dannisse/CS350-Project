@@ -7,6 +7,7 @@ $CI_PROJECT_NAME-$CI_PIPELINE_ID:
   stage: build
   script:
     - cd project_enrollments
+    - ./gradlew --version
     - chmod +x gradlew && ./gradlew build
     - cp build/libs/project_enrollments.jar ..
       #- if [-e build/libs/project_enrollments.jar]; \
