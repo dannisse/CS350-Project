@@ -7,7 +7,7 @@ build-it:
   stage: build
   script:
     - cd project_enrollments
-    - chmod +x gradlew && gradlew build
+    - chmod +x gradlew && ./gradlew build
     - if [-e build/libs/project_enrollments.jar]; \
       then cp build/libs/project_enrollments.jar .. && echo "build success."; \
       else echo "build failed."; \
