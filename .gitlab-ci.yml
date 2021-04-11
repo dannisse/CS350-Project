@@ -1,0 +1,17 @@
+stages:
+  - build
+
+build-it:
+  tags:
+    - blue1
+  stage: build
+  script:
+    - chmod +x project_enrollments/gradlew && project_enrollments/gradlew build
+    - if [-e project_enrollments/build/libs/project_enrollments.jar] ; \
+      then cp project_enrollments/build/libs/project_enrollments.jar . ; \
+      else echo "build failed." ; \
+      fi
+  only:
+    - add_ci_cd # gonna change this to master
+  artifacts:
+    - project_enrollments.jar
