@@ -14,7 +14,6 @@ build-it:
       #else echo "build failed."; \
       #fi
   only:
-    - add_ci_cd # gonna change this to master
     - master
   artifacts:
     paths:
