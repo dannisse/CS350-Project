@@ -29,6 +29,7 @@ public class DetailedReport {
 	
 	public void createExcel(SortedMap<String, Course> hist, SortedMap<String, Course> curr, String path) throws IOException {
 		XSSFWorkbook workbook = new XSSFWorkbook();
+		
 		 double[] dHist = new double[]{.1,.2,.5,.75,1.05,0,0};
 		 double[] date1 = new double[]{30,35,50,52,54,0,0};
 		 double[] dcurr = new double[] {0,.25,5,0,0,0,0};
@@ -37,6 +38,16 @@ public class DetailedReport {
 		 double[] proj = new double[] {0,0,0,60,80,0,0};
 		 String headDate1 = "Season/Year";
 		 String headDate2 = "Season/Year";
+		 String[] heading = {"d historical", "date/year", "d current", "date/year", "d projected", "projected"};
+		
+		for (String key : hist.keySet()) {
+			int rowNum = 0;
+			int col = 0;
+			XSSFSheet sheet = workbook.createSheet(hist.get(key).getCourseTitle());
+			Row head = sheet.createRow(rowNum++);
+			for (int i = 0; i < 6; i++) {
+				Cell headings = head.createCell(col++);
+				headings.setCellValue(heading[i]);
 		
 		for (String key : hist.keySet()) {
 			XSSFSheet sheet = workbook.createSheet(hist.get(key).getCourseTitle());
