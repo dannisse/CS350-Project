@@ -13,6 +13,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class DetailedReport { 
 	
+	//
+	
 	public void createExcel(SortedMap<String, Course> hist, SortedMap<String, Course> curr, String path) throws IOException {
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		
@@ -36,7 +38,7 @@ public class DetailedReport {
 	        workbook.write(outputStream);
   
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
+		//TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	}
