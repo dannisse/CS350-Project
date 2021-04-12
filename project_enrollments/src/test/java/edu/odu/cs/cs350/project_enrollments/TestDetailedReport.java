@@ -27,14 +27,20 @@ import org.junit.jupiter.api.Test;
 	//shows only lecture classes
 		@Test 
 		public void testShowLecture() {
-			final String testLecture = null;
-
+		Object DetailedReport = null;
+		//private String DetailedReport = new String("Lecture");
 		//assertThat(showLecture, hasItem(hasProperty("Course", is("Lecture"))));
-		
+		assertThat(DetailedReport,matches("Lecture"));
 		//assertThat(showLecture("Course", is("Lecture")));
 			fail("Not yet implemented");
 		}
-		
+
+		private Matcher matches(String string) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+
 		//test for the output
 		@Test
 		public void testCreateExcel(){
@@ -43,9 +49,11 @@ import org.junit.jupiter.api.Test;
 
 		}
 		
-		
+// test for output of courses in current semester
+	@Test
+	public void testCoursesinCurrentSem() {
+		fail("Not yet implemented");
 	}
-
-
+	}
 	
 	
