@@ -27,6 +27,8 @@ import org.jsoup.nodes.*;
 import org.jsoup.select.*;
 import java.util.*;
 
+
+
 //import org.junit.Test;    
 
 public class TestFileImports {
@@ -156,11 +158,12 @@ FileImports defaultFileImports;
 		//it will return false, if there is not a dates.txt file, present it will return true
 		//need to fetch users supplied file directory 
 		//String present = "D:/blue/historic/dates.txt";	
-		//String notpresent = "D:/blue/historic/";
+		String notpresent = "D:/blue/historic/";
 		//assertTrue(FileImports.containsDates(notpresent));
 		//assertFalse(FileImports.containsDates(present));
 		
 		
+		//string contains
 		//new implementation with a URL to test if it contains dates.txt
 
 		//Document doc Jsoup.parse("");
