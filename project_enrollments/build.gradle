@@ -18,6 +18,11 @@ java {
     targetCompatibility = JavaVersion.toVersion(11)
 }
 
+test {
+	ignoreFailures = true
+	useJUnitPlatform()
+}
+
 
 repositories {
     // Use jcenter for resolving dependencies.
@@ -36,6 +41,9 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.hamcrest:hamcrest:2.2'
+    
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
 }
 
 application {
