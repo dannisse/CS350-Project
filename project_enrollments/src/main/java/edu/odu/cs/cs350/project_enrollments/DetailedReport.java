@@ -85,7 +85,9 @@ public class DetailedReport {
 		                cell.setCellValue(proj[j]);
 		            }
 
-		            
+		            	Row data = sheet.createRow(rowNum++);
+						Cell dHist = data.createCell(1);
+
 
 		            XSSFDrawing drawing = sheet.createDrawingPatriarch();
 		            XSSFClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, 8, 0, 15, 15);
