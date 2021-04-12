@@ -22,10 +22,33 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.io.*;
 import org.junit.*;
+import org.jsoup.*;
+import org.jsoup.nodes.*;
+import org.jsoup.select.*;
 //import org.junit.Test;    
 
 public class TestFileImports {
-	
+	FileImports fileimports;
+	  private final InputStream systemIn = System.in;
+	    private final PrintStream systemOut = System.out;
+	    private ByteArrayInputStream testIn;
+	    private ByteArrayOutputStream testOut;
+	    
+	    @Before
+	    public void setUpOutput() {
+	        testOut = new ByteArrayOutputStream();
+	        System.setOut(new PrintStream(testOut));
+	    }
+	    private String getOutput() {
+	        return testOut.toString();
+	    }
+
+	    @After
+	    public void restoreSystemInputOutput() {
+	        System.setIn(systemIn);
+	        System.setOut(systemOut);
+	    }
+
 	//Example code
 		/*
 		 public class ReadFileTest {
@@ -46,6 +69,8 @@ public class TestFileImports {
 
 	}    */
 
+	
+	
 FileImports defaultFileImports;
 	
 	@Before
@@ -87,8 +112,6 @@ FileImports defaultFileImports;
 //	public static boolean TestException()
 //	{	
 	
-
-
 	
 	
 //	}
@@ -125,15 +148,27 @@ FileImports defaultFileImports;
 	@Test
 	public void TestContainsDates()
 	{
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 		//FileImports f2 = new FileImports();
 		//will test if there is a dates.txt file present or not. if there is a dates.txt file present
 		//it will return false, if there is not a dates.txt file, present it will return true
 		//need to fetch users supplied file directory 
-		//String present = "D:/blue/historic/dates.txt";	
-		//String notpresent = "D:/blue/historic/";
-		//assertTrue(FileImports.containsDates(notpresent));
-		//assertFalse(FileImports.containsDates(present));
+		String present = "D:/blue/historic/dates.txt";	
+		String notpresent = "D:/blue/historic/";
+		assertTrue(FileImports.containsDates(notpresent));
+		assertFalse(FileImports.containsDates(present));
+		
+		
+		//new implementation with a URL to test if it contains dates.txt
+		Document doc;
+		assertThat(doc.select("a[href]").text(),)is("dates.txt");
 		
 	}
+	
+
+    private void provideInput(byte[] int_bytes) {
+        testIn = new ByteArrayInputStream(int_bytes);
+        System.setIn(testIn);
+
+    }
 }
