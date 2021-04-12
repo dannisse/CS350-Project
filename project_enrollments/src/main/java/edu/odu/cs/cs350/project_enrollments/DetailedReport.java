@@ -38,16 +38,6 @@ public class DetailedReport {
 		 double[] proj = new double[] {0,0,0,60,80,0,0};
 		 String headDate1 = "Season/Year";
 		 String headDate2 = "Season/Year";
-		 String[] heading = {"d historical", "date/year", "d current", "date/year", "d projected", "projected"};
-		
-		for (String key : hist.keySet()) {
-			int rowNum = 0;
-			int col = 0;
-			XSSFSheet sheet = workbook.createSheet(hist.get(key).getCourseTitle());
-			Row head = sheet.createRow(rowNum++);
-			for (int i = 0; i < 6; i++) {
-				Cell headings = head.createCell(col++);
-				headings.setCellValue(heading[i]);
 		
 		for (String key : hist.keySet()) {
 			XSSFSheet sheet = workbook.createSheet(hist.get(key).getCourseTitle());
@@ -95,9 +85,6 @@ public class DetailedReport {
 		                cell = row.createCell((short) 5);
 		                cell.setCellValue(proj[j]);
 		            }
-
-		            	Row data = sheet.createRow(rowNum++);
-						Cell dHist = data.createCell(1);
 
 
 		            XSSFDrawing drawing = sheet.createDrawingPatriarch();
