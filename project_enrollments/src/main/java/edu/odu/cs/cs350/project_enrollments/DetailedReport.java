@@ -2,6 +2,8 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import java.io.FileOutputStream;
 import java.util.*;
+
+
 import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -28,6 +30,7 @@ public class DetailedReport {
 	public void createExcel(SortedMap<String, Course> hist, SortedMap<String, Course> curr, String path) throws IOException {
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		
+
 		 double[] dHist = new double[]{.1,.2,.5,.75,1.05,0,0};
 		 double[] date1 = new double[]{30,35,50,52,54,0,0};
 		 double[] dcurr = new double[] {0,.25,5,0,0,0,0};
@@ -42,7 +45,9 @@ public class DetailedReport {
 			XSSFSheet sheet = workbook.createSheet(hist.get(key).getCourseTitle());
 			for (int i = 0; i < 6; i++) {
 
-		            Row row = sheet.createRow((short) 0);
+		            
+					
+					Row row = sheet.createRow((short) 0);
 		            Cell cell = row.createCell((short) 0);
 		            cell.setCellValue("dHistorical");
 		            sheet.autoSizeColumn(0);
