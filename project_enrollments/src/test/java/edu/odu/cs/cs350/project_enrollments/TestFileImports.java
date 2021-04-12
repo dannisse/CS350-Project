@@ -112,7 +112,6 @@ FileImports defaultFileImports;
 		//FileImports f2 = new FileImports();
 		//will test if there is a dates.txt file present or not. if there is a dates.txt file present
 		//it will return false, if there is not a dates.txt file, present it will return true
-		
 		//need to fetch users supplied file directory 
 		String present = "D:/blue/historic/dates.txt";	
 		String notpresent = "D:/blue/historic/";
