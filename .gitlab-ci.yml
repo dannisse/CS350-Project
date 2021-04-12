@@ -15,9 +15,6 @@ build:
     - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/test/ ccarroll@linux.cs.odu.edu:tests/
     - ./gradlew javadoc
     - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/docs/javadoc/ ccarroll@linux.cs.odu.edu:docs/
-  only:
-    - master
-    - deploy_javadoc
   artifacts:
     paths:
       - ./project_enrollments.jar
