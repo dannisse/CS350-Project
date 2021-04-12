@@ -27,7 +27,7 @@ deploy_webpages:
     - pwd && ls -la
     - eval $(ssh-agent -t 5m -s)
     - ssh-add <(echo "$RSYNC_WEB_KEY")
-    - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" ./build/reports/tests/test/ ccarroll@linux.cs.odu.edu:./
+    - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/test/ ccarroll@linux.cs.odu.edu:./
   only:
     - master
     - deploy_webpages
