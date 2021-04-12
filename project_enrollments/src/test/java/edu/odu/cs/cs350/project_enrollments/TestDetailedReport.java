@@ -52,7 +52,19 @@ import org.junit.jupiter.api.Test;
 // test for output of courses in current semester
 	@Test
 	public void testCoursesinCurrentSem() {
-		fail("Not yet implemented");
+		/*@Test
+		public void testMultipleCompanies() {
+		  Transact instance = new Transact();
+		  List<Company> companies = instance.retrieveData("firstCompany,secondCompany");
+		  assertTrue(companies.size() == 2);
+		  assertEquals(companies.get(0).getId().equals("firstCompany");
+		  assertEquals(companies.get(0).getName().equals("firstCompany");
+		  assertEquals(companies.get(1).getId().equals("secondCompany");
+		  assertEquals(companies.get(1).getName().equals("secondCompany");
+		}
+		*/
+		
+		//fail("Not yet implemented");
 	}
 	}
 	
