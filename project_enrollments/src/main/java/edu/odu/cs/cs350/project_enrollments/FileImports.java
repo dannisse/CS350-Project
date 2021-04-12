@@ -14,6 +14,10 @@ import java.util.ArrayList;
 //import java.util.Map;
 //import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+
 //import java.util.Objects;
 
 
@@ -36,21 +40,26 @@ public class FileImports {
 	
 	public static boolean validateUrl(String url)
 	{
+		Pattern pattern= Pattern.compile("^(http|https)://", Pattern.CASE_INSENSITIVE);
+		Matcher matcher=pattern.matcher(url);
+		
 		if (url.length()==0)
 		{
 			System.exit(1);
 		}
 		
-		if (!url.endsWith("/") && !url.endsWith("\\"))
+		boolean matchFound=matcher.find();
+		if(matchFound)
 		{
 			return true;
 		}
 		
-		else
+		else 
 		{
 			return false;
 		}
 		
+
 		
 		
 	}
