@@ -9,11 +9,12 @@ build:
     - cd project_enrollments
     - ./gradlew --version
     - chmod +x gradlew && ./gradlew build
-    - ls -l build/docs/javadoc
     - cp build/libs/project_enrollments.jar ..
     - eval $(ssh-agent -t 5m -s)
     - ssh-add <(echo "$RSYNC_WEB_KEY")
     - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/test/ ccarroll@linux.cs.odu.edu:tests/
+    - ./gradlew javadoc
+    - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/docs/javadoc/ ccarroll@linux.cs.odu.edu:docs/
   only:
     - master
     - deploy_javadoc
