@@ -7,7 +7,9 @@ import java.io.IOException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xddf.usermodel.chart.AxisCrosses;
 import org.apache.poi.xddf.usermodel.chart.AxisPosition;
+import org.apache.poi.xddf.usermodel.chart.AxisTickMark;
 import org.apache.poi.xddf.usermodel.chart.ChartTypes;
 import org.apache.poi.xddf.usermodel.chart.LegendPosition;
 import org.apache.poi.xddf.usermodel.chart.MarkerStyle;
@@ -30,10 +32,10 @@ public class DetailedReport {
 		
 		 double[] dHist = new double[]{.1,.2,.5,.75,1.05};
 		 double[] date1 = new double[]{30,35,50,52,54};
-		 double[] dcurr = new double[] {0,.25,5,0,0};
-		 double[] date2 = new double[]{0,0,25,60,0};
-		 double[] dProj = new double[]{0,0,0,.5,1};
-		 double[] proj = new double[] {0,0,0,60,80};
+		 double[] dcurr = new double[] {0,.25,.5,0,0};
+		 double[] date2 = new double[]{0,25,60,0,0};
+		 double[] dProj = new double[]{0,0,.5,1,0};
+		 double[] proj = new double[] {0,0,60,80,0};
 		 
 		 String headDate1 = "Season/Year";
 		 String headDate2 = "Season/Year";
@@ -82,6 +84,20 @@ public class DetailedReport {
 		                cell = row.createCell((short) 5);
 		                cell.setCellValue(proj[j]);
 		            }
+		            /*for (int j = 0; j < dcurr.length; j++) {
+		                row = sheet.createRow((short) j+1);
+		                cell = row.createCell((short) 2);
+		                cell.setCellValue(dcurr[j]);
+		                cell = row.createCell((short) 3);
+		                cell.setCellValue(date2[j]);	                
+		            }
+		            for (int j = 0; j < dProj.length; j++) {
+		                row = sheet.createRow((short) j+1);
+		                cell = row.createCell((short) 4);
+		                cell.setCellValue(dProj[j]);
+		                cell = row.createCell((short) 5);
+		                cell.setCellValue(proj[j]);
+		            }*/
 
 		            
 
@@ -97,25 +113,29 @@ public class DetailedReport {
 
 		            XDDFCategoryAxis bottomAxis = chart.createCategoryAxis(AxisPosition.BOTTOM);
 		            XDDFValueAxis leftAxis = chart.createValueAxis(AxisPosition.LEFT);
+		            
+		            bottomAxis.setMinimum(0);
+		            bottomAxis.setMaximum(6);
+		            leftAxis.setCrosses(AxisCrosses.AUTO_ZERO);
 		     
 
 		            XDDFNumericalDataSource<Double> historical = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-		                    new CellRangeAddress(1, 7, 0, 0));
+		                    new CellRangeAddress(1, 5, 0, 0));
 
 		            XDDFNumericalDataSource<Double> hSeason = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-		                    new CellRangeAddress(1, 7, 1, 1));
+		                    new CellRangeAddress(1, 5, 1, 1));
 
 		            XDDFNumericalDataSource<Double> current = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-		                    new CellRangeAddress(1, 7, 2, 2));
+		                    new CellRangeAddress(1, 3, 2, 2));
 		            
 		            XDDFNumericalDataSource<Double> cSeason = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-		                    new CellRangeAddress(1, 7, 3, 3));
+		                    new CellRangeAddress(1, 3, 3, 3));
 		            
 		            XDDFNumericalDataSource<Double> projected = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-		                    new CellRangeAddress(1, 7, 4, 4));
+		                    new CellRangeAddress(1, 4, 4, 4));
 		            
 		            XDDFNumericalDataSource<Double> eProjected = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-		                    new CellRangeAddress(1, 7, 5, 5));
+		                    new CellRangeAddress(1, 4, 5, 5));
 		            
 		            XDDFLineChartData data = (XDDFLineChartData) chart.createData(ChartTypes.LINE, bottomAxis, leftAxis);
 
@@ -133,6 +153,7 @@ public class DetailedReport {
 		            series3.setTitle("Projected", null);
 		            series3.setSmooth(false);
 		            series3.setMarkerStyle(MarkerStyle.NONE);
+		           
 
 		            chart.plot(data);
 			}
