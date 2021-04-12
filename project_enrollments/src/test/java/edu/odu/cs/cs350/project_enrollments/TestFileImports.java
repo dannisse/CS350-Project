@@ -18,6 +18,8 @@ import java.lang.Object;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.io.*;
 import org.junit.*;
 //import org.junit.Test;    
@@ -91,6 +93,21 @@ FileImports defaultFileImports;
 	
 //	}
 	
+	@Test
+	public void TestvalidateUrl() {
+		
+		
+		
+		String TestURL = "https://www.cs.odu.edu/~zeil/courseSchedule/History/201720/2017-01-01.csv";
+		String OtherURL = "https://www.cs.odu.edu/~zeil/courseSchedule/History/";
+		
+		
+		assertTrue(FileImports.validateUrl(TestURL));
+		assertFalse(FileImports.validateUrl(OtherURL));
+		
+
+	}
+	
 	//to see list of objects being created
 	class CountedList extends ArrayList {
 		  private int counter = 0;
@@ -108,15 +125,15 @@ FileImports defaultFileImports;
 	@Test
 	public void TestContainsDates()
 	{
-		//fail("Not yet implemented");
+		fail("Not yet implemented");
 		//FileImports f2 = new FileImports();
 		//will test if there is a dates.txt file present or not. if there is a dates.txt file present
 		//it will return false, if there is not a dates.txt file, present it will return true
 		//need to fetch users supplied file directory 
-		String present = "D:/blue/historic/dates.txt";	
-		String notpresent = "D:/blue/historic/";
-		assertTrue(FileImports.containsDates(notpresent));
-		assertFalse(FileImports.containsDates(present));
+		//String present = "D:/blue/historic/dates.txt";	
+		//String notpresent = "D:/blue/historic/";
+		//assertTrue(FileImports.containsDates(notpresent));
+		//assertFalse(FileImports.containsDates(present));
 		
 	}
 }
