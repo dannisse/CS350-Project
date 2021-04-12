@@ -34,6 +34,27 @@ public class FileImports {
 		return path;
 	}
 	
+	public static boolean validateUrl(String url)
+	{
+		if (url.length()==0)
+		{
+			System.exit(1);
+		}
+		
+		if (!url.endsWith("/") && !url.endsWith("\\"))
+		{
+			return true;
+		}
+		
+		else
+		{
+			return false;
+		}
+		
+		
+		
+	}
+	
 	// Given a path, return the list of files in that path
 	public static ArrayList<File> getFiles(String path) {	
 		File directoryPath = new File(path);
