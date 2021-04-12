@@ -9,6 +9,7 @@ build:
     - cd project_enrollments
     - ./gradlew --version
     - chmod +x gradlew && ./gradlew build
+    - ls -l build/docs/javadoc
     - cp build/libs/project_enrollments.jar ..
     - eval $(ssh-agent -t 5m -s)
     - ssh-add <(echo "$RSYNC_WEB_KEY")
