@@ -63,6 +63,11 @@ jar {
     exclude 'META-INF/*.DSA'
 }
 
+test {
+	ignoreFailures = true
+	useJUnitPlatform()
+}
+
 //task myJavadocs(type: Javadoc) {
 //    source = sourceSets.main.allJava
 //    classpath = project.sourceSets.main.compileClasspath
