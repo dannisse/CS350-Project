@@ -33,7 +33,9 @@ public class TestSummaryReport {
 	// test for output of courses in current semester
 			@Test
 			public void testCoursesinCurrentSem() {
-				/* { example code
+				/* 
+				 {
+				 //example code implement later
 				  CoursesInCurrentSem = new CoursesInCurrentSem();
 				  List<Courses> courses = instance.retrieveData("firstCompany,secondCompany");
 				  assertTrue(companies.size() == 2);
