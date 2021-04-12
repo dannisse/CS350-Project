@@ -2,8 +2,8 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import java.io.FileOutputStream;
 import java.util.*;
-
-
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -29,15 +29,12 @@ public class DetailedReport {
 	
 	public void createExcel(SortedMap<String, Course> hist, SortedMap<String, Course> curr, String path) throws IOException {
 		XSSFWorkbook workbook = new XSSFWorkbook();
-		
-
 		 double[] dHist = new double[]{.1,.2,.5,.75,1.05,0,0};
 		 double[] date1 = new double[]{30,35,50,52,54,0,0};
 		 double[] dcurr = new double[] {0,.25,5,0,0,0,0};
 		 double[] date2 = new double[]{0,0,25,60,0,0,0};
 		 double[] dProj = new double[]{0,0,0,.5,1,0,0};
 		 double[] proj = new double[] {0,0,0,60,80,0,0};
-		 
 		 String headDate1 = "Season/Year";
 		 String headDate2 = "Season/Year";
 		
