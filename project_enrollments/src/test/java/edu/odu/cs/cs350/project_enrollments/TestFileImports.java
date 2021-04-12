@@ -23,11 +23,7 @@ import org.junit.*;
 //import org.junit.Test;    
 
 public class TestFileImports {
-	 private final InputStream systemInput = System.in;
-	    private final PrintStream systemOutput = System.out;
-
-	private ByteArrayInputStream testInput;
-	private ByteArrayOutputStream TestOutput;
+	
 	//Example code
 		/*
 		 public class ReadFileTest {
@@ -52,44 +48,21 @@ FileImports defaultFileImports;
 	
 	@Before
 	public void setup() throws Exception {
+		
 	}
 	
-	@Before
-	public void setUpOutput() {
-		TestOutput  = new ByteArrayOutputStream();
-		System.setOut(new PrintStream(TestOutput));
-	}
-	
-	@Before
-	public void provideInput(String input) {
-		testInput = new ByteArrayInputStream(input.getBytes());
-		System.setIn(testInput);
-	}
-	
-	private String getOutput() {
-		return TestOutput.toString();
-	}
-	
-	
-	@After
-	public void RestorInputOutput() {
-		System.setIn(systemInput);
-		System.setOut(systemOutput);
-	}
-	
-	
+
 	@Test
 	public void TestSanitizePath()
 	{
-		FileImports f1 = new FileImports();
+		//FileImports f1 = new FileImports();
 		//testpath is created to emulate a possible file parameter that the program might run into
 		//the expected path is the expected output when the file is run
 		
 		final String testPath = "C:/Documents/Historic";
-		provideInput(testPath);
 		final String expectedPath = "C:/Documents/Historic/";
 		//checks that the expected path is the correct path with proper / at the end of it
-		assertEquals(expectedPath,getOutput());
+		assertEquals(expectedPath,FileImports.sanitizePath(testPath));
 	}
 
 	@Test
@@ -135,16 +108,16 @@ FileImports defaultFileImports;
 	@Test
 	public void TestContainsDates()
 	{
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 		//FileImports f2 = new FileImports();
 		//will test if there is a dates.txt file present or not. if there is a dates.txt file present
 		//it will return false, if there is not a dates.txt file, present it will return true
 		
 		//need to fetch users supplied file directory 
-		//String present = "D:/Documents/dates.txt";	
-		//String notpresent = "D:/Documents/";
-		//assertTrue(f2.containsDates(notpresent));
-		//assertFalse(f2.containsDates(present));
+		String present = "D:/Documents/dates.txt";	
+		String notpresent = "D:/Documents/";
+		assertTrue(FileImports.containsDates(present));
+		assertFalse(FileImports.containsDates(notpresent));
 		
 	}
 }
