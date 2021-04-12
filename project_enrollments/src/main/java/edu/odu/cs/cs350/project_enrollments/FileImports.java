@@ -38,9 +38,11 @@ public class FileImports {
 	
 	public static boolean validateUrl(String url)
 	{
+		//condition to be met
 		Pattern pattern= Pattern.compile("^(http|https)://", Pattern.CASE_INSENSITIVE);
+		//checks url against condition
 		Matcher matcher=pattern.matcher(url);
-	
+		//see if it matches
 		boolean matchFound=matcher.find();
 		if(matchFound)
 		{
