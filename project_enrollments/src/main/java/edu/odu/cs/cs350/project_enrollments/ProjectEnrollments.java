@@ -53,6 +53,10 @@ public class ProjectEnrollments {
 			}
 		}
 		
+		// temp
+		System.exit(0);
+		
+		
 		/*
 		 * Import current semester (second to last argument)
 		 */
@@ -72,6 +76,7 @@ public class ProjectEnrollments {
 				}
 			}
 		}
+		
 		
 		String exPath = FileImports.sanitizePath(args[args.length-1]);
 		

@@ -1,6 +1,5 @@
 package edu.odu.cs.cs350.project_enrollments;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.Authenticator;
@@ -9,18 +8,15 @@ import java.net.ProxySelector;
 import java.net.http.HttpClient;
 import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpClient.Version;
+import java.io.IOException;
 import java.util.ArrayList;
-//import java.util.HashMap;
-//import java.util.Map;
-//import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-
-//import java.util.Objects;
-
-
+import org.jsoup.*;
+import org.jsoup.nodes.*;
+import org.jsoup.select.*;
 
 public class FileImports {
 	
@@ -35,6 +31,8 @@ public class FileImports {
 			//System.out.println("concatenated");
 			//System.out.println(path);
 		}
+		
+		
 		return path;
 	}
 	
@@ -199,6 +197,28 @@ public class FileImports {
 	// Returns true if directory path does not contain a dates.txt file.
 	// Return false if the file is present.
 	public static boolean containsDates(String path) {
+		
+		boolean isURL = true;
+		
+		
+		if (isURL) {
+			String url = path;
+			Document doc;
+			try {
+				doc = Jsoup.connect(url).get();
+				Elements links = doc.select("a[href]");
+				for (Element src: links) {
+					System.out.println(src.attr("abs:href"));
+				}
+				System.out.println("completed");
+				System.exit(0);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
 		Scanner fileScanner = null;
 		boolean verdict = true;
 	    try {
