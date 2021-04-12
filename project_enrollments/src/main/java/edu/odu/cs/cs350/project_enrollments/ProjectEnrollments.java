@@ -161,7 +161,6 @@ public class ProjectEnrollments {
 		
 		DetailedReport dr = new DetailedReport();
 		dr.createExcel(histSemesterList, currSemesterList, exPath);
-
 		
 		
 		
