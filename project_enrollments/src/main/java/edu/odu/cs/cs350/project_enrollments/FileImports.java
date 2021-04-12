@@ -3,12 +3,20 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.Authenticator;
+import java.net.InetSocketAddress;
+import java.net.ProxySelector;
+import java.net.http.HttpClient;
+import java.net.http.HttpClient.Redirect;
+import java.net.http.HttpClient.Version;
 import java.util.ArrayList;
 //import java.util.HashMap;
 //import java.util.Map;
 //import java.util.List;
 import java.util.Scanner;
 //import java.util.Objects;
+
+
 
 public class FileImports {
 	
@@ -76,7 +84,7 @@ public class FileImports {
 		return sections;
 	}
 	
-	
+
 	
 //	public static void REFACTORTHIS(String path) {		    	    
 //	    // Used for creating a new Offering when needed
