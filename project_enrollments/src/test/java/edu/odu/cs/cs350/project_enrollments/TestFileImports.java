@@ -148,20 +148,25 @@ FileImports defaultFileImports;
 	@Test
 	public void TestContainsDates()
 	{
-		//fail("Not yet implemented");
+		fail("Not yet implemented");
 		//FileImports f2 = new FileImports();
 		//will test if there is a dates.txt file present or not. if there is a dates.txt file present
 		//it will return false, if there is not a dates.txt file, present it will return true
 		//need to fetch users supplied file directory 
-		String present = "D:/blue/historic/dates.txt";	
-		String notpresent = "D:/blue/historic/";
-		assertTrue(FileImports.containsDates(notpresent));
-		assertFalse(FileImports.containsDates(present));
+		//String present = "D:/blue/historic/dates.txt";	
+		//String notpresent = "D:/blue/historic/";
+		//assertTrue(FileImports.containsDates(notpresent));
+		//assertFalse(FileImports.containsDates(present));
 		
 		
 		//new implementation with a URL to test if it contains dates.txt
+
+		//Document doc Jsoup.parse("");
+
 		
 		// this doesn't compile...
+		//i know im attempting to fix it atm 
+		
 		//Document doc;
 		//assertThat(doc.select("a[href]").text(),is("dates.txt"));
 		
