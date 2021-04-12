@@ -34,6 +34,9 @@ public class DetailedReport {
 		 double[] date2 = new double[]{0,0,25,60,0,0,0};
 		 double[] dProj = new double[]{0,0,0,.5,1,0,0};
 		 double[] proj = new double[] {0,0,0,60,80,0,0};
+		 
+		 String headDate1 = "Season/Year";
+		 String headDate2 = "Season/Year";
 		
 		for (String key : hist.keySet()) {
 			XSSFSheet sheet = workbook.createSheet(hist.get(key).getCourseTitle());
@@ -45,7 +48,7 @@ public class DetailedReport {
 		            sheet.autoSizeColumn(0);
 
 		            cell = row.createCell((short) 1);
-		            cell.setCellValue("Season/year");
+		            cell.setCellValue(headDate1);
 		            sheet.autoSizeColumn(1);
 
 		            cell = row.createCell((short) 2);
@@ -53,7 +56,7 @@ public class DetailedReport {
 		            sheet.autoSizeColumn(2);
 
 		            cell = row.createCell((short) 3);
-		            cell.setCellValue("season/year");
+		            cell.setCellValue(headDate2);
 		            sheet.autoSizeColumn(3);
 
 		            cell = row.createCell((short) 4);
