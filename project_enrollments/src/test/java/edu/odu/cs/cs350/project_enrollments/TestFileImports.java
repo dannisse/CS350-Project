@@ -1,18 +1,29 @@
 package edu.odu.cs.cs350.project_enrollments;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.File;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.Before;
+import java.io.InputStream;
+import java.lang.Object;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.util.Scanner;
+import java.io.*;
+import org.junit.*;
 //import org.junit.Test;    
 
 public class TestFileImports {
-
+	
 	//Example code
 		/*
 		 public class ReadFileTest {
@@ -37,19 +48,21 @@ FileImports defaultFileImports;
 	
 	@Before
 	public void setup() throws Exception {
+		
 	}
 	
+
 	@Test
 	public void TestSanitizePath()
 	{
-		FileImports f1 = new FileImports();
+		//FileImports f1 = new FileImports();
 		//testpath is created to emulate a possible file parameter that the program might run into
 		//the expected path is the expected output when the file is run
-		String TestPath = "C:\\some:dir\\some:file\\"; 
-		String expectedPath = "C:\\some:dir\\some:file"; 
 		
+		final String testPath = "C:/Documents/Historic";
+		final String expectedPath = "C:/Documents/Historic/";
 		//checks that the expected path is the correct path with proper / at the end of it
-		assertEquals(expectedPath,f1.sanitizePath(TestPath));
+		assertEquals(expectedPath,FileImports.sanitizePath(testPath));
 	}
 
 	@Test
@@ -68,21 +81,42 @@ FileImports defaultFileImports;
 		fail("Not yet implemented");
 	}
 	
+//	@Test
+//	public static boolean TestException()
+//	{	
+	
 
+
+	
+	
+//	}
+	
+	//to see list of objects being created
+	class CountedList extends ArrayList {
+		  private int counter = 0;
+		  private int id = counter++;
+		  public CountedList() {
+		    System.out.println("CountedList #" + id);
+		  }
+
+		  public int getId() {
+		    return id;
+		  }
+		}
+	
 	
 	@Test
 	public void TestContainsDates()
 	{
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 		//FileImports f2 = new FileImports();
 		//will test if there is a dates.txt file present or not. if there is a dates.txt file present
 		//it will return false, if there is not a dates.txt file, present it will return true
-		
 		//need to fetch users supplied file directory 
-		//String present = "D:/Documents/dates.txt";	
-		//String notpresent = "D:/Documents/";
-		//assertTrue(f2.containsDates(notpresent));
-		//assertFalse(f2.containsDates(present));
+		String present = "D:/blue/historic/dates.txt";	
+		String notpresent = "D:/blue/historic/";
+		assertTrue(FileImports.containsDates(notpresent));
+		assertFalse(FileImports.containsDates(present));
 		
 	}
 }
