@@ -3,7 +3,7 @@ stages:
 
 build:
   tags:
-    - blue1
+    - blue1-s2021
   stage: build
   script:
     - cd project_enrollments
