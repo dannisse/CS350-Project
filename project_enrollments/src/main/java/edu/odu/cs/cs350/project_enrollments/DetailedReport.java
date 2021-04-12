@@ -36,10 +36,7 @@ public class DetailedReport {
 		 double[] proj = new double[] {0,0,0,60,80,0,0};
 		
 		for (String key : hist.keySet()) {
-			int rowNum = 0;
-			int col = 0;
 			XSSFSheet sheet = workbook.createSheet(hist.get(key).getCourseTitle());
-			Row head = sheet.createRow(rowNum++);
 			for (int i = 0; i < 6; i++) {
 
 		            Row row = sheet.createRow((short) 0);
@@ -140,6 +137,7 @@ public class DetailedReport {
 		}
 		try (FileOutputStream outputStream = new FileOutputStream(path)) {
 	        workbook.write(outputStream);
+	        workbook.close();
   
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
