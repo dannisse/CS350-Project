@@ -34,10 +34,7 @@ public class DetailedReport {
 		 double[] date2 = new double[]{0,0,25,60,0,0,0};
 		 double[] dProj = new double[]{0,0,0,.5,1,0,0};
 		 double[] proj = new double[] {0,0,0,60,80,0,0};
-<<<<<<< HEAD
-=======
 		 
->>>>>>> master
 		 String headDate1 = "Season/Year";
 		 String headDate2 = "Season/Year";
 		
@@ -45,13 +42,7 @@ public class DetailedReport {
 			XSSFSheet sheet = workbook.createSheet(hist.get(key).getCourseTitle());
 			for (int i = 0; i < 6; i++) {
 
-<<<<<<< HEAD
-		            
-					
-					Row row = sheet.createRow((short) 0);
-=======
 		            Row row = sheet.createRow((short) 0);
->>>>>>> master
 		            Cell cell = row.createCell((short) 0);
 		            cell.setCellValue("dHistorical");
 		            sheet.autoSizeColumn(0);
@@ -92,10 +83,7 @@ public class DetailedReport {
 		                cell.setCellValue(proj[j]);
 		            }
 
-<<<<<<< HEAD
-=======
 		            
->>>>>>> master
 
 		            XSSFDrawing drawing = sheet.createDrawingPatriarch();
 		            XSSFClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, 8, 0, 15, 15);
@@ -160,9 +148,4 @@ public class DetailedReport {
 	}
 	}
 	
-<<<<<<< HEAD
-	
 }
-=======
-}
->>>>>>> master
