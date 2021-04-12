@@ -16,6 +16,7 @@ build:
       #fi
   only:
     - master
+    - import_urls
   artifacts:
     paths:
       - ./project_enrollments.jar
