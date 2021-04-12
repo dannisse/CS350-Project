@@ -42,12 +42,7 @@ public class FileImports {
 	{
 		Pattern pattern= Pattern.compile("^(http|https)://", Pattern.CASE_INSENSITIVE);
 		Matcher matcher=pattern.matcher(url);
-		
-		if (url.length()==0)
-		{
-			System.exit(1);
-		}
-		
+	
 		boolean matchFound=matcher.find();
 		if(matchFound)
 		{
