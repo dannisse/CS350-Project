@@ -15,7 +15,7 @@ build:
     - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/test/ ccarroll@linux.cs.odu.edu:tests/
   only:
     - master
-    - deploy_webpages
+    - deploy_javadoc
   artifacts:
     paths:
       - ./project_enrollments.jar
