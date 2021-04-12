@@ -209,11 +209,12 @@ public class FileImports {
 			try {
 				doc = Jsoup.connect(url).get();
 				Elements links = doc.select("a[href]");
+				boolean found = false;
 				for (Element src: links) {
-					System.out.println(src.attr("abs:href"));
+					found = src.attr("abs:href").contains("dates.txt");
 				}
-				System.out.println("completed");
-				System.exit(0);
+				System.out.println("found="+found);
+				return found;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
