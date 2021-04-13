@@ -36,6 +36,10 @@ public class Semester {
 		return this.snapshots;
 	}
 	
+	public Snapshot getSnapshot(int index) {
+		return this.snapshots.get(index);
+	}
+	
 	public String getRegistrationBegin() {
 		return this.registrationBegin;
 	}

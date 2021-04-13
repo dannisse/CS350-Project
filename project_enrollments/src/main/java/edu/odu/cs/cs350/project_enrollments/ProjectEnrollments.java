@@ -44,6 +44,23 @@ public class ProjectEnrollments {
 				boolean isURL = FileImports.validateUrl(path);
 				if (isURL) {
 					ArrayList<URL> urlsList = FileImports.getUrls(path);
+					
+					for (URL u: urlsList) {
+						if (!u.toString().contains("dates.txt")) {
+							Snapshot snap = new Snapshot(u);
+							sem.addSnapshot(snap);
+							//System.out.println("added snapshot from url.");
+							
+							/*
+							ArrayList<Section> sections = sem.getSnapshot(sem.getSnapshots().size()-1).getSections();
+							for (Section s: sections) {
+								s.print();
+							}
+							*/
+							
+							//System.exit(0);
+						}
+					}
 				} else {
 					ArrayList<File> filesList = FileImports.getFiles(path);
 					
@@ -55,8 +72,7 @@ public class ProjectEnrollments {
 							Snapshot snap = new Snapshot(f);
 							sem.addSnapshot(snap);
 						}
-						System.out.println("done");
-						System.exit(0);
+						
 					}
 				}
 				
