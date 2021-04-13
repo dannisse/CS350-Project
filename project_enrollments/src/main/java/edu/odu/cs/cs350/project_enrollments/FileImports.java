@@ -73,15 +73,16 @@ public class FileImports {
 						String absoluteURL = e.absUrl("abs:href");
 						
 						// debug output
-						System.out.println("ABSOLUTEURL="+absoluteURL);
+						//System.out.println("ABSOLUTEURL="+absoluteURL);
 						
 						URL url = new URL(absoluteURL);
-						System.out.println("LINK="+url.toString());
+						// debug output
+						//System.out.println("LINK="+url.toString());
 				
 						urlsList.add(url);
 						
 						//debug output
-						System.out.println("Added:"+urlsList.get(urlsList.size()-1).toString());
+						//System.out.println("Added:"+urlsList.get(urlsList.size()-1).toString());
 					}
 				}
 			} catch (IOException e) {

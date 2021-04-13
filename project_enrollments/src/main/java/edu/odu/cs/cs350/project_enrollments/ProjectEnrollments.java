@@ -43,9 +43,11 @@ public class ProjectEnrollments {
 				
 				boolean isURL = FileImports.validateUrl(path);
 				if (isURL) {
+					System.out.println("Retrieving from "+path+":");
 					ArrayList<URL> urlsList = FileImports.getUrls(path);
 					
 					for (URL u: urlsList) {
+						System.out.println("Retrieving "+u.toString());
 						if (!u.toString().contains("dates.txt")) {
 							Snapshot snap = new Snapshot(u);
 							sem.addSnapshot(snap);
@@ -78,11 +80,13 @@ public class ProjectEnrollments {
 				
 				
 				histSems.add(sem);
+				System.out.println("Historical semester successfully imported.");
+
 			}
 		}
-		
+				
 		// temp
-		System.exit(0);
+		//System.exit(0);
 		
 		
 		/*
@@ -93,17 +97,43 @@ public class ProjectEnrollments {
 		if (FileImports.containsDates(path)) {
 			//todo: need to give semester name and start and end dates
 			
-			ArrayList<File> filesList = FileImports.getFiles(path);
+						boolean isURL = FileImports.validateUrl(path);
 			
-			for (File f: filesList) {
-				String fileName = f.getName();
+			if (isURL) {
+				System.out.println("Retrieving from "+path+":");
+				ArrayList<URL> urlsList = FileImports.getUrls(path);
 				
-				// Make sure we're not adding dates.txt
-				if(!fileName.equals("dates.txt")) {
-					Snapshot snap = new Snapshot(f);
-					currSemester.addSnapshot(snap);
+				for (URL u: urlsList) {
+					System.out.println("Retrieving "+u.toString());
+					if (!u.toString().contains("dates.txt")) {
+						Snapshot snap = new Snapshot(u);
+						currSemester.addSnapshot(snap);
+						//System.out.println("added snapshot from url.");
+						
+						/*
+						ArrayList<Section> sections = sem.getSnapshot(sem.getSnapshots().size()-1).getSections();
+						for (Section s: sections) {
+							s.print();
+						}
+						*/
+						
+						//System.exit(0);
+					}
+				}
+			} else {
+				ArrayList<File> filesList = FileImports.getFiles(path);
+				
+				for (File f: filesList) {
+					String fileName = f.getName();
+					
+					// Make sure we're not adding dates.txt
+					if(!fileName.equals("dates.txt")) {
+						Snapshot snap = new Snapshot(f);
+						currSemester.addSnapshot(snap);
+					}
 				}
 			}
+			System.out.println("Current semester successfully imported.");
 		}
 		
 		
