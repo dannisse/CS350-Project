@@ -200,7 +200,9 @@ public class FileImports {
 	// Return false if the file is present.
 	public static boolean containsDates(String path) {
 		
-		boolean isURL = true;
+		String errorMessage = "Missing dates.txt";
+		
+		boolean isURL = validateUrl(path);
 		
 		
 		if (isURL) {
@@ -209,12 +211,16 @@ public class FileImports {
 			try {
 				doc = Jsoup.connect(url).get();
 				Elements links = doc.select("a[href]");
+				
+				// Make sure the remote directory contains dates.txt
 				boolean found = false;
-				for (Element src: links) {
-					found = src.attr("abs:href").contains("dates.txt");
+				for (Element l: links) {
+					found = l.attr("abs:href").contains("dates.txt");
 				}
-				System.out.println("found="+found);
-				return found;
+				if (!found) {
+					System.err.println(errorMessage);
+				}
+				return found;	// nothing more to do
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -228,7 +234,7 @@ public class FileImports {
 	        fileScanner = new Scanner(new File(path + "dates.txt"));
 	    } catch(FileNotFoundException e) {
 	    	verdict = false;
-	        System.err.println("Missing dates.txt");
+	        System.err.println(errorMessage);
 	    } finally {
 	        if(fileScanner!= null) {
 	            fileScanner.close();
