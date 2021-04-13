@@ -172,6 +172,30 @@ public class FileImports {
 		return sections;
 	}
 	
+	// get all the sections in .csv file. there is one section per line in the file.
+	// @param u is a url of a .csv file
+	public static ArrayList<Section> getAllSections(URL u) {
+		ArrayList<Section> sections = null;
+		sections = new ArrayList<Section>();
+		
+		try {
+			BufferedReader r = new BufferedReader(new InputStreamReader(u.openStream()));
+			String currLine = r.readLine();	// read in the header line
+			while ((currLine = r.readLine()) != null) {
+				sections.add(extractSection(currLine));
+			}
+			
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return sections;
+	}
+	
 
 	
 //	public static void REFACTORTHIS(String path) {		    	    
