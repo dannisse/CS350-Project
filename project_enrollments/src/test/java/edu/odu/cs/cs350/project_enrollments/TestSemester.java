@@ -31,11 +31,14 @@ class TestSemester {
 	@Test
 	void testSemesterStringStringString() {
 		//fail("Not yet implemented");
-		Semester s1 = new Semester("201910","18-MAY-20","07-AUG-20");
+		String n = "";
+		String b = "";
+		String e = "";
+		Semester s1 = new Semester(n, b, e);
 		
-		assertEquals("201910" , s1.getName());	
-		assertEquals("18-MAY-20" , s1.getRegistrationBegin());	
-		assertEquals("07-AUG-20" , s1.getRegistrationEnd());	
+		assertEquals(n, s1.getName());	
+		assertEquals(b , s1.getRegistrationBegin());	
+		assertEquals(e, s1.getRegistrationEnd());	
 		}
 	
 
@@ -43,7 +46,7 @@ class TestSemester {
 	void testSemesterSemester() {
 		
 		//fail("Not yet implemented");
-		// i believe this is correct?
+	
 		Semester s1 = new Semester();
 		Semester s2 = new Semester(s1);
 		
@@ -57,23 +60,29 @@ class TestSemester {
 		Semester si = new Semester();
 		
 		si.setName("201910");  
-		assertEquals("201910", si.getName()); 
-		//make sure the name you set is equal
+		
+		assertEquals(si.getName(),"201910" ); 
+		assertEquals(si.getRegistrationBegin(),""); 
+		assertEquals(si.getRegistrationEnd(), ""); 
+		
 	}
 
 	@Test
 	void testAddSnapshot() {
-		fail("Not yet implemented");
-		Semester s1 = new Semester();
-		File f = new File ("C:/some:dir/some:file/file.txt");
-		Snapshot snap = new Snapshot(f);
+		fail("Not yet implemented"); 
 		
-		s1.addSnapshot(snap);
-		
-		
-		assertEquals(s1.getName(), "file.txt");  //?? have to fix this test
-		assertEquals(s1.getRegistrationBegin(), "");
-		assertEquals(s1.getRegistrationEnd(), "");
+		//need to fix implemnetation, not working properly atm
+		/*
+		 * Semester s1 = new Semester(); File f = new File
+		 * ("C:/some:dir/some:file/file.txt"); Snapshot snap = new Snapshot(f);
+		 * 
+		 * s1.addSnapshot(snap);
+		 * 
+		 * 
+		 * assertEquals(s1.getName(), "file.txt"); //?? have to fix this test
+		 * assertEquals(s1.getRegistrationBegin(), "");
+		 * assertEquals(s1.getRegistrationEnd(), "");
+		 */
 	}
 	
 
@@ -96,7 +105,10 @@ class TestSemester {
 		Semester si = new Semester();
 		
 		 si.setRegistrationBegin("18-MAY-20");
-		assertEquals("18-MAY-20", si.getRegistrationBegin()); 
+		 
+		 assertEquals(si.getName(),"" ); 
+		assertEquals( si.getRegistrationBegin(), "18-MAY-20"); 
+		assertEquals(si.getRegistrationEnd(),"");
 		//make sure the name you set is equal
 	}
 
@@ -106,7 +118,10 @@ class TestSemester {
 		Semester si = new Semester();
 		
 		 si.setRegistrationEnd("07-AUG-20");
-		assertEquals( "07-AUG-20", si.getRegistrationEnd()); 
+		 
+		assertEquals(si.getName(),"" ); 
+		assertEquals(si.getRegistrationBegin(),""); 
+		assertEquals(si.getRegistrationEnd(),"07-AUG-20");
 		//make sure the name you set is equal
 
 	}
