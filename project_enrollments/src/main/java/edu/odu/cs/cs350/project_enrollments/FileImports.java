@@ -1,14 +1,9 @@
 package edu.odu.cs.cs350.project_enrollments;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.net.Authenticator;
-import java.net.InetSocketAddress;
-import java.net.ProxySelector;
-import java.net.http.HttpClient;
-import java.net.http.HttpClient.Redirect;
-import java.net.http.HttpClient.Version;
-import java.io.IOException;
+import java.io.*;
+//import java.io.File;
+//import java.io.FileNotFoundException;
+//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -17,6 +12,8 @@ import java.util.regex.Matcher;
 import org.jsoup.*;
 import org.jsoup.nodes.*;
 import org.jsoup.select.*;
+
+import java.net.*;
 
 public class FileImports {
 	
@@ -53,45 +50,38 @@ public class FileImports {
 		{
 			return false;
 		}
-		
 
-		
-		
 	}
 	
-	// Given a path, return the list of files in that path
-	public static ArrayList<File> getFiles(String path) {	
-		
+	// given a path representing a url, return all links to .csv files and dates.txt files located on that url
+	public static ArrayList<URL> getUrls(String path) {
 		boolean isURL = validateUrl(path);
-		ArrayList<File> filesList = new ArrayList<File>();
+		ArrayList<URL> urlsList = new ArrayList<URL>();
 		
 		if (isURL) {
-			String url = path;
+			String urlString = path;
 			Document doc;
 			try {
-				doc = Jsoup.connect(url).get();
-				Elements links = doc.select("a[href]");
+				doc = Jsoup.connect(urlString).get();
+				Elements elements = doc.select("a[href]");
 				
-				for (Element l: links) {
+				for (Element e: elements) {
 					
 					// is it a .csv file or dates.txt?
-					if (l.attr("abs:href").contains(".csv") || l.attr("abs:href").contains("dates.txt")) {
+					if (e.attr("abs:href").contains(".csv") || e.attr("abs:href").contains("dates.txt")) {
 						// get the absolute url of this element
-						String absoluteURL = l.absUrl("abs:href");
+						String absoluteURL = e.absUrl("abs:href");
 						
 						// debug output
 						System.out.println("ABSOLUTEURL="+absoluteURL);
 						
-						// then make a file out of the url
-						File fileLink = new File(absoluteURL);
-						
-						// debug output
-						System.out.println("FILELINK="+fileLink.toString());
+						URL url = new URL(absoluteURL);
+						System.out.println("LINK="+url.toString());
 				
-						filesList.add(fileLink);
+						urlsList.add(url);
 						
 						//debug output
-						System.out.println("Added:"+filesList.get(filesList.size()-1).toString());
+						System.out.println("Added:"+urlsList.get(urlsList.size()-1).toString());
 					}
 				}
 			} catch (IOException e) {
@@ -99,12 +89,25 @@ public class FileImports {
 				e.printStackTrace();
 			}
 		} else {	// not a URL
-			File directoryPath = new File(path);
-			File filesArray[] = directoryPath.listFiles();
-			for (File f: filesArray) {
-				filesList.add(f);
-			}
+			System.err.println("Not a URL: "+path);
+			System.exit(1);
 		}
+		return urlsList;
+	}
+	
+	// Given a path, return the list of files in that path
+	public static ArrayList<File> getFiles(String path) {	
+		
+		ArrayList<File> filesList = new ArrayList<File>();
+		
+		File directoryPath = new File(path);
+		
+		File filesArray[] = directoryPath.listFiles();
+		
+		for (File f: filesArray) {
+			filesList.add(f);
+		}
+		
 		return filesList;
 	}
 	
@@ -129,11 +132,31 @@ public class FileImports {
 	// @param f a .csv file
 	public static ArrayList<Section> getAllSections(File f) {
 		ArrayList<Section> sections = null;
+		sections = new ArrayList<Section>();
+		
+		/*
+		if (isURL) {
+			try {
+				URL url = new URL(f.toString());
+				BufferedReader r = new BufferedReader(new InputStreamReader(url.openStream()));
+				String currLine = r.readLine();	// read in the header line
+				while ((currLine = r.readLine()) != null) {
+					sections.add(extractSection(currLine));
+				}
+				
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		} else {*/
 		Scanner s = null;
 		try {
 			s = new Scanner(f);
 			String currLine = s.nextLine();	// read in the header line
-			sections = new ArrayList<Section>();
 			while (s.hasNextLine()) {
 				currLine = s.nextLine();
 				sections.add(extractSection(currLine));
@@ -144,6 +167,8 @@ public class FileImports {
 		} finally {
 			s.close();
 		}
+		//}
+		
 		return sections;
 	}
 	

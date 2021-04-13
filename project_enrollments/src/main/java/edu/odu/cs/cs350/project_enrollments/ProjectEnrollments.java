@@ -3,6 +3,7 @@ package edu.odu.cs.cs350.project_enrollments;
 import java.util.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.*;
 
 public class ProjectEnrollments {
 
@@ -39,20 +40,27 @@ public class ProjectEnrollments {
 			if (FileImports.containsDates(path)) {
 				//todo: need to give semester name and start and end dates
 				Semester sem = new Semester();
-				ArrayList<File> filesList = FileImports.getFiles(path);
 				
-				System.out.println("done");
-				System.exit(0);
-				
-				for (File f: filesList) {
-					String fileName = f.getName();
+				boolean isURL = FileImports.validateUrl(path);
+				if (isURL) {
+					ArrayList<URL> urlsList = FileImports.getUrls(path);
+				} else {
+					ArrayList<File> filesList = FileImports.getFiles(path);
 					
-					// Make sure we're not adding dates.txt
-					if(!fileName.equals("dates.txt")) {
-						Snapshot snap = new Snapshot(f);
-						sem.addSnapshot(snap);
+					for (File f: filesList) {
+						String fileName = f.getName();
+						
+						// Make sure we're not adding dates.txt
+						if(!fileName.equals("dates.txt")) {
+							Snapshot snap = new Snapshot(f);
+							sem.addSnapshot(snap);
+						}
+						System.out.println("done");
+						System.exit(0);
 					}
 				}
+				
+				
 				histSems.add(sem);
 			}
 		}
