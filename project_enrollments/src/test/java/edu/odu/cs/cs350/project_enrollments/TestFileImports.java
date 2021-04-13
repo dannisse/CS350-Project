@@ -59,16 +59,12 @@ FileImports defaultFileImports;
 		//FileImports f1 = new FileImports();
 		//testpath is created to emulate a possible file parameter that the program might run into
 		//the expected path is the expected output when the file is run
-		String testPath = "";
-		String path ="([a-zA-Z]:)?(\\\\[a-zA-Z0-9._-]+)+\\\\?";
-		if(!path.endsWith("/") || !path.endsWith("\\")){
-			testPath = path;
-		}
-	
-		//final String testPath = path;
-		final String expectedPath = path.concat("/");
+
+		final String testPath = "C:/Documents/Historic";
+		final String expectedPath = "C:/Documents/Historic/";
 		//checks that the expected path is the correct path with proper / at the end of it
 		assertEquals(expectedPath,FileImports.sanitizePath(testPath));
+
 	}
 
 	@Test
@@ -120,18 +116,24 @@ FileImports defaultFileImports;
 		//it will return false, if there is not a dates.txt file, present it will return true
 		//need to fetch users supplied file directory 
 		//this.TestContainsDates() = Path.of("", "dates.txt");
-		String path = "([a-zA-Z]:)?(\\\\[a-zA-Z0-9._-]+)+\\\\?"; 
-		String NoDates = "";
-		String Dates = "";
-		if(path.contains("dates.txt")){
-			Dates = path;
-			assertFalse(FileImports.containsDates(Dates));
-		}
-		if(!path.contains("dates.txt")){
-			NoDates = path;
-			assertTrue(FileImports.containsDates(NoDates));
-		}
 		
+		//String path = "(?<!\\S)" + "dates.txt";
+		//assertTrue(FileImports.containsDates("(?<!\\S)"));
+		//assertFalse(FileImports.containsDates("(?<!\\S)" + "dates.txt"));
+
+		
+		String present = "D:/blue/historic/dates.txt";	
+		String notpresent = "D:/blue/historic/";
+		assertTrue(FileImports.containsDates(notpresent));
+		assertFalse(FileImports.containsDates(present));
+
+		/*
+		 * String path = "([a-zA-Z]:)?(\\\\[a-zA-Z0-9._-]+)+\\\\?"; String NoDates = "";
+		 * String Dates = ""; if(path.contains("dates.txt")){ Dates = path;
+		 * assertFalse(FileImports.containsDates(Dates)); }
+		 * if(!path.contains("dates.txt")){ NoDates = path;
+		 * assertTrue(FileImports.containsDates(NoDates)); }
+		 */
 
 		//assertTrue(FileImports.containsDates(NoDates));
 		//assertFalse(FileImports.containsDates(Dates));
