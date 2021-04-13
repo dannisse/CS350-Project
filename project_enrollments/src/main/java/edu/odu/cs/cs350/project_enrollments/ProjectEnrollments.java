@@ -40,6 +40,10 @@ public class ProjectEnrollments {
 				//todo: need to give semester name and start and end dates
 				Semester sem = new Semester();
 				ArrayList<File> filesList = FileImports.getFiles(path);
+				
+				System.out.println("done");
+				System.exit(0);
+				
 				for (File f: filesList) {
 					String fileName = f.getName();
 					
@@ -66,6 +70,7 @@ public class ProjectEnrollments {
 			//todo: need to give semester name and start and end dates
 			
 			ArrayList<File> filesList = FileImports.getFiles(path);
+			
 			for (File f: filesList) {
 				String fileName = f.getName();
 				

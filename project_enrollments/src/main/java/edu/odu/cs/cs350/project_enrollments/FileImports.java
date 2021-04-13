@@ -61,11 +61,49 @@ public class FileImports {
 	
 	// Given a path, return the list of files in that path
 	public static ArrayList<File> getFiles(String path) {	
-		File directoryPath = new File(path);
-		File filesArray[] = directoryPath.listFiles();
+		
+		boolean isURL = validateUrl(path);
 		ArrayList<File> filesList = new ArrayList<File>();
-		for (File f: filesArray) {
-			filesList.add(f);
+		
+		if (isURL) {
+			String url = path;
+			Document doc;
+			try {
+				doc = Jsoup.connect(url).get();
+				Elements links = doc.select("a[href]");
+				
+				for (Element l: links) {
+					
+					// is it a .csv file or dates.txt?
+					if (l.attr("abs:href").contains(".csv") || l.attr("abs:href").contains("dates.txt")) {
+						// get the absolute url of this element
+						String absoluteURL = l.absUrl("abs:href");
+						
+						// debug output
+						System.out.println("ABSOLUTEURL="+absoluteURL);
+						
+						// then make a file out of the url
+						File fileLink = new File(absoluteURL);
+						
+						// debug output
+						System.out.println("FILELINK="+fileLink.toString());
+				
+						filesList.add(fileLink);
+						
+						//debug output
+						System.out.println("Added:"+filesList.get(filesList.size()-1).toString());
+					}
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {	// not a URL
+			File directoryPath = new File(path);
+			File filesArray[] = directoryPath.listFiles();
+			for (File f: filesArray) {
+				filesList.add(f);
+			}
 		}
 		return filesList;
 	}
