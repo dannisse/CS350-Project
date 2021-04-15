@@ -128,7 +128,7 @@ public class ProjectEnrollments {
 		generateOfferingsAndCourses(currSections, currSemesterList);
 		
 		
-		System.out.println("AYYd "+histSemesterList.size());
+		/*System.out.println("AYYd "+histSemesterList.size());
 		for (String key : histSemesterList.keySet()) {
 			
 			System.out.println("=======================================\n");
@@ -143,7 +143,7 @@ public class ProjectEnrollments {
 			System.out.println("=======================================\n");
 			currSemesterList.get(key).display();
 			break;
-		}
+		}*/
 		
 		
 		

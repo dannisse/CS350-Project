@@ -116,7 +116,7 @@ public class Section {
 		this.overall_enr = rhs.overall_enr;
 	}
 	
-	public void print() {
+	/*public void print() {
 		System.out.println("SEATS="+seats);
 		System.out.println("CRN="+CRN);
 		System.out.println("SUBJ="+subj);
@@ -147,8 +147,8 @@ public class Section {
 		System.out.println("NOTES="+notes);
 		System.out.println("COMMENTS="+comments);
 		System.out.println("COLL="+coll);	
-	}
-	public static Comparator<Section> eSnapNum = new Comparator<Section>() {
+	}*/
+	/*public static Comparator<Section> eSnapNum = new Comparator<Section>() {
 
 		public int compare(Section s1, Section s2) {
 
@@ -157,9 +157,9 @@ public class Section {
 		   
 		   return num1-num2;
 
-	   }};
+	   }};*/
 	   
-	   public static Comparator<Section> eSnapCRN = new Comparator<Section>() {
+	  /* public static Comparator<Section> eSnapCRN = new Comparator<Section>() {
 
 			public int compare(Section s1, Section s2) {
 
@@ -168,7 +168,7 @@ public class Section {
 			   
 			   return num1-num2;
 
-		   }};
+		   }};*/
 	
 	
 /*	public static void mathFR(ArrayList<Section> data) {
@@ -272,8 +272,8 @@ public class Section {
 	/*
 	 * Display for testing purposes
 	 */
-	public void display()
+	/*public void display()
 	{
 		System.out.println(this.getCourse() + " | " + this.getCRN());
-	}
+	}*/
 }

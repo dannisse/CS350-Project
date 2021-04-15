@@ -96,7 +96,7 @@ class TestSection {
 		assertEquals(s1.getCourse(), s1.getSubj()+s1.getCrse());
 	}
 	
-	@Test
+/*	@Test
 	void testMathFR() {
 		
 		fail("Not yet implemented");
@@ -110,5 +110,5 @@ class TestSection {
 	@Test
 	void testPrint() {
 		fail("Not yet implemented");
-	}
+	}*/
 }

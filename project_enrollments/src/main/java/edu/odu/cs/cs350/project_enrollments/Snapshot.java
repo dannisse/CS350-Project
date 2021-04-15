@@ -27,7 +27,7 @@ public class Snapshot {
 	/*
 	 * Display for testing purposes
 	 */
-	public void display()
+	/*public void display()
 	{
 		System.out.println("\t" + this.date + "\n");
 		for(Section sec : this.sections)
@@ -35,5 +35,5 @@ public class Snapshot {
 			System.out.print("\t");
 			sec.display();
 		} 
-	}
+	}*/
 }

@@ -194,7 +194,7 @@ public class Offering {
 	/*
 	 * Print every section listed under this offering
 	 */
-	public void display()
+	/*public void display()
 	{
 		
 		System.out.println("\t[Offering]   " + this.overallCap + " | " + this.subject + this.courseNumber + " -> " + this.instructor +  "\n");
@@ -203,6 +203,6 @@ public class Offering {
 		{
 			System.out.println("\t\t[Section]   " + section.enr + " | " + section.getCourse() + " " + section.CRN + " -> " + this.getInstructor() );
 		}
-	}
+	}*/
 	
 }

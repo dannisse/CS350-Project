@@ -124,7 +124,7 @@ class TestCourse {
 		assertFalse(c2.getOfferingListSize()>1);
 	}
 	
-	@Test
+/*	@Test
 	void testDisplay() {
 		fail("Not yet implemented");
 	}
@@ -132,5 +132,5 @@ class TestCourse {
 	@Test
 	void testDisplayCLI() {
 		fail("Not yet implemented");
-	}
+	}*/
 }

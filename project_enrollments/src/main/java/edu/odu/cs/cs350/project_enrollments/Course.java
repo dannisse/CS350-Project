@@ -107,7 +107,7 @@ public class Course {
 	/*
 	 * Print every section listed under this offering
 	 */
-	public void display()
+	/*public void display()
 	{
 		
 		System.out.println("[Course]   " + this.courseTitle + "\t|\t" +  this.actualEnrollment + "\t|\t" +  this.enrollmentCap + "\t|\t" + this.projectedEnrollment + "\n");
@@ -118,7 +118,7 @@ public class Course {
 			System.out.println("\n");
 		}
 		System.out.println("\n");
-	}
+	}*/
 	
 	/*
 	 * Displat for the summary report
@@ -131,7 +131,7 @@ public class Course {
 		{
 			ast = "*";
 		}
-		
+		//String out = "%-14s%-14s%-14s%-14s" + (ast + this.courseTitle) + this.actualEnrollment + this.projectedEnrollment + this.enrollmentCap + "\n";
 		System.out.format("%-14s%-14s%-14s%-14s", (ast + this.courseTitle), this.actualEnrollment, this.projectedEnrollment, this.enrollmentCap);
 		System.out.println("\n");
 	}
