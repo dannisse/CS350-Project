@@ -213,7 +213,7 @@ class TestOffering {
 		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
 	}
 
-/*	@Test
+	@Test
 	void testAddSection() {
 		Section s1 = new Section();
 		Offering o2 = new Offering(s1);
@@ -221,7 +221,7 @@ class TestOffering {
 		o2.addSection(s1);
 		
 		assertEquals(o2.getSubject(), "");
-		assertEquals(o2.getCourseNumber(), "");
+		assertEquals(o2.getCourseNumber(), "000L");
 		assertEquals(o2.getCourse(), o2.getSubject()+o2.getCourseNumber());
 		assertEquals(o2.getCrossListCap(), 0);
 		assertEquals(o2.getEnrolled(), 0);
@@ -230,9 +230,9 @@ class TestOffering {
 		assertEquals(o2.getOverallEnr(), 0);
 		assertEquals(o2.getInstructor(), "");
 		
-		assertTrue(o2.getSectionListSize()>0);
-		assertFalse(o2.getSectionListSize()>1);
-	}*/
+		//assertTrue(o2.getSectionListSize()>0);
+		//assertFalse(o2.getSectionListSize()>1);
+	}
 
 /*	@Test
 	void testDisplay() {
