@@ -20,12 +20,11 @@ class TestSemester {
 	@Test
 	void testSemester() {
 		Semester s1 = new Semester();
-		ArrayList<Snapshot> snapshots = new ArrayList<Snapshot>();
 		
-		assertEquals(snapshots.size(), 0);
 		assertEquals(s1.getName(),"");
 		assertEquals(s1.getRegistrationBegin(), "");
 		assertEquals(s1.getRegistrationEnd(), "");
+		assertEquals(s1.snapshotsSize(), 0);
 	}
 
 	@Test
@@ -39,6 +38,7 @@ class TestSemester {
 		assertEquals(n, s1.getName());	
 		assertEquals(b , s1.getRegistrationBegin());	
 		assertEquals(e, s1.getRegistrationEnd());	
+		assertEquals(s1.snapshotsSize(), 0);
 		}
 	
 
@@ -52,6 +52,7 @@ class TestSemester {
 		
 		assertEquals(s2.getName(), s1.getName());
 		assertEquals(s2.getSnapshots(), s1.getSnapshots());
+		assertEquals(s1.snapshotsSize(), s2.snapshotsSize());
 	}
 
 	@Test
@@ -64,12 +65,22 @@ class TestSemester {
 		assertEquals(si.getName(),"201910" ); 
 		assertEquals(si.getRegistrationBegin(),""); 
 		assertEquals(si.getRegistrationEnd(), ""); 
+		assertEquals(si.snapshotsSize(), 0);
 		
 	}
 
 	@Test
 	void testAddSnapshot() {
-		fail("Not yet implemented"); 
+		
+		Snapshot sn = new Snapshot();
+		Semester s1 = new Semester();
+		
+		s1.addSnapshot(sn);
+		
+		assertEquals("", s1.getName());	
+		assertEquals("", s1.getRegistrationBegin());	
+		assertEquals("", s1.getRegistrationEnd());	
+		assertEquals(s1.snapshotsSize(), 1);
 		
 		//need to fix implemnetation, not working properly atm
 		/*
@@ -88,7 +99,21 @@ class TestSemester {
 
 	@Test
 	public void testRemoveSnapshot() {
-		fail("Not yet implemented");
+		Snapshot sn = new Snapshot();
+		Semester s1 = new Semester();
+		
+		s1.addSnapshot(sn);
+		
+		assertEquals("", s1.getName());	
+		assertEquals("", s1.getRegistrationBegin());	
+		assertEquals("", s1.getRegistrationEnd());
+		assertEquals(s1.snapshotsSize(), 1);
+		
+		s1.removeSnapshot(0);
+		
+		assertEquals(s1.snapshotsSize(), 0);
+		
+		
 		//Semester si = new Semester();
 		//File f = new File ("D:/blue/file.txt");
 		//Snapshot snap = new Snapshot(f);
@@ -109,6 +134,7 @@ class TestSemester {
 		 assertEquals(si.getName(),"" ); 
 		assertEquals( si.getRegistrationBegin(), "18-MAY-20"); 
 		assertEquals(si.getRegistrationEnd(),"");
+		assertEquals(si.snapshotsSize(), 0);
 		//make sure the name you set is equal
 	}
 
@@ -122,6 +148,7 @@ class TestSemester {
 		assertEquals(si.getName(),"" ); 
 		assertEquals(si.getRegistrationBegin(),""); 
 		assertEquals(si.getRegistrationEnd(),"07-AUG-20");
+		assertEquals(si.snapshotsSize(), 0);
 		//make sure the name you set is equal
 
 	}

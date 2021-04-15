@@ -63,4 +63,8 @@ public class Semester {
 	public void setRegistrationEnd(String e) {
 		this.registrationEnd = e;
 	}
+	
+	public int snapshotsSize() {
+		return snapshots.size();
+	}
 }

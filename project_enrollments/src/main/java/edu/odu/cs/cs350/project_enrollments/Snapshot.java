@@ -10,6 +10,10 @@ public class Snapshot {
 	
 
 	// need to test this overall
+	public Snapshot() {
+		date = "";
+	}
+	
 	public Snapshot(File f) {
 		
 		date = f.getName();	// need to test: does this even work? the name should be something like "2019-04-01", or YYYY-MM-DD
