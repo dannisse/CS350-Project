@@ -34,16 +34,20 @@ public class TestSummaryReport {
 			@Test
 			public void testCoursesinCurrentSem() {
 				/* 
-				 {
-				 //example code implement later
-				  CoursesInCurrentSem = new CoursesInCurrentSem();
-				  List<Courses> courses = instance.retrieveData("firstCompany,secondCompany");
-				  assertTrue(companies.size() == 2);
-				  assertEquals(companies.get(0).getId().equals("firstCompany");
-				  assertEquals(companies.get(0).getName().equals("firstCompany");
-				  assertEquals(companies.get(1).getId().equals("secondCompany");
-				  assertEquals(companies.get(1).getName().equals("secondCompany");
-				}
+			
+    			@Before
+    			public void init() {
+        		this.workingDir = Path.of("", "src/test/resources");
+    			}
+
+    			@Test
+    			public void read() throws IOException {
+        		Path file = this.workingDir.resolve("test.file");
+        		String content = Files.readString(file);
+        		assertThat(content, is("ouput"));
+    			}
+
+}    
 				*/
 				fail("Not yet implemented");
 			}
