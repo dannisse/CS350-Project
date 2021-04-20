@@ -20,7 +20,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.Scanner;
 import java.io.*;
 import org.junit.*;
-//import org.junit.Test;    
+    
 
 public class TestFileImports {
 	
@@ -83,15 +83,6 @@ FileImports defaultFileImports;
 		fail("Not yet implemented");
 	}
 	
-//	@Test
-//	public static boolean TestException()
-//	{	
-	
-
-
-	
-	
-//	}
 	
 	//to see list of objects being created
 	class CountedList extends ArrayList {
