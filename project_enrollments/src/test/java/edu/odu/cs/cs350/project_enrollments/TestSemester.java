@@ -29,7 +29,6 @@ class TestSemester {
 
 	@Test
 	void testSemesterStringStringString() {
-		//fail("Not yet implemented");
 		String n = "";
 		String b = "";
 		String e = "";
@@ -45,7 +44,6 @@ class TestSemester {
 	@Test
 	void testSemesterSemester() {
 		
-		//fail("Not yet implemented");
 	
 		Semester s1 = new Semester();
 		Semester s2 = new Semester(s1);
@@ -113,15 +111,7 @@ class TestSemester {
 		
 		assertEquals(s1.snapshotsSize(), 0);
 		
-		
-		//Semester si = new Semester();
-		//File f = new File ("D:/blue/file.txt");
-		//Snapshot snap = new Snapshot(f);
-		 //not working need to fix
-		
-		//si.addSnapshot(snap);
-	//	assertEquals(snap, si.getSnapshots());
-		
+	
 	}
 
 	@Test
@@ -135,7 +125,6 @@ class TestSemester {
 		assertEquals( si.getRegistrationBegin(), "18-MAY-20"); 
 		assertEquals(si.getRegistrationEnd(),"");
 		assertEquals(si.snapshotsSize(), 0);
-		//make sure the name you set is equal
 	}
 
 	@Test
@@ -149,7 +138,6 @@ class TestSemester {
 		assertEquals(si.getRegistrationBegin(),""); 
 		assertEquals(si.getRegistrationEnd(),"07-AUG-20");
 		assertEquals(si.snapshotsSize(), 0);
-		//make sure the name you set is equal
 
 	}
 
