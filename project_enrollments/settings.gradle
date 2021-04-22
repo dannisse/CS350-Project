@@ -9,10 +9,7 @@
 
 rootProject.name = 'project_enrollments'
 
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'refactor_file_imports' of git@forge350.cs.odu.edu:alovitz/blue1.git
 pluginManagement {
     repositories {
         jcenter()
