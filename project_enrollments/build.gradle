@@ -15,8 +15,8 @@ plugins {
     id 'edu.odu.cs.report_accumulator' version '1.3' 
 }
 
-reportStats.reportsURL = 'https://project-reports-url'
-deployReports.deployDestination = '/path-for-copying-to-above-named-website'
+reportStats.reportsURL = 'blue1\project_enrollments\build\reports\tests\test'
+deployReports.deployDestination = 'blue1\project_enrollments\build\reports\tests\test\*'
 
 
 java {
