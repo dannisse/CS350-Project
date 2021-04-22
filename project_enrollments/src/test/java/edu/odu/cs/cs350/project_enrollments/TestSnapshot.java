@@ -7,8 +7,13 @@ import org.junit.jupiter.api.Test;
 
 class TestSnapshot {
 
+	
+	Snapshot defaultsnapshot;
+	
 	@BeforeEach
 	void setUp() throws Exception {
+		
+		defaultsnapshot = new Snapshot();
 	}
 
 	@Test
@@ -16,7 +21,7 @@ class TestSnapshot {
 		fail("Not yet implemented");
 	}
 
-	
+	//might not need to test for display 
 	@Test
 	void testDisplay() {
 		fail("Not yet implemented");

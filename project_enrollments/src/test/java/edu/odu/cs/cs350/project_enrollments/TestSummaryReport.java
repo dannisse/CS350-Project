@@ -30,7 +30,7 @@ public class TestSummaryReport {
 		
 	}
 
-	// test for output of courses in current semester
+	// TODO test for output of courses in current semester
 			@Test
 			public void testCoursesinCurrentSem() {
 				/* 
