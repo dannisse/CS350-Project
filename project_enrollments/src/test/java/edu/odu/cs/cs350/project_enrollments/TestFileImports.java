@@ -107,27 +107,14 @@ FileImports defaultFileImports;
 		//it will return false, if there is not a dates.txt file, present it will return true
 		//need to fetch users supplied file directory 
 		//this.TestContainsDates() = Path.of("", "dates.txt");
-		
-		//String path = "(?<!\\S)" + "dates.txt";
-		//assertTrue(FileImports.containsDates("(?<!\\S)"));
-		//assertFalse(FileImports.containsDates("(?<!\\S)" + "dates.txt"));
-
+	
 		
 		String present = "D:/blue/historic/dates.txt";	
 		String notpresent = "D:/blue/historic/";
 		assertTrue(FileImports.containsDates(notpresent));
 		assertFalse(FileImports.containsDates(present));
 
-		/*
-		 * String path = "([a-zA-Z]:)?(\\\\[a-zA-Z0-9._-]+)+\\\\?"; String NoDates = "";
-		 * String Dates = ""; if(path.contains("dates.txt")){ Dates = path;
-		 * assertFalse(FileImports.containsDates(Dates)); }
-		 * if(!path.contains("dates.txt")){ NoDates = path;
-		 * assertTrue(FileImports.containsDates(NoDates)); }
-		 */
 
-		//assertTrue(FileImports.containsDates(NoDates));
-		//assertFalse(FileImports.containsDates(Dates));
 		
 		
 	}
