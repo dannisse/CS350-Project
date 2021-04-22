@@ -95,6 +95,8 @@ class TestSection {
 		assertEquals(s1.getCrse(), "000L");
 		assertEquals(s1.getCourse(), s1.getSubj()+s1.getCrse());
 	}
+	
+	//TODO finish these functions up 
 /*	@Test
 	void testMathFR() {
 		
