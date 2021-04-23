@@ -2,6 +2,7 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("PMD")
 public class Semester {
 	private String name;	// semester name should be in the form of "academicYear"+"semesterCode" ie 201910
 	private ArrayList<Snapshot> snapshots;

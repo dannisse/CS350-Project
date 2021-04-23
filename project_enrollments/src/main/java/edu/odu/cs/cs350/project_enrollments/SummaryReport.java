@@ -5,6 +5,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.text.*;
 
+@SuppressWarnings("PMD")
 public class SummaryReport {
 	public static Date d3;
 	public static long st;

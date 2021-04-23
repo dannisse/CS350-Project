@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
+@SuppressWarnings("PMD")
 public class Section {	
 	public String seats;
 	public String CRN;

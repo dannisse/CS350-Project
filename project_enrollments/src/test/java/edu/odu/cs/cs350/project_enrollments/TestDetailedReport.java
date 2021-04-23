@@ -12,7 +12,8 @@ import org.hamcrest.Matcher;
 import org.junit.Before;
 
 import org.junit.jupiter.api.Test;
-	public class TestDetailedReport {
+@SuppressWarnings("PMD")	
+public class TestDetailedReport {
 
 		DetailedReport defaultDetailedReport;
 		

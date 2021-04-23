@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 // A snapshot is a collection of information about sections on a certain day.
+@SuppressWarnings("PMD")
 public class Snapshot {
 	private String date;
 	private ArrayList<Section> sections;

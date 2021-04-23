@@ -30,7 +30,7 @@ import java.util.*;
 
 
 //import org.junit.Test;    
-
+@SuppressWarnings("PMD")
 public class TestFileImports {
 	FileImports fileimports;
 	  private final InputStream systemIn = System.in;

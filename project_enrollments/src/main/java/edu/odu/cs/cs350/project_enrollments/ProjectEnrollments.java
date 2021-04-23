@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.*;
 
+@SuppressWarnings("PMD")
 public class ProjectEnrollments {
 
 	public static void main(String[] args) throws Throwable {

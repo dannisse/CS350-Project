@@ -10,6 +10,7 @@ import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 
 
+@SuppressWarnings("PMD")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class TestSemester {
 
