@@ -24,7 +24,7 @@ class TestCourse {
 		assertEquals(c1.getEnrollmentCap(), 0);
 		assertEquals(c1.getProjectedEnrollment(), 0);
 		assertEquals(c1.getOfferingListSize(), 0);
-		//Need test for display functions
+		//TODO Need test for display functions
 		
 	}
 	
@@ -37,7 +37,7 @@ class TestCourse {
 		assertEquals(c2.getEnrollmentCap(), 0);
 		assertEquals(c2.getProjectedEnrollment(), 0);
 		assertEquals(c2.getOfferingListSize(), 0);
-		//Need test for display functions
+		//TODO Need test for display functions
 	}
 
 	@Test	
@@ -54,7 +54,7 @@ class TestCourse {
 		assertEquals(c2.getEnrollmentCap(), 0);
 		assertEquals(c2.getProjectedEnrollment(), 0);
 		assertEquals(c2.getOfferingListSize(), 0);
-		//Need to test display
+		//TODO Need to test display
 	}
 	
 	@Test

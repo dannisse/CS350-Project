@@ -233,7 +233,7 @@ class TestOffering {
 		//assertTrue(o2.getSectionListSize()>0);
 		//assertFalse(o2.getSectionListSize()>1);
 	}
-
+//might remove
 /*	@Test
 	void testDisplay() {
 		fail("Not yet implemented");
