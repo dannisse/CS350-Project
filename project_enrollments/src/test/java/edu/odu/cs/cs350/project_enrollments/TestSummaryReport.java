@@ -44,7 +44,7 @@ public class TestSummaryReport {
     			public void read() throws IOException {
         		Path file = this.workingDir.resolve("test.file");
         		String content = Files.readString(file);
-        		assertThat(content, is("ouput"));
+        		assertThat(content, is("output"));
     			}
 
 }    
