@@ -67,6 +67,9 @@ jar {
     exclude 'META-INF/services/org.apache.poi.ss.usermodel.WorkbookProvider'
     exclude 'META-INF/versions/9/*'
     exclude 'org/apache/batik/apps/rasterizer/resources/*'
+    exclude 'org/apache/batik/apps/rasterizer/*'
+    exclude 'META-INF/services/*'
+    exlcude ' org/apache/batik/ext/awt/image/codec/imageio/*'
 }
 
 test {
