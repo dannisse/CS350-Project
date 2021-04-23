@@ -25,6 +25,24 @@ java {
     targetCompatibility = JavaVersion.toVersion(11)
 }
 
+spotbugsMain {
+    ignoreFailures = true
+    effort = 'max'
+    reportLevel = 'medium'
+    reports {
+       xml.enabled = false
+       html.enabled = true
+    }
+}
+
+spotbugsTest.enabled = false
+
+pmd {
+ignoreFailures = true
+    consoleOutput = false
+}
+pmdTest.enabled = false
+
 test {
 	ignoreFailures = true
 	useJUnitPlatform()
