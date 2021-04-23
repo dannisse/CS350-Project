@@ -48,6 +48,12 @@ public class TestSummaryReport {
 				
 		fail("Not yet implemented");
 	}
-
+	
+	@Test
+	public void TestgenerateOfferingsAndCourses() {
+		
+		
+		fail("not yet implemented");
+	}
 
 }
