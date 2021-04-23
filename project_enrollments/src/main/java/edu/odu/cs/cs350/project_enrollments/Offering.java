@@ -8,6 +8,7 @@ import java.util.Vector;
  * 
  *  - This will be created when a CSV file is being scanned and a row (section) has data that isn't already recorded
  */
+@SuppressWarnings("PMD")
 public class Offering {
 
 	/*

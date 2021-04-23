@@ -8,6 +8,7 @@ import java.util.Vector;
 /**
  * holds a list of Offerings with the same course title (e.g. CS350)
  */
+@SuppressWarnings("PMD")
 public class Course {
 
 	/*

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 //import java.util.Objects;
 
+@SuppressWarnings("PMD")
 public class FileImports {
 	
 	// If a path string doesn't end in a / or \, add a / to the end of it.

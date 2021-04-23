@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runners.MethodSorters;
 
+@SuppressWarnings("PMD")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class TestOffering {
 

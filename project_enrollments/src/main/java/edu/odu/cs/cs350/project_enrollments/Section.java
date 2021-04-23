@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
+@SuppressWarnings("PMD")
 public class Section {	
 	public String seats;
 	public String CRN;
@@ -38,6 +39,7 @@ public class Section {
 	public String comments;
 	public String coll;			
 		
+	
 	public Section(String[] fields) {		
 		seats = fields[0];
 		CRN = fields[1];

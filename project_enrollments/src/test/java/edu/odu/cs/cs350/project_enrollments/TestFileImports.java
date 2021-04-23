@@ -22,6 +22,7 @@ import java.io.*;
 import org.junit.*;
 //import org.junit.Test;    
 
+@SuppressWarnings("PMD")
 public class TestFileImports {
 	
 	//Example code
