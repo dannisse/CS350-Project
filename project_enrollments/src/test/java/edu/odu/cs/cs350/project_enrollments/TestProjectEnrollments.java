@@ -24,10 +24,7 @@ public class TestProjectEnrollments {
 		defaultProjectEnrollments  = new ProjectEnrollments();
 	}
 	
-	@Test
-	public void TestgenerateOfferingsAndCourses() {
-		fail("not yet implemented");
-	}
+
 	
 	
 	
