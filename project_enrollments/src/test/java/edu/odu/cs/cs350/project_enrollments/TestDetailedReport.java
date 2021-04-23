@@ -30,9 +30,14 @@ import org.junit.jupiter.api.Test;
 
 		}
 		
-
-	 
-	
+		//TODO test output to see one sheet per course
+		@Test
+	  public void testOneSheet () {
+			fail("Not yet implemented");
+		}
+	//TODO test output of history of past enrollments
+		@Test
+		
 	
 	}
 	
