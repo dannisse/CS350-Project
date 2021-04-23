@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -24,7 +27,14 @@ import org.junit.jupiter.api.Test;
 
 		//TODO test for the output
 		@Test
-		public void testCreateExcel(){
+		public void testCreateExcel() throws IOException{
+			DetailedReport dr = new DetailedReport();
+			SortedMap<String, Course > histSemesterList = new TreeMap<String, Course >();
+			SortedMap<String, Course > currSemesterList = new TreeMap<String, Course >();
+			String path = "./src/test/resources/testExcel.xlsx";
+			
+			dr.createExcel(histSemesterList, currSemesterList, path);
+			
 			
 			fail("Not yet implemented");
 

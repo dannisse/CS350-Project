@@ -112,7 +112,7 @@ public class ProjectEnrollments {
 		ArrayList<Section> histSections = lastHistSnapshot.getSections();
 		
 		SortedMap<String, Course > histSemesterList = new TreeMap<String, Course >();
-		generateOfferingsAndCourses(histSections, histSemesterList);
+		SummaryReport.generateOfferingsAndCourses(histSections, histSemesterList);
 		
 
 		/*
@@ -125,7 +125,7 @@ public class ProjectEnrollments {
 		ArrayList<Section> currSections = lastCurrSnapshot.getSections();
 		
 		SortedMap<String, Course > currSemesterList = new TreeMap<String, Course >();
-		generateOfferingsAndCourses(currSections, currSemesterList);
+		SummaryReport.generateOfferingsAndCourses(currSections, currSemesterList);
 		
 		
 		/*System.out.println("AYYd "+histSemesterList.size());
@@ -248,70 +248,7 @@ public class ProjectEnrollments {
 	 * 	@Returns: A list of generated courses
 	 */
 	
-	public static void generateOfferingsAndCourses(ArrayList<Section> in, SortedMap<String, Course > data) throws IOException {
-		/*
-		 * Go through each section. 
-		 * 
-		 * If the Course name OR instructor changes -> create a new Offering
-		 * 		- Add list of Sections to that offering
-		 * 	
-		 * If Course name stays the same AND teacher changes -> create new course
-		 * 		- Add list of offerings to that Course
-		 */
-		
-		//Offering newOffering = null;
-	    Offering currOffering = null;
-	    
-	    Course currCourse = null;
-	    
-		//String currCourseName = "";
-		//String currInstructor = ""; 
-		
-		for(Section newSection : in)
-		{
-			if(currOffering == null 
-					|| !newSection.getCourse().equals(currOffering.getCourse())
-					|| !newSection.instructor.equals(currOffering.getInstructor())) {	
 
-				/*
-				 * Add currOffering to the currCourse
-				 * 		- the offering is done processing at this point and is about to be changed
-				 */
-
-				if(currOffering != null) {
-					currCourse.addOffering(currOffering);
-				}
-				
-				
-				/*
-				 * If the Course title does not match the previous one OR this is the first entry (currOffering == null), then we need to create a new Course object
-				 * 		- Add the currCourse to data first
-				 */
-				if(currOffering == null || !newSection.getCourse().equals(currOffering.getCourse())) {
-					
-					String courseTitle = newSection.getCourse();
-					
-					// If it's not null, that means the Course is done processing. Add it to the data
-					if(currOffering != null) {
-						data.put(courseTitle, currCourse);
-					}
-					
-					currCourse = new Course(courseTitle);
-				}
-				
-				
-				// Create new offering 
-
-				currOffering = new Offering(newSection);
-				
-			}
-			
-			// Add Section to Offering
-			currOffering.addSection(newSection);
-		}
-	
-		
-	}
 	
 	
 	/*
