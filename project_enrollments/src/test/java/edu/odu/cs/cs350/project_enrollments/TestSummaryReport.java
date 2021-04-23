@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.Before;
@@ -20,47 +23,31 @@ public class TestSummaryReport {
 	@Before
 	public void setup()
 	{
-		defaultSummaryReport  = new SummaryReport();
 	}
 	
 	
 	@Test
-	public void TestDeadline(){
+	public void TestDeadline() throws Throwable{
+		SummaryReport sr1 = new SummaryReport();
+		
+		sr1.deadlineD("./src/test/resources/201910/201910/");
+		
 		fail("Not yet implemented");
 		
 	}
 
-	// TODO test for output of courses in current semester
-			@Test
-			public void testCoursesinCurrentSem() {
-				/* 
-			
-    			@Before
-    			public void init() {
-        		this.workingDir = Path.of("", "src/test/resources");
-    			}
+	
+	@Test
+	public void testSReport() {
+		SummaryReport sr1 = new SummaryReport();
+		SortedMap<String, Course > currSemesterList = new TreeMap<String, Course >();
+		
+		sr1.sReport(currSemesterList);
+		
+		
+				
+		fail("Not yet implemented");
+	}
 
-    			@Test
-    			public void read() throws IOException {
-        		Path file = this.workingDir.resolve("test.file");
-        		String content = Files.readString(file);
-        		assertThat(content, is("output"));
-    			}
-
-}    
-				*/
-				fail("Not yet implemented");
-			}
-
-			//shows only lecture classes
-			@Test 
-			public void testShowLecture() {
-			//Object DetailedReport = null;
-			//private String DetailedReport = new String("Lecture");
-			//assertThat(showLecture, hasItem(hasProperty("Course", is("Lecture"))));
-			//assertThat(DetailedReport,matches("Lecture"));
-			//assertThat(showLecture("Course", is("Lecture")));
-				fail("Not yet implemented");
-			}
 
 }
