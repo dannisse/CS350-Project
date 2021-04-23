@@ -74,7 +74,13 @@ jar {
     exclude 'org/apache/batik/ext/awt/image/codec/*'
     exclude 'org/apache/batik/ext/awt/image/codec/util/*'
     exclude 'org/apache/batik/extension/*'
-    exclude ' org/apache/batik/extension/svg/*'
+    exclude 'org/apache/batik/extension/svg/*'
+    exclude 'org/apache/batik/extensions/*'
+    exclude 'org/apache/batik/apps/slideshow/*'
+    exclude 'org/apache/batik/apps/svgbrowser/*'
+    exclude 'org/apache/batik/apps/svgbrowser/resources/*'
+    exclude 'org/apache/batik/swing/*'
+    exclude 'org/apache/batik/swing/gvt/*'
 }
 
 test {
