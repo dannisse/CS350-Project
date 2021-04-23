@@ -317,10 +317,10 @@ public class ProjectEnrollments {
 	/*
 	 * Generate projected enrollment to currentSemester Course Map based of historicalSemester Course Map
 	 */
-	public static void generateProjectEnrollment(SortedMap<String, Course > currIn, SortedMap<String, Course > histIn)
+	/*public static void generateProjectEnrollment(SortedMap<String, Course > currIn, SortedMap<String, Course > histIn)
 	{
 		
-	}
+	}*/
 	
 	
 }

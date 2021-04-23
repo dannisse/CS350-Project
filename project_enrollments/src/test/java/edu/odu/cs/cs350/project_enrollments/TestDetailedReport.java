@@ -22,17 +22,25 @@ import org.junit.jupiter.api.Test;
 			defaultDetailedReport  = new DetailedReport();
 		}
 
-		//test for the output
+		//TODO test for the output
 		@Test
 		public void testCreateExcel(){
 			
 			fail("Not yet implemented");
 
 		}
-		
-
-	 
-	
+		/*
+		//TODO test output to see one sheet per course
+		@Test
+	  public void testOneSheet () {
+			fail("Not yet implemented");
+		}
+	//TODO test output of history of past enrollments
+		@Test
+		  public void testPastEnrollments() {
+				fail("Not yet implemented");
+			}
+		*/
 	
 	}
 	
