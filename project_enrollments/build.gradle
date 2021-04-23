@@ -81,6 +81,9 @@ jar {
     exclude 'org/apache/batik/apps/svgbrowser/resources/*'
     exclude 'org/apache/batik/swing/*'
     exclude 'org/apache/batik/swing/gvt/*'
+    exclude 'org/apache/batik/swing/resources/*'
+    exclude 'org/apache/batik/swing/svg/*'
+    exclude 'org/apache/batik/swing/svg/resources/*'
 }
 
 test {
