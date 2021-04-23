@@ -13,8 +13,13 @@ import com.sun.tools.javac.Main;
 
 class TestSnapshot {
 
+	
+	Snapshot defaultsnapshot;
+	
 	@BeforeEach
 	void setUp() throws Exception {
+		
+		defaultsnapshot = new Snapshot();
 	}
 
 	@Test
@@ -34,6 +39,4 @@ class TestSnapshot {
 		Snapshot s = new Snapshot(f);
 		
 	}
-
-	
 }
