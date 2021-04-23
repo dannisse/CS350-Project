@@ -84,6 +84,11 @@ jar {
     exclude 'org/apache/batik/swing/resources/*'
     exclude 'org/apache/batik/swing/svg/*'
     exclude 'org/apache/batik/swing/svg/resources/*'
+    exclude 'org/apache/batik/apps/svgpp/*'
+    exclude 'org/apache/batik/apps/svgpp/resources/*'
+    exclude 'org/apache/batik/transcoder/*'
+    exclude 'org/apache/batik/transcoder/image/*'
+    exclude 'org/apache/batik/transcoder/image/resources/*'
 }
 
 test {
