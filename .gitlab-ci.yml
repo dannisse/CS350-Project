@@ -1,22 +1,21 @@
 stages:
-  - build
+  - main
 
 build:
   tags:
     - blue1-s2021
-  stage: build
+  stage: main
   script:
     - cd project_enrollments
     - ./gradlew --version
     - chmod +x gradlew && ./gradlew build
     - cp build/libs/project_enrollments.jar ..
-      #- if [-e build/libs/project_enrollments.jar]; \
-      #then cp build/libs/project_enrollments.jar .. && echo "build success."; \
-      #else echo "build failed."; \
-      #fi
-  only:
-    - master
-    - import_urls
+    - eval $(ssh-agent -t 5m -s)
+    - ssh-add <(echo "$RSYNC_WEB_KEY")
+    - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/test/ $RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:tests/
+    - ./gradlew javadoc
+    - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/docs/javadoc/ $RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:docs/
   artifacts:
     paths:
       - ./project_enrollments.jar
+
