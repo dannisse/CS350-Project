@@ -47,6 +47,7 @@ FileImports defaultFileImports;
 	public void TestGetFiles()
 	{
 		FileImports f1 = new FileImports();
+		//getting a missing dates.txt error
 		
 		ArrayList<File> filesList = f1.getFiles("./src/test/resources/201910/201910/");
 		
