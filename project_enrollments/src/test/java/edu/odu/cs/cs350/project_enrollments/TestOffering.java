@@ -14,7 +14,7 @@ class TestOffering {
 	void setUp() throws Exception {
 	}
 
-	//NEED TEST FOR DISPLAY
+	//TODO NEED TEST FOR DISPLAY
 	
 	@Test
 	void testOfferingDefault() {
