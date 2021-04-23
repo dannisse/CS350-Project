@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
 			fail("Not yet implemented");
 
 		}
-		
+		/*
 		//TODO test output to see one sheet per course
 		@Test
 	  public void testOneSheet () {
@@ -37,7 +37,10 @@ import org.junit.jupiter.api.Test;
 		}
 	//TODO test output of history of past enrollments
 		@Test
-		
+		  public void testPastEnrollments() {
+				fail("Not yet implemented");
+			}
+		*/
 	
 	}
 	
