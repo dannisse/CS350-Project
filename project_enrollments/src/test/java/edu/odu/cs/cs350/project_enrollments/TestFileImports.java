@@ -24,26 +24,6 @@ import org.junit.*;
 
 public class TestFileImports {
 	
-	//Example code
-		/*
-		 public class ReadFileTest {
-
-	    private Path workingDir;
-
-	    @Before
-	    public void init() {
-	        this.workingDir = Path.of("", "src/test/resources");
-	    }
-
-	    @Test //example function
-	    public void read() throws IOException {
-	        Path file = this.workingDir.resolve("test.file");
-	        String content = Files.readString(file);
-	        assertThat(content, is("duke"));
-	    }
-reference:
-https://www.adam-bien.com/roller/abien/entry/how_to_read_a_file
-	}    */
 
 FileImports defaultFileImports;
 	
@@ -56,71 +36,29 @@ FileImports defaultFileImports;
 	@Test
 	public void TestSanitizePath()
 	{
-		//FileImports f1 = new FileImports();
-		//testpath is created to emulate a possible file parameter that the program might run into
-		//the expected path is the expected output when the file is run
 
 		String testPath = "C:/Documents/Historic";
 		String expectedPath = "C:/Documents/Historic/";
-		//checks that the expected path is the correct path with proper / at the end of it
 		assertEquals(expectedPath,FileImports.sanitizePath(testPath));
-		
-		String backTestPath = "C:\\Documents\\Historic";
-		String backExpectedPath = "C:\\Documents\\Historic\\";
-		
-		assertEquals(backExpectedPath,FileImports.sanitizePath(backTestPath));
 
 	}
 
 	@Test
-	public void TestExtractSection()
+	public void TestGetFiles()
 	{
 		FileImports f1 = new FileImports();
 		
-		String line = "";//need to finish but 
-		String expected = "";
-		//provide a line that can be implemented into the function
-		//assertThat(expected, f1.extractSection(line));
+		ArrayList<File> filesList = f1.getFiles("./src/test/resources/201910/201910/");
 		
-		//needs to also make sure that the " were removed and extraction is working properly
-		
-		//this will make sure that the seperations are working properly within extractSection
-		fail("Not yet implemented");
+		assertNotNull(filesList);
+		assertEquals(filesList.size(), 22);
 	}
 	
 	
-	//to see list of objects being created
-	class CountedList extends ArrayList {
-		  private int counter = 0;
-		  private int id = counter++;
-		  public CountedList() {
-		    System.out.println("CountedList #" + id);
-		  }
-
-		  public int getId() {
-		    return id;
-		  }
-		}
-	
-	
 	@Test
-	public void TestContainsDates()
+	public void TestContainsDates() throws FileNotFoundException
 	{
-		//fail("Not yet implemented");
-		//FileImports f2 = new FileImports();
-		//will test if there is a dates.txt file present or not. if there is a dates.txt file present
-		//it will return false, if there is not a dates.txt file, present it will return true
-		//need to fetch users supplied file directory 
-		//this.TestContainsDates() = Path.of("", "dates.txt");
-	
-		
-		String present = "D:/blue/historic/dates.txt";	
-		String notpresent = "D:/blue/historic/";
-		assertTrue(FileImports.containsDates(notpresent));
-		assertFalse(FileImports.containsDates(present));
-
-
-		
-		
+		assertTrue(FileImports.containsDates("./src/test/resources/201910/201910/"));
+		assertFalse(FileImports.containsDates("./src/test/resources/201910/"));
 	}
 }
