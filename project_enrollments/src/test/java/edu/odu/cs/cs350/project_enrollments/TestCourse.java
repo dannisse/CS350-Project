@@ -1,10 +1,17 @@
 package edu.odu.cs.cs350.project_enrollments;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runners.MethodSorters;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class TestCourse {
@@ -124,13 +131,38 @@ class TestCourse {
 		assertFalse(c2.getOfferingListSize()>1);
 	}
 	
-/*	@Test
-	void testDisplay() {
-		fail("Not yet implemented");
-	}
 	
 	@Test
 	void testDisplayCLI() {
-		fail("Not yet implemented");
-	}*/
+		//final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+		//System.setOut(new PrintStream(outContent));
+		
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		PrintStream pri = new PrintStream(out);
+		
+		PrintStream ori = System.out;
+		
+		System.setOut(pri);
+		
+		Course c2 = new Course("CourseTitle");
+		Offering o1 = new Offering();
+		
+		c2.addOffering(o1);
+		c2.setActualEnrolled(255);
+		
+		c2.displayCLI();
+		System.out.flush();
+		System.setOut(ori);
+		String expected = String.format("%-14s%-14s%-14s%-14s", "*"+c2.getCourseTitle(), c2.getActualEnrolled(), c2.getProjectedEnrollment(), c2.getEnrollmentCap());
+		//System.out.println(expected);
+		
+		assertThat(out.toString(), containsString(expected));
+		assertEquals(c2.getCourseTitle(), "CourseTitle");
+		assertEquals(c2.getActualEnrolled(), 255);
+		assertEquals(c2.getEnrollmentCap(), 0);
+		assertEquals(c2.getProjectedEnrollment(), 0);	
+		assertEquals(c2.getOfferingListSize(), 1);
+		
+
+	}
 }
