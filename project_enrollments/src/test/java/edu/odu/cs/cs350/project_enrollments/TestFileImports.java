@@ -60,10 +60,15 @@ FileImports defaultFileImports;
 		//testpath is created to emulate a possible file parameter that the program might run into
 		//the expected path is the expected output when the file is run
 
-		final String testPath = "C:/Documents/Historic";
-		final String expectedPath = "C:/Documents/Historic/";
+		String testPath = "C:/Documents/Historic";
+		String expectedPath = "C:/Documents/Historic/";
 		//checks that the expected path is the correct path with proper / at the end of it
 		assertEquals(expectedPath,FileImports.sanitizePath(testPath));
+		
+		String backTestPath = "C:\\Documents\\Historic";
+		String backExpectedPath = "C:\\Documents\\Historic\\";
+		
+		assertEquals(backExpectedPath,FileImports.sanitizePath(backTestPath));
 
 	}
 
