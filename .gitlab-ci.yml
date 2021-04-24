@@ -13,10 +13,10 @@ build:
     - eval $(ssh-agent -t 5m -s)
     - ssh-add <(echo "$RSYNC_WEB_KEY")
     - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/test/ $RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:tests/
-    #- rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/spotbugs/ $RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:spotbugs/
-    #- rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/pmd/ $RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:pmd/
-    #- .gradlew check
-    #- rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/checkstyle/ $RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:checkstyle/
+    - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/spotbugs/ $RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:spotbugs/
+    - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/pmd/ $RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:pmd/
+    - .gradlew check
+    - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/checkstyle/ $RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:checkstyle/
     - ./gradlew javadoc
     - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/docs/javadoc/ $RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:docs/
   artifacts:
