@@ -11,7 +11,43 @@ plugins {
     //id 'java-library'
     id 'application'
     id 'java'
+    id "com.github.spotbugs" version "4.6.0"
+    id 'pmd'
+    id 'edu.odu.cs.report_accumulator' version '1.3' 
 }
+
+//checkstyle tool
+apply plugin: 'checkstyle'
+heckstyle {
+    ignoreFailures = true
+    showViolations = false
+}
+tasks.withType(Checkstyle) {
+    reports {
+      html.destination project.file("build/reports/checkstyle/main.html")
+    }
+}
+checkstyleTest.enabled = false
+
+//spotbugs tool
+spotbugsMain {
+    ignoreFailures = true
+    effort = 'max'
+    reportLevel = 'medium'
+    reports {
+       xml.enabled = false
+       html.enabled = true
+    }
+}
+
+spotbugsTest.enabled = false
+
+//pmd tool
+pmd {
+ignoreFailures = true
+    consoleOutput = false
+}
+pmdTest.enabled = false
 
 java {
     sourceCompatibility = JavaVersion.toVersion(11)
