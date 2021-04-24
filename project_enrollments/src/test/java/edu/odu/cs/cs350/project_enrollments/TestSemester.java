@@ -80,18 +80,6 @@ class TestSemester {
 		assertEquals("", s1.getRegistrationEnd());	
 		assertEquals(s1.snapshotsSize(), 1);
 		
-		//TODO need to fix implemnetation, not working properly atm
-		/*
-		 * Semester s1 = new Semester(); File f = new File
-		 * ("C:/some:dir/some:file/file.txt"); Snapshot snap = new Snapshot(f);
-		 * 
-		 * s1.addSnapshot(snap);
-		 * 
-		 * 
-		 * assertEquals(s1.getName(), "file.txt"); //?? have to fix this test
-		 * assertEquals(s1.getRegistrationBegin(), "");
-		 * assertEquals(s1.getRegistrationEnd(), "");
-		 */
 	}
 	
 
