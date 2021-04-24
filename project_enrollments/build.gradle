@@ -89,6 +89,10 @@ jar {
     exclude 'org/apache/batik/transcoder/*'
     exclude 'org/apache/batik/transcoder/image/*'
     exclude 'org/apache/batik/transcoder/image/resources/*'
+    exclude 'org/apache/batik/transcoder/keys/*'
+    exclude 'org/apache/batik/transcoder/print/*'
+    exclude 'org/apache/batik/transcoder/svg2svg/*'
+    exclude 'org/apache/batik/transcoder/wmf/*'
 }
 
 test {
