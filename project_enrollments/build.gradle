@@ -18,7 +18,7 @@ plugins {
 
 //checkstyle tool
 apply plugin: 'checkstyle'
-heckstyle {
+Checkstyle {
     ignoreFailures = true
     showViolations = false
 }
