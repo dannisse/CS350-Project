@@ -62,8 +62,7 @@ jar {
     exclude 'META-INF/*.SF'
     exclude 'META-INF/*.DSA'
     exclude 'META-INF/*'
-   //test commit
-   /*
+
     exclude 'META-INF/services/org.apache.poi.extractor.ExtractorProvider'
     exclude 'META-INF/services/org.apache.poi.sl.draw.ImageRenderer'
     exclude 'META-INF/services/org.apache.poi.ss.usermodel.WorkbookProvider'
@@ -106,7 +105,7 @@ jar {
     exclude 'org/apache/batik/script/rhino/resources/*'
     exclude 'org/apache/batik/anim/*'
     exclude 'org/apache/batik/anim/dom/*'
-    */
+    
 }
 
 test {
