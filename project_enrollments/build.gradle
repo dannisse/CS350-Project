@@ -18,11 +18,11 @@ plugins {
 
 //checkstyle tool
 apply plugin: 'checkstyle'
-Checkstyle {
+checkstyle {
     ignoreFailures = true
     showViolations = false
 }
-tasks.withType(Checkstyle) {
+tasks.withType(checkstyle) {
     reports {
       html.destination project.file("build/reports/checkstyle/main.html")
     }
