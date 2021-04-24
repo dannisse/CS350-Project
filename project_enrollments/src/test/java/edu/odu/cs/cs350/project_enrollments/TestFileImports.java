@@ -86,39 +86,12 @@ FileImports defaultFileImports;
 	@Test
 	public void TestSanitizePath()
 	{
-		//FileImports f1 = new FileImports();
-		//testpath is created to emulate a possible file parameter that the program might run into
-		//the expected path is the expected output when the file is run
-		
-		final String testPath = "C:/Documents/Historic";
-		final String expectedPath = "C:/Documents/Historic/";
-		//checks that the expected path is the correct path with proper / at the end of it
+		String testPath = "C:/Documents/Historic";
+		String expectedPath = "C:/Documents/Historic/";
 		assertEquals(expectedPath,FileImports.sanitizePath(testPath));
 	}
 
-	@Test
-	public void TestExtractSection()
-	{
-		FileImports f1 = new FileImports();
-		
-		String line = "";//need to finish but 
-		String expected = "";
-		//provide a line that can be implemented into the function
-		//assertThat(expected, f1.extractSection(line));
-		
-		//needs to also make sure that the " were removed and extraction is working properly
-		
-		//this will make sure that the seperations are working properly within extractSection
-		fail("Not yet implemented");
-	}
-	
-//	@Test
-//	public static boolean TestException()
-//	{	
-	
-	
-	
-//	}
+
 	
 	@Test
 	public void TestvalidateUrl() {
@@ -152,29 +125,8 @@ FileImports defaultFileImports;
 	@Test
 	public void TestContainsDates()
 	{
-		//fail("Not yet implemented");
-		//FileImports f2 = new FileImports();
-		//will test if there is a dates.txt file present or not. if there is a dates.txt file present
-		//it will return false, if there is not a dates.txt file, present it will return true
-		//need to fetch users supplied file directory 
-		//String present = "D:/blue/historic/dates.txt";	
-		//String notpresent = "D:/blue/historic/";
-		//assertTrue(FileImports.containsDates(notpresent));
-		//assertFalse(FileImports.containsDates(present));
-		
-		
-
-
-		//Pattern pattern = Pattern.compile("(?<!\\S)"+ "dates.txt");
-		// this doesn't compile...
-		//i know im attempting to fix it atm 
-		
-		//gonna fix this tmmr
-		String path = "(?<!\\S)" + "dates.txt";
-		assertTrue(FileImports.containsDates("(?<!\\S)"));
-		assertFalse(FileImports.containsDates("(?<!\\S)" + "dates.txt"));
-		//Document doc;
-		//assertThat(doc.select("a[href]").text(),is("dates.txt"));
+		assertTrue(FileImports.containsDates("./src/test/resources/201910/201910/"));
+		assertFalse(FileImports.containsDates("./src/test/resources/201910/"));
 		
 	}
 	
