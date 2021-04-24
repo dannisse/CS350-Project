@@ -62,7 +62,7 @@ jar {
     exclude 'META-INF/*.SF'
     exclude 'META-INF/*.DSA'
     exclude 'META-INF/*'
-   
+   //test commit
    /*
     exclude 'META-INF/services/org.apache.poi.extractor.ExtractorProvider'
     exclude 'META-INF/services/org.apache.poi.sl.draw.ImageRenderer'
