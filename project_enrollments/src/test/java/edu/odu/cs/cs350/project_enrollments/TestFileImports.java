@@ -48,7 +48,7 @@ FileImports defaultFileImports;
 	{
 		FileImports f1 = new FileImports();
 		//getting a missing dates.txt error
-		
+		//still need a test for URL
 		ArrayList<File> filesList = f1.getFiles("./src/test/resources/201910/201910/");
 		
 		assertNotNull(filesList);
