@@ -93,6 +93,17 @@ jar {
     exclude 'org/apache/batik/transcoder/print/*'
     exclude 'org/apache/batik/transcoder/svg2svg/*'
     exclude 'org/apache/batik/transcoder/wmf/*'
+    exclude 'org/apache/batik/transcoder/wmf/tosvg/*'
+    exclude 'org/apache/batik/bridge/*'
+    exclude 'org/apache/batik/bridge/resources/*'
+    exclude 'org/apache/batik/bridge/svg12/*'
+    exclude 'META-INF/imports/*'
+    exclude 'org/apache/batik/script/*'
+    exclude 'org/apache/batik/script/jpython/*'
+    exclude 'org/apache/batik/script/rhino/*'
+    exclude 'org/apache/batik/script/rhino/resources/*'
+    exclude 'org/apache/batik/anim/*'
+    exclude 'org/apache/batik/anim/dom/*'
 }
 
 test {
