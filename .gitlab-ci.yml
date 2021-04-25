@@ -10,7 +10,7 @@ build:
     - ./gradlew --version
     - chmod +x gradlew && ./gradlew build
     - cp build/libs/project_enrollments.jar ..
-   - eval $(ssh-agent -t 5m -s)
+    - eval $(ssh-agent -t 5m -s)
     - ssh-add <(echo "$RSYNC_WEB_KEY")
     - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/test/ $RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:tests/
 #    - rsync -auvz -e "ssh -o StrictHostKeyChecking=no" build/reports/tests/spotbugs/ $RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:spotbugs/
