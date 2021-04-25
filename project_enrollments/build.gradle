@@ -157,7 +157,26 @@ jar {
     exclude 'org/apache/batik/script/rhino/resources/*'
     exclude 'org/apache/batik/anim/*'
     exclude 'org/apache/batik/anim/dom/*'
+    exclude 'org/apache/batik/anim/dom/resources/*'
+    exclude 'org/apache/batik/anim/resources/*'
+    exclude 'org/apache/batik/anim/timing/*'
+    exclude 'org/apache/batik/anim/values/*'
+    exclude 'org/apache/batik/gvt/*'
+    exclude 'org/apache/batik/gvt/event/*'
+    exclude 'org/apache/batik/gvt/filter/*'
+    exclude 'org/apache/batik/gvt/flow/*'
+    exclude 'org/apache/batik/gvt/renderer/*'
+    exclude 'org/apache/batik/gvt/font/*'
+    exclude 'org/apache/batik/dom/svg/*'
+    exclude 'org/apache/batik/gvt/text/*'
+    exclude 'org/apache/batik/dom/svg/resources/*'
+    exclude 'org/apache/batik/dom/svg12/*'
+    exclude 'org/apache/batik/parser/*'
+    exclude 'org/apache/batik/parser/resources/*'
+    exclude 'org/apache/batik/parser/style/resources/*'
     
+    
+    //still getting duplicate erros on my gradle, trying to fix it 
 }
 
 test {
