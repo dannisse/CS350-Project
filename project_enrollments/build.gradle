@@ -15,7 +15,7 @@ plugins {
     id 'pmd'
     id 'edu.odu.cs.report_accumulator' version '1.3' 
 }
-
+/*
 //checkstyle tool
 apply plugin: 'checkstyle'
 checkstyle {
@@ -28,6 +28,8 @@ tasks.withType(Checkstyle) {
     }
 }
 checkstyleTest.enabled = false
+*/
+//checkstyle not working rn gonna leave this here just in case 
 
 //spotbugs tool
 spotbugsMain {
