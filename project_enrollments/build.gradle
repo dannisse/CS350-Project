@@ -174,8 +174,28 @@ jar {
     exclude 'org/apache/batik/parser/*'
     exclude 'org/apache/batik/parser/resources/*'
     exclude 'org/apache/batik/parser/style/resources/*'
-    
-    
+    exclude 'org/apache/batik/apps/ttf2svg/*'
+    exclude 'org/apache/batik/svggen/*'
+    exclude 'org/apache/batik/svggen/font/resources/*'
+    exclude 'org/apache/batik/svggen/font/*'
+    exclude 'org/apache/batik/svggen/font/table/*'
+    exclude 'org/apache/batik/ext/awt/*'
+    exclude 'org/apache/batik/ext/awt/color/*'
+    exclude 'org/apache/batik/ext/awt/font/*'
+    exclude 'org/apache/batik/ext/awt/g2d/*'
+    exclude 'org/apache/batik/ext/awt/geom/*'
+    exclude 'org/apache/batik/ext/awt/image/*'
+    exclude 'org/apache/batik/ext/awt/image/renderable/*'
+    exclude 'org/apache/batik/ext/awt/image/rendered/*'
+    exclude 'org/apache/batik/ext/awt/image/spi/*'
+    exclude 'org/apache/batik/ext/awt/image/spi/resources/*'
+    exclude 'org/apache/batik/ext/swing/*'
+    exclude 'org/apache/batik/ext/swing/resources/*'
+    exclude 'org/apache/batik/dom/*'
+    exclude 'org/apache/batik/dom/events/*'
+    exclude 'org/apache/batik/dom/resources/*'
+    exclude 'org/apache/batik/dom/traversal/*'
+    exclude 'org/apache/batik/dom/util/*'
     //still getting duplicate erros on my gradle, trying to fix it 
 }
 
