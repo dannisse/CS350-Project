@@ -17,7 +17,7 @@ plugins {
 }
 
 //checkstyle tool
-apply plugin: 'checkstyle'
+/** apply plugin: 'checkstyle'
 checkstyle {
     ignoreFailures = true
     showViolations = false
@@ -27,7 +27,7 @@ tasks.withType(Checkstyle) {
       html.destination project.file("build/reports/checkstyle/main.html")
     }
 }
-checkstyleTest.enabled = false
+checkstyleTest.enabled = false **/
 
 //spotbugs tool
 spotbugsMain {
