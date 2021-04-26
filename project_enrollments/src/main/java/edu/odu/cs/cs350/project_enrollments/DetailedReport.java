@@ -88,6 +88,7 @@ public class DetailedReport {
 		return ret;
 	}
 	
+	//citation https://stackoverflow.com/questions/30182467/how-to-implement-linear-interpolation-method-in-java-array
 	public static double[] interpolation(double start, double end, int count)
 	{
 		if (count < 2) {
