@@ -88,10 +88,23 @@ public class DetailedReport {
 		return ret;
 	}
 	
+	public static double[] interpolation(double start, double end, int count)
+	{
+		if (count < 2) {
+	        throw new IllegalArgumentException("interpolate: illegal count!");
+	    }
+	    double[] array = new double[count + 1];
+	    for (int i = 0; i <= count; ++ i) {
+	        array[i] = start + i * (end - start) / count;
+	    }
+	    return array;
+	}
+		
+		
 	public void createExcel(SortedMap<String, Course> hist, SortedMap<String, Course> curr, String outPath, String inPath) throws Throwable {
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		
-		 ArrayList<Double> dHist = deadlineD(inPath);
+		ArrayList<Double> dHist = deadlineD(inPath); 
 		 double[] date1 = new double[]{30,35,50,52,54};
 		 double[] dcurr = new double[] {0,.25,.5,0,0};
 		 double[] date2 = new double[]{0,25,60,0,0};
