@@ -40,7 +40,7 @@ import org.junit.jupiter.api.Test;
 			DetailedReport dr = new DetailedReport();
 			SortedMap<String, Course > histSemesterList = new TreeMap<String, Course >();
 			SortedMap<String, Course > currSemesterList = new TreeMap<String, Course >();
-			String path = "./project_enrollments/src/test/resources/testExcel.xlsx";
+			String path = "./src/test/resources/testExcel.xlsx";
 			
 			dr.createExcel(histSemesterList, currSemesterList, path);
 			
