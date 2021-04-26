@@ -21,9 +21,8 @@ import org.junit.jupiter.api.Test;
 		DetailedReport defaultDetailedReport;
 		
 		@Before
-		public void setup()
-		{
-			defaultDetailedReport  = new DetailedReport();
+		public void setup() throws Exception{
+			//defaultDetailedReport  = new DetailedReport();
 		}
 
 		@Test
