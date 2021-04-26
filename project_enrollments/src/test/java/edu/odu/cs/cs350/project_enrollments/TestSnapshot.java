@@ -33,6 +33,7 @@ class TestSnapshot {
 	
 	@Test
 	void testSnapshotFile() {
+		
 		String path = "./src/test/resources/201910/201910/2019-03-31.csv";
 		File f = new File(path);
 		
