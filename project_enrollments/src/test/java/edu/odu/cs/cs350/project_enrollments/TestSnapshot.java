@@ -31,9 +31,10 @@ class TestSnapshot {
 		assertEquals(s.getSections(), arr);
 	}
 	
+	
 	@Test
 	void testSnapshotFile() {
-		String path = "./src/test/resources/201910/201910/2019-03-31.csv";
+		String path = "./project_enrollments/src/test/resources/201910/201910/2019-03-31.csv";
 		File f = new File(path);
 		
 		Snapshot s = new Snapshot(f);

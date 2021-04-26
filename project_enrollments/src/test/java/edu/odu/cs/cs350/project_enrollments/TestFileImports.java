@@ -48,7 +48,7 @@ FileImports defaultFileImports;
 	{
 		FileImports f1 = new FileImports();
 		
-		ArrayList<File> filesList = f1.getFiles("./src/test/resources/201910/201910/");
+		ArrayList<File> filesList = f1.getFiles("./project_enrollments/src/test/resources/201910/201910/");
 		
 		assertNotNull(filesList);
 		assertEquals(filesList.size(), 22);
@@ -58,7 +58,7 @@ FileImports defaultFileImports;
 	@Test
 	public void TestContainsDates() throws FileNotFoundException
 	{
-		assertTrue(FileImports.containsDates("./src/test/resources/201910/201910/"));
-		assertFalse(FileImports.containsDates("./src/test/resources/201910/"));
+		assertTrue(FileImports.containsDates("./project_enrollments/src/test/resources/201910/201910/"));
+		assertFalse(FileImports.containsDates("./project_enrollments/src/test/resources/201910/"));
 	}
 }
