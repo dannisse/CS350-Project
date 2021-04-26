@@ -65,6 +65,9 @@ public class DetailedReport {
 				d1 = sdformat.parse(sc.nextLine());
 				d2 = sdformat.parse(sc.next());
 				
+				System.out.println(d1.getTime());
+				System.out.println(d2.getTime());
+				
 				diffInMillies = Math.abs(d2.getTime() - d1.getTime());
 				diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 				perc = diff;
@@ -74,8 +77,8 @@ public class DetailedReport {
 				for(int i=0; i<d4.size(); ++i) {
 					diffInMillies = (d4.get(i).getTime() - d1.getTime());
 					diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-					System.out.println(d4.get(i) + "\n");
-					double s = Math.abs((double)diff/(double)perc);
+					System.out.println(d4.get(i).getTime() + "\n");
+					double s = (double)diff/(double)perc;
 					BigDecimal bd = new BigDecimal(s).setScale(2, RoundingMode.HALF_UP);
 					//System.out.println(st);
 					double num = bd.doubleValue();
@@ -176,27 +179,27 @@ public class DetailedReport {
 		            XDDFValueAxis leftAxis = chart.createValueAxis(AxisPosition.LEFT);
 		            
 		            bottomAxis.setMinimum(0);
-		            bottomAxis.setMaximum(6);
+		            bottomAxis.setMaximum(21);
 		            leftAxis.setCrosses(AxisCrosses.AUTO_ZERO);
 		     
 
 		            XDDFNumericalDataSource<Double> historical = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-		                    new CellRangeAddress(1, 5, 0, 0));
+		                    new CellRangeAddress(1, 40, 0, 0));
 
 		            XDDFNumericalDataSource<Double> hSeason = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-		                    new CellRangeAddress(1, 5, 1, 1));
+		                    new CellRangeAddress(1, 40, 1, 1));
 
 		            XDDFNumericalDataSource<Double> current = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-		                    new CellRangeAddress(1, 3, 2, 2));
+		                    new CellRangeAddress(1, 40, 2, 2));
 		            
 		            XDDFNumericalDataSource<Double> cSeason = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-		                    new CellRangeAddress(1, 3, 3, 3));
+		                    new CellRangeAddress(1, 40, 3, 3));
 		            
 		            XDDFNumericalDataSource<Double> projected = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-		                    new CellRangeAddress(1, 4, 4, 4));
+		                    new CellRangeAddress(1, 40, 4, 4));
 		            
 		            XDDFNumericalDataSource<Double> eProjected = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-		                    new CellRangeAddress(1, 4, 5, 5));
+		                    new CellRangeAddress(1, 40, 5, 5));
 		            
 		            XDDFLineChartData data = (XDDFLineChartData) chart.createData(ChartTypes.LINE, bottomAxis, leftAxis);
 
