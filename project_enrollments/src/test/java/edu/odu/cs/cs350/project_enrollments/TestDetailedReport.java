@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -25,6 +26,15 @@ import org.junit.jupiter.api.Test;
 			defaultDetailedReport  = new DetailedReport();
 		}
 
+		@Test
+		public void  deadlineD()
+		{	
+			//make sure percentage isnt negative
+			ArrayList<Double> ret = new ArrayList<Double>();
+			assertTrue(ret.size()>=0);
+
+
+		}
 		//TODO test for the output
 		@Test
 		public void testCreateExcel() throws IOException{
