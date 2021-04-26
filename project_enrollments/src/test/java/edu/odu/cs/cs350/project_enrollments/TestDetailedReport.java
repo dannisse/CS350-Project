@@ -28,7 +28,8 @@ import org.junit.jupiter.api.Test;
 
 		@Test
 		public void  deadlineD()
-		{
+		{	
+			//make sure percentage isnt negative
 			ArrayList<Double> ret = new ArrayList<Double>();
 			assertTrue(ret.size()>0);
 
