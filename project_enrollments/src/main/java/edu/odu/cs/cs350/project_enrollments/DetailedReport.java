@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -31,6 +33,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class DetailedReport { 
 
 	public static ArrayList<Double> deadlineD(String path) throws Throwable {
+		
+		
 		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
 		File directoryPath = new File(path);	    
 	    File filesList[] = directoryPath.listFiles();
@@ -71,9 +75,11 @@ public class DetailedReport {
 					diffInMillies = (d4.get(i).getTime() - d1.getTime());
 					diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
 					System.out.println(d4.get(i) + "\n");
-					double s = (double)diff/(double)perc;
+					double s = Math.abs((double)diff/(double)perc);
+					BigDecimal bd = new BigDecimal(s).setScale(2, RoundingMode.HALF_UP);
 					//System.out.println(st);
-					ret.add((double) s);
+					double num = bd.doubleValue();
+					ret.add((double) num);
 				}
 			}
 			
