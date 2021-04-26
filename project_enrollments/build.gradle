@@ -13,8 +13,11 @@ plugins {
     id 'java'
     id "com.github.spotbugs" version "4.6.0"
     id 'pmd'
+    id 'jacoco'
 //    id 'edu.odu.cs.report_accumulator' version '1.3' 
 }
+check.dependsOn jacocoTestReport
+
 /*
 //checkstyle tool
 apply plugin: 'checkstyle'
@@ -196,12 +199,50 @@ jar {
     exclude 'org/apache/batik/dom/resources/*'
     exclude 'org/apache/batik/dom/traversal/*'
     exclude 'org/apache/batik/dom/util/*'
-    //still getting duplicate erros on my gradle, trying to fix it 
+    exclude 'org/apache/batik/dom/xbl/*'
+    exclude 'org/apache/batik/css/dom/*'
+    exclude 'org/apache/batik/css/engine/*'
+    exclude 'org/apache/batik/css/engine/resources/*'
+    exclude 'org/apache/batik/css/engine/sac/*'
+    exclude 'org/apache/batik/css/engine/sac/*'
+    exclude 'org/apache/batik/css/engine/value/*'
+    exclude 'org/apache/batik/css/parser/*'
+    exclude 'org/apache/batik/css/engine/value/css2/*'
+    exclude 'org/apache/batik/css/engine/value/resources/*'
+    exclude 'org/apache/batik/css/engine/value/svg/*'
+    exclude 'org/apache/batik/css/engine/value/svg12/*'
+    exclude 'org/apache/batik/css/parser/resources/*'
+    exclude 'org/apache/batik/util/gui/*'
+    exclude 'org/apache/batik/util/gui/resource/*'
+    exclude 'org/apache/batik/util/gui/resources/flags/*'
+    exclude 'org/apache/batik/util/gui/resources/*'
+    exclude 'org/apache/batik/util/gui/xmleditor/*'
+    exclude 'org/apache/batik/xml/*'
+    exclude 'org/apache/batik/xml/scanner/resources/*'
+    exclude 'org/apache/batik/*'
+    exclude 'org/apache/batik/util/io/resources/*'
+    exclude 'org/apache/batik/util/io/*'
+    exclude 'org/apache/batik/util/*'
+    exclude 'org/apache/batik/constants/*'
+    exclude 'org/apache/batik/util/resources/*'
+    exclude 'org/apache/batik/w3c/dom/*'
+    exclude 'org/apache/batik/w3c/dom/events/*'
+    exclude 'org/apache/batik/i18n/*'
+    exclude 'license/LICENSE'
+    exclude 'license/README.dom.txt'
+    exclude 'license/LICENSE*.txt'
+    exclude 'license/NOTICE'
+    // working now just needs these exclusions 
 }
 
 test {
 	ignoreFailures = true
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test 
 }
 
 //task myJavadocs(type: Javadoc) {
