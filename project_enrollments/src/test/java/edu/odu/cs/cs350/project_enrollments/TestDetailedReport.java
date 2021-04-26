@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -32,6 +33,8 @@ import org.junit.jupiter.api.Test;
 			//make sure percentage isnt negative
 			ArrayList<Double> ret = new ArrayList<Double>();
 			assertTrue(ret.size()>0);
+			Scanner sc=null;
+			assertTrue(sc.equals(null));
 
 
 		}
