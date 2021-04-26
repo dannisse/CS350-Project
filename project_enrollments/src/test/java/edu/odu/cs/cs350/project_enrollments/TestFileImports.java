@@ -49,7 +49,7 @@ FileImports defaultFileImports;
 		FileImports f1 = new FileImports();
 		//getting a missing dates.txt error
 		
-		ArrayList<File> filesList = f1.getFiles("./bin/edu/odu/cs/cs350/project_enrollments/resources/201910/201910/");
+		ArrayList<File> filesList = f1.getFiles("./project_enrollments/src/test/resources/201910/201910/");
 		
 		assertNotNull(filesList);
 		assertEquals(filesList.size(), 22);
@@ -59,7 +59,7 @@ FileImports defaultFileImports;
 	@Test
 	public void TestContainsDates() throws FileNotFoundException
 	{ //only works by supplying full path 
-		assertTrue(FileImports.containsDates("./bin/edu/odu/cs/cs350/project_enrollments/resources/201910/201910/"));
-		assertFalse(FileImports.containsDates("./bin/edu/odu/cs/cs350/project_enrollments/resources/201910/"));
+		assertTrue(FileImports.containsDates("./project_enrollments/src/test/resources/201910/201910/"));
+		assertFalse(FileImports.containsDates("./project_enrollments/src/test/resources/201910/"));
 	}
 }
