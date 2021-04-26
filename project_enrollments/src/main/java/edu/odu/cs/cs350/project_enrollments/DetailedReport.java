@@ -1,8 +1,11 @@
 package edu.odu.cs.cs350.project_enrollments;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -26,13 +29,63 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class DetailedReport { 
+
+	public static ArrayList<Double> deadlineD(String path) throws Throwable {
+		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+		File directoryPath = new File(path);	    
+	    File filesList[] = directoryPath.listFiles();
+	    
+	    Date d1;
+	    Date d2;
+	    long diffInMillies;
+	    long diff;
+	    long perc;
+	    String d;
+	    long st;
+	    
+	    ArrayList<Date> d4 = new ArrayList<Date>();
+	    ArrayList<Double> ret = new ArrayList<Double>();
+	    
+	    
+	    Scanner sc = null;
+	    for(File file : filesList) {	
+			sc = new Scanner(new File(path + file.getName()));
+			String t = file.getName();
+			if(!t.equals("dates.txt")) {
+				d = file.getName();
+				d=d.substring(0,10);
+				d4.add(sdformat.parse(d));
+			}
+			if(t.equals("dates.txt")) {		
+				
+				d1 = sdformat.parse(sc.nextLine());
+				d2 = sdformat.parse(sc.next());
+				
+				diffInMillies = Math.abs(d2.getTime() - d1.getTime());
+				diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+				perc = diff;
+				
+				
+				
+				for(int i=0; i<d4.size(); ++i) {
+					diffInMillies = (d4.get(i).getTime() - d1.getTime());
+					diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+					System.out.println(d4.get(i) + "\n");
+					double s = (double)diff/(double)perc;
+					//System.out.println(st);
+					ret.add((double) s);
+				}
+			}
+			
+			sc.close();
+	    }
+		return ret;
+	}
 	
-	//
-	
-	public void createExcel(SortedMap<String, Course> hist, SortedMap<String, Course> curr, String path) throws IOException {
+	public void createExcel(SortedMap<String, Course> hist, SortedMap<String, Course> curr, String outPath, String inPath) throws Throwable {
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		
-		 double[] dHist = new double[]{.1,.2,.5,.75,1.05};
+		 ArrayList<Double> dHist = deadlineD(inPath);
 		 double[] date1 = new double[]{30,35,50,52,54};
 		 double[] dcurr = new double[] {0,.25,.5,0,0};
 		 double[] date2 = new double[]{0,25,60,0,0};
@@ -71,20 +124,20 @@ public class DetailedReport {
 		            cell.setCellValue("Projected");
 		            sheet.autoSizeColumn(5);	            
 		            
-		            for (int j = 0; j < dHist.length; j++) {
+		            for (int j = 0; j < dHist.size(); j++) {
 		                row = sheet.createRow((short) j+1);
 		                cell = row.createCell((short) 0);
-		                cell.setCellValue(dHist[j]);
+		                cell.setCellValue(dHist.get(j));
 		                cell = row.createCell((short) 1);
-		                cell.setCellValue(date1[j]);
+		                cell.setCellValue(dHist.get(j));
 		                cell = row.createCell((short) 2);
-		                cell.setCellValue(dcurr[j]);
+		                cell.setCellValue(dHist.get(j));
 		                cell = row.createCell((short) 3);
-		                cell.setCellValue(date2[j]);
+		                cell.setCellValue(dHist.get(j));
 		                cell = row.createCell((short) 4);
-		                cell.setCellValue(dProj[j]);
+		                cell.setCellValue(dHist.get(j));
 		                cell = row.createCell((short) 5);
-		                cell.setCellValue(proj[j]);
+		                cell.setCellValue(dHist.get(j));
 		            }
 		            /*for (int j = 0; j < dcurr.length; j++) {
 		                row = sheet.createRow((short) j+1);
@@ -161,7 +214,7 @@ public class DetailedReport {
 			}
 						
 		}
-		try (FileOutputStream outputStream = new FileOutputStream(path)) {
+		try (FileOutputStream outputStream = new FileOutputStream(outPath)) {
 	        workbook.write(outputStream);
 	        workbook.close();
   

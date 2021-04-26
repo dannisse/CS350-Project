@@ -26,7 +26,7 @@ import org.junit.jupiter.api.Test;
 		}
 
 		//TODO test for the output
-		@Test
+		/*@Test
 		public void testCreateExcel() throws IOException{
 			DetailedReport dr = new DetailedReport();
 			SortedMap<String, Course > histSemesterList = new TreeMap<String, Course >();
@@ -38,7 +38,7 @@ import org.junit.jupiter.api.Test;
 			
 			fail("Not yet implemented");
 
-		}
+		}*/
 		/*
 		//TODO test output to see one sheet per course
 		@Test

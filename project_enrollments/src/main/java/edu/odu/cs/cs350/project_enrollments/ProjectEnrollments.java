@@ -160,7 +160,7 @@ public class ProjectEnrollments {
 		SummaryReport.sReport(currSemesterList);
 		
 		DetailedReport dr = new DetailedReport();
-		dr.createExcel(histSemesterList, currSemesterList, exPath);
+		dr.createExcel(histSemesterList, currSemesterList, exPath, path);
 		
 		
 		
