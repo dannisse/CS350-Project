@@ -45,7 +45,7 @@ import org.junit.jupiter.api.Test;
 			dr.createExcel(histSemesterList, currSemesterList, path);
 			
 			
-			//fail("Not yet implemented");
+			fail("Not yet implemented");
 
 		}
 		/*
