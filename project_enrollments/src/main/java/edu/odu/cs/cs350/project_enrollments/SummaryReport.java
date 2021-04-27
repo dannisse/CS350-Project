@@ -39,14 +39,44 @@ public class SummaryReport {
     				if (u.toString().contains("dates.txt")) {
     					currLine = r.readLine();
     	    			d1 = sdformat.parse(currLine);
+    	    			//System.out.println("d1="+d1);
     	    			currLine = r.readLine();
     	    			d2 = sdformat.parse(currLine);
+    	    			//System.out.println("d2="+d2);
     	    			
+    	    		} else {
+    	    			// parse the url by '/'s, the last slice will be the full file name
+    	    			String tmp = u.toString();
+    	    			String[] slices = tmp.split("/");
+    	    			/*
+    	    			for (int i = 0; i < slices.length; i++) {
+    	    				System.out.println("slices["+i+"]="+slices[i]);
+    	    			}
+    	    			*/
+    	    			tmp = slices[slices.length-1];
+    	    			//System.out.println("tmp="+tmp);
+    	    			
+    	    			// split one more time at the "." to separate 'file name' and 'file type extension'
+    	    			String[] filenameSlices = tmp.split("\\.");
+    	    			/*
+    	    			for (int i = 0; i < filenameSlices.length; i++) {
+    	    				System.out.println("slices["+i+"]="+filenameSlices[i]);
+    	    			}
+    	    			*/
+
+    	    			d = filenameSlices[0];
+    	    			//System.out.println("d="+d);
+    	    			
+    	    			d3 = sdformat.parse(d);
+    	    			//System.out.println("d3="+d3.toString());
+    	    	
     	    		}
     				
+    				/*
     				while ((currLine = r.readLine()) != null) {
     					//sections.add(extractSection(currLine));
     				}
+    				*/
     				
     			} catch (MalformedURLException e) {
     				// TODO Auto-generated catch block
