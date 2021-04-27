@@ -61,7 +61,7 @@ java {
 
 //For the graphs on the webpage
 
-reportStats.reportsURL = 'https://www.cs.odu.edu/~ccarroll/cs350/blue1/'
+//reportStats.reportsURL = 'https://www.cs.odu.edu/~ccarroll/cs350/blue1/'
     //deployReports.deployDestination = 'build/reports/tests/test/*'
 
     // or
@@ -69,7 +69,7 @@ reportStats.reportsURL = 'https://www.cs.odu.edu/~ccarroll/cs350/blue1/'
     // or
     //       ... = 'rsync://yourName@hostAddr:path'
     
-deployReports.deployDestination = 'rsync://$RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:accumulator/'
+//deployReports.deployDestination = 'rsync://$RSYNC_WEB_USER@$PUBLIC_LINUX_CLUSTER:accumulator/'
    
     //deployReports.deploySshKey = 'path/to/ssh/key' // optional
 
