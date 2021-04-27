@@ -32,7 +32,7 @@ public class TestSummaryReport {
 	public void TestDeadline() throws Throwable{
 		SummaryReport sr1 = new SummaryReport();
 		
-		sr1.deadlineD("./src/test/resources/201910/201910/");
+		sr1.deadlineD("./project_enrollments/src/test/resources/201910/201910/");
 		
 		fail("Not yet implemented");
 		
@@ -56,7 +56,7 @@ public class TestSummaryReport {
 		SummaryReport sr1 = new SummaryReport();
 		
 		Semester currSemester = new Semester();
-		String path = FileImports.sanitizePath("./src/test/resources/201910/201910/");
+		String path = FileImports.sanitizePath("./project_enrollments/src/test/resources/201910/201910/");
 		if (FileImports.containsDates(path)) {
 			//todo: need to give semester name and start and end dates
 			
