@@ -326,4 +326,103 @@ public class FileImports {
 	    }
 		return verdict;
 	}
+	
+	public ArrayList<Semester> history(ArrayList<Semester> histSems, String[] args) {
+		for (int i = 0; i < args.length-2; i++) { 
+			String path = FileImports.sanitizePath(args[i]);
+			if (FileImports.containsDates(path)) {
+				//todo: need to give semester name and start and end dates
+				Semester sem = new Semester();
+				
+				boolean isURL = FileImports.validateUrl(path);
+				if (isURL) {
+					System.out.println("Retrieving from "+path+":");
+					ArrayList<URL> urlsList = FileImports.getUrls(path);
+					
+					for (URL u: urlsList) {
+						System.out.println("Retrieving "+u.toString());
+						if (!u.toString().contains("dates.txt")) {
+							Snapshot snap = new Snapshot(u);
+							sem.addSnapshot(snap);
+							//System.out.println("added snapshot from url.");
+							
+							/*
+							ArrayList<Section> sections = sem.getSnapshot(sem.getSnapshots().size()-1).getSections();
+							for (Section s: sections) {
+								s.print();
+							}
+							*/
+							
+							//System.exit(0);
+						}
+					}
+				} else {
+					ArrayList<File> filesList = FileImports.getFiles(path);
+					
+					for (File f: filesList) {
+						String fileName = f.getName();
+						
+						// Make sure we're not adding dates.txt
+						if(!fileName.equals("dates.txt")) {
+							Snapshot snap = new Snapshot(f);
+							sem.addSnapshot(snap);
+						}
+						
+					}
+				}
+				
+				
+				histSems.add(sem);
+				System.out.println("Historical semester successfully imported.");
+
+			}
+		}
+			return histSems;
+	}
+	
+	public Semester current(Semester currSemester, String[] args) {
+		String path = FileImports.sanitizePath(args[args.length-2]);
+		if (FileImports.containsDates(path)) {
+			//todo: need to give semester name and start and end dates
+			
+						boolean isURL = FileImports.validateUrl(path);
+			
+			if (isURL) {
+				System.out.println("Retrieving from "+path+":");
+				ArrayList<URL> urlsList = FileImports.getUrls(path);
+				
+				for (URL u: urlsList) {
+					System.out.println("Retrieving "+u.toString());
+					if (!u.toString().contains("dates.txt")) {
+						Snapshot snap = new Snapshot(u);
+						currSemester.addSnapshot(snap);
+						//System.out.println("added snapshot from url.");
+						
+						/*
+						ArrayList<Section> sections = sem.getSnapshot(sem.getSnapshots().size()-1).getSections();
+						for (Section s: sections) {
+							s.print();
+						}
+						*/
+						
+						//System.exit(0);
+					}
+				}
+			} else {
+				ArrayList<File> filesList = FileImports.getFiles(path);
+				
+				for (File f: filesList) {
+					String fileName = f.getName();
+					
+					// Make sure we're not adding dates.txt
+					if(!fileName.equals("dates.txt")) {
+						Snapshot snap = new Snapshot(f);
+						currSemester.addSnapshot(snap);
+					}
+				}
+			}
+			System.out.println("Current semester successfully imported.");
+		}
+		return currSemester;
+	}
 }

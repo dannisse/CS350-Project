@@ -34,8 +34,11 @@ public class ProjectEnrollments {
 		// A semester is collection of snapshots. A snapshot is a collection of section information on a certain day. 
 		ArrayList<Semester> histSems = new ArrayList<Semester>();
 		
+		FileImports f1 = new FileImports();
+		histSems = f1.history(histSems, args);
+		
 		// import historical semesters. this needs to work with URLs
-		for (int i = 0; i < args.length-2; i++) { 
+		/*for (int i = 0; i < args.length-2; i++) { 
 			String path = FileImports.sanitizePath(args[i]);
 			if (FileImports.containsDates(path)) {
 				//todo: need to give semester name and start and end dates
@@ -61,7 +64,7 @@ public class ProjectEnrollments {
 							*/
 							
 							//System.exit(0);
-						}
+						/*}
 					}
 				} else {
 					ArrayList<File> filesList = FileImports.getFiles(path);
@@ -83,14 +86,15 @@ public class ProjectEnrollments {
 				System.out.println("Historical semester successfully imported.");
 
 			}
-		}
+		}*/
 
 		
 		/*
 		 * Import current semester (second to last argument)
 		 */
 		Semester currSemester = new Semester();
-		String path = FileImports.sanitizePath(args[args.length-2]);
+		f1.current(currSemester, args);
+		/*String path = FileImports.sanitizePath(args[args.length-2]);
 		if (FileImports.containsDates(path)) {
 			//todo: need to give semester name and start and end dates
 			
@@ -115,7 +119,7 @@ public class ProjectEnrollments {
 						*/
 						
 						//System.exit(0);
-					}
+					/*}
 				}
 			} else {
 				ArrayList<File> filesList = FileImports.getFiles(path);
@@ -131,7 +135,7 @@ public class ProjectEnrollments {
 				}
 			}
 			System.out.println("Current semester successfully imported.");
-		}
+		}*/
 		
 		String exPath = FileImports.sanitizePath(args[args.length-1]);
 		

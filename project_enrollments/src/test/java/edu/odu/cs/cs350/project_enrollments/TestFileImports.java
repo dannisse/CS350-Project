@@ -15,6 +15,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.Before;
 import java.io.InputStream;
 import java.lang.Object;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.Scanner;
@@ -61,5 +63,49 @@ FileImports defaultFileImports;
 	{ //only works by supplying full path 
 		assertTrue(FileImports.containsDates("./src/test/resources/201910/201910/"));
 		assertFalse(FileImports.containsDates("./src/test/resources/201910/"));
+	}
+	
+	@Test
+	public void TestGetUrl() {
+		FileImports f1 = new FileImports();
+		ArrayList<URL> test = new ArrayList<URL>();
+		
+		f1.getUrls("https://www.cs.odu.edu/~zeil/courseSchedule/History/201710/");
+		fail("Not yet implemented");
+		
+		
+	}
+	
+	@Test
+	public void TestGetAllSections() throws MalformedURLException {
+		//FileImports f1 = new FileImports();
+		URL u = new URL("https://www.cs.odu.edu/~zeil/courseSchedule/History/201710/");
+		
+		FileImports.getAllSections(u);
+		fail("Not yet implemented");
+		
+		
+	}
+	
+	@Test
+	public void TestHist() {
+		ArrayList<Semester> histSems = new ArrayList<Semester>();
+		FileImports f1 = new FileImports();
+		String[] s1 = {"./src/test/resources/201910/201910/", "./src/test/resources/201910/201910/", "./src/test/resources/201910/201910/"};
+		
+		f1.history(histSems, s1);
+		fail("Not yet implemented");
+		
+	}
+	
+	@Test
+	public void TestCurr() {
+		Semester currSemester = new Semester();
+		FileImports f1 = new FileImports();
+		String[] s1 = {"./src/test/resources/201910/201910/", "./src/test/resources/201910/201910/", "./src/test/resources/201910/201910/"};
+		
+		f1.current(currSemester, s1);
+		fail("Not yet implemented");
+		
 	}
 }
