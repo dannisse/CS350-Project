@@ -105,7 +105,7 @@ public class DetailedReport {
 	}
 		
 		
-	public void createExcel(SortedMap<String, Course> hist, SortedMap<String, Course> curr, String outPath, String inPath) throws Throwable {
+	public void createExcel(SortedMap<String, Course > hist, Semester ddhist, SortedMap<String, Course> curr, String outPath, String inPath) throws Throwable {
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		
 		ArrayList<Double> dHist = deadlineD(inPath); 
@@ -117,8 +117,10 @@ public class DetailedReport {
 		 
 		 String headDate1 = "Season/Year";
 		 String headDate2 = "Season/Year";
-		
+
+		 int course = 0;
 		for (String key : hist.keySet()) {
+			
 			XSSFSheet sheet = workbook.createSheet(hist.get(key).getCourseTitle());
 			for (int i = 0; i < 6; i++) {
 
@@ -145,15 +147,16 @@ public class DetailedReport {
 		            
 		            cell = row.createCell((short) 5);
 		            cell.setCellValue("Projected");
-		            sheet.autoSizeColumn(5);	            
+		            sheet.autoSizeColumn(5);	         
 		            
-		            for (int j = 0; j < dHist.size(); j++) {
+		            
+		            for (int j = 0; j < hist.size(); j++) {
 		                row = sheet.createRow((short) j+1);
 		                cell = row.createCell((short) 0);
 		                cell.setCellValue(dHist.get(j));
 		                cell = row.createCell((short) 1);
-		                cell.setCellValue(dHist.get(j));
-		                cell = row.createCell((short) 2);
+		                cell.setCellValue(ddhist.getSnapshots().get(j).getSections().get(course).getNum());
+		                cell = row.createCell((short) 2);	                
 		                cell.setCellValue(dHist.get(j));
 		                cell = row.createCell((short) 3);
 		                cell.setCellValue(dHist.get(j));
@@ -162,6 +165,7 @@ public class DetailedReport {
 		                cell = row.createCell((short) 5);
 		                cell.setCellValue(dHist.get(j));
 		            }
+		            course++;
 		            /*for (int j = 0; j < dcurr.length; j++) {
 		                row = sheet.createRow((short) j+1);
 		                cell = row.createCell((short) 2);

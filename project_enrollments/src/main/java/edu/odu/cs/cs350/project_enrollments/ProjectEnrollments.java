@@ -128,6 +128,8 @@ public class ProjectEnrollments {
 		SummaryReport.generateOfferingsAndCourses(currSections, currSemesterList);
 		
 		
+		
+		
 		/*System.out.println("AYYd "+histSemesterList.size());
 		for (String key : histSemesterList.keySet()) {
 			
@@ -160,7 +162,7 @@ public class ProjectEnrollments {
 		SummaryReport.sReport(currSemesterList);
 		
 		DetailedReport dr = new DetailedReport();
-		dr.createExcel(histSemesterList, currSemesterList, exPath, path);
+		dr.createExcel(histSemesterList, currSemester, currSemesterList, exPath, path);
 		
 		
 		
