@@ -119,28 +119,28 @@ public class SummaryReport {
 				}
 				sc.close();
 		    }
-		    
-		    diffInMillies = Math.abs(d2.getTime() - d1.getTime());
-			diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-			perc = diff;
-			
-			//System.out.print("difference: " + diff + "\n");
-			diffInMillies = (d3.getTime() - d1.getTime());
-			diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-			//System.out.print("Third: " + diff + "\n");
-			//System.out.print("percentage: " + diff + " " + perc + "\n");
-			st = (diff*100)/perc;
-			if(st <= 0){
-				//System.out.print("percentage: %" + 0);
-				st=0;
-			}else if(st >= 100){
-				//System.out.print("percentage: %" + 100);
-				st = 100;
-			}//else
-				//System.out.print("percentage: %" + st);
-			//System.exit(0);
-
 	    }
+		    
+	    diffInMillies = Math.abs(d2.getTime() - d1.getTime());
+		diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+		perc = diff;
+		
+		//System.out.print("difference: " + diff + "\n");
+		diffInMillies = (d3.getTime() - d1.getTime());
+		diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+		//System.out.print("Third: " + diff + "\n");
+		//System.out.print("percentage: " + diff + " " + perc + "\n");
+		st = (diff*100)/perc;
+		if(st <= 0){
+			//System.out.print("percentage: %" + 0);
+			st=0;
+		}else if(st >= 100){
+			//System.out.print("percentage: %" + 100);
+			st = 100;
+		}//else
+			//System.out.print("percentage: %" + st);
+		//System.exit(0);
+
 	}
 	
 	
