@@ -2,6 +2,8 @@ package edu.odu.cs.cs350.project_enrollments;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.net.URL;
+
 
 // A snapshot is a collection of information about sections on a certain day.
 public class Snapshot {
@@ -20,6 +22,12 @@ public class Snapshot {
 		sections = FileImports.getAllSections(f);
 	}
 	
+	public Snapshot(URL u) {
+		// TODO Auto-generated constructor stub
+		date = "TESTING"; // TODO:	write function to obtain date from the URL
+		sections = FileImports.getAllSections(u);
+	}
+	
 	public String getDate() {
 		return this.date;
 	}
@@ -27,6 +35,11 @@ public class Snapshot {
 	public ArrayList<Section> getSections() {
 		return this.sections;
 	}
+	
+	public Section getSection(int index) {
+		return this.sections.get(index);
+	}
+
 	
 	/*
 	 * Display for testing purposes

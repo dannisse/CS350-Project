@@ -3,6 +3,7 @@ package edu.odu.cs.cs350.project_enrollments;
 import java.util.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.*;
 
 public class ProjectEnrollments {
 
@@ -39,19 +40,51 @@ public class ProjectEnrollments {
 			if (FileImports.containsDates(path)) {
 				//todo: need to give semester name and start and end dates
 				Semester sem = new Semester();
-				ArrayList<File> filesList = FileImports.getFiles(path);
-				for (File f: filesList) {
-					String fileName = f.getName();
+				
+				boolean isURL = FileImports.validateUrl(path);
+				if (isURL) {
+					System.out.println("Retrieving from "+path+":");
+					ArrayList<URL> urlsList = FileImports.getUrls(path);
 					
-					// Make sure we're not adding dates.txt
-					if(!fileName.equals("dates.txt")) {
-						Snapshot snap = new Snapshot(f);
-						sem.addSnapshot(snap);
+					for (URL u: urlsList) {
+						System.out.println("Retrieving "+u.toString());
+						if (!u.toString().contains("dates.txt")) {
+							Snapshot snap = new Snapshot(u);
+							sem.addSnapshot(snap);
+							//System.out.println("added snapshot from url.");
+							
+							/*
+							ArrayList<Section> sections = sem.getSnapshot(sem.getSnapshots().size()-1).getSections();
+							for (Section s: sections) {
+								s.print();
+							}
+							*/
+							
+							//System.exit(0);
+						}
+					}
+				} else {
+					ArrayList<File> filesList = FileImports.getFiles(path);
+					
+					for (File f: filesList) {
+						String fileName = f.getName();
+						
+						// Make sure we're not adding dates.txt
+						if(!fileName.equals("dates.txt")) {
+							Snapshot snap = new Snapshot(f);
+							sem.addSnapshot(snap);
+						}
+						
 					}
 				}
+				
+				
 				histSems.add(sem);
+				System.out.println("Historical semester successfully imported.");
+
 			}
 		}
+
 		
 		/*
 		 * Import current semester (second to last argument)
@@ -61,16 +94,43 @@ public class ProjectEnrollments {
 		if (FileImports.containsDates(path)) {
 			//todo: need to give semester name and start and end dates
 			
-			ArrayList<File> filesList = FileImports.getFiles(path);
-			for (File f: filesList) {
-				String fileName = f.getName();
+						boolean isURL = FileImports.validateUrl(path);
+			
+			if (isURL) {
+				System.out.println("Retrieving from "+path+":");
+				ArrayList<URL> urlsList = FileImports.getUrls(path);
 				
-				// Make sure we're not adding dates.txt
-				if(!fileName.equals("dates.txt")) {
-					Snapshot snap = new Snapshot(f);
-					currSemester.addSnapshot(snap);
+				for (URL u: urlsList) {
+					System.out.println("Retrieving "+u.toString());
+					if (!u.toString().contains("dates.txt")) {
+						Snapshot snap = new Snapshot(u);
+						currSemester.addSnapshot(snap);
+						//System.out.println("added snapshot from url.");
+						
+						/*
+						ArrayList<Section> sections = sem.getSnapshot(sem.getSnapshots().size()-1).getSections();
+						for (Section s: sections) {
+							s.print();
+						}
+						*/
+						
+						//System.exit(0);
+					}
+				}
+			} else {
+				ArrayList<File> filesList = FileImports.getFiles(path);
+				
+				for (File f: filesList) {
+					String fileName = f.getName();
+					
+					// Make sure we're not adding dates.txt
+					if(!fileName.equals("dates.txt")) {
+						Snapshot snap = new Snapshot(f);
+						currSemester.addSnapshot(snap);
+					}
 				}
 			}
+			System.out.println("Current semester successfully imported.");
 		}
 		
 		String exPath = FileImports.sanitizePath(args[args.length-1]);
