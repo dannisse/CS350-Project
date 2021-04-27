@@ -1,9 +1,13 @@
 package edu.odu.cs.cs350.project_enrollments;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.text.*;
+import java.net.*;
 
 @SuppressWarnings("PMD")
 public class SummaryReport {
@@ -13,18 +17,47 @@ public class SummaryReport {
 
 	public static void deadlineD(String path) throws Throwable {
 		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
-	    Date d1;
-	    Date d2;
-	    long diffInMillies;
-	    long diff;
-	    long perc;
-	    String d;
+	    Date d1 = null;
+	    Date d2 = null;
+	    long diffInMillies = 0;
+	    long diff = 0;
+	    long perc = 0;
+	    String d = "";
 	    
 	    boolean isURL = false;
 	    
 	    isURL = FileImports.validateUrl(path);
 	    
 	    if (isURL) {
+	    	ArrayList<URL> urlsList = new ArrayList<URL>();
+	    	urlsList = FileImports.getUrls(path);
+	    	for (URL u : urlsList) {
+	    		try {
+    				BufferedReader r = new BufferedReader(new InputStreamReader(u.openStream()));
+    				String currLine = "";
+    				
+    				if (u.toString().contains("dates.txt")) {
+    					currLine = r.readLine();
+    	    			d1 = sdformat.parse(currLine);
+    	    			currLine = r.readLine();
+    	    			d2 = sdformat.parse(currLine);
+    	    			
+    	    		}
+    				
+    				while ((currLine = r.readLine()) != null) {
+    					//sections.add(extractSection(currLine));
+    				}
+    				
+    			} catch (MalformedURLException e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			} catch (IOException e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			}
+	    		
+	    		
+	    	}
 	    	
 	    }
 	    else {
@@ -48,39 +81,36 @@ public class SummaryReport {
 				}
 				
 				if(t.equals("dates.txt")) {		
-					
 					d1 = sdformat.parse(sc.nextLine());
 					//Date d2 = sdformat.parse(sc.next());
 					d2 = sdformat.parse(sc.next());
 					//System.out.print(d1 +"\n");
-					//System.out.print(d2 + "\n");
-					
-					diffInMillies = Math.abs(d2.getTime() - d1.getTime());
-					diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-					perc = diff;
-					
-					//System.out.print("difference: " + diff + "\n");
-					diffInMillies = (d3.getTime() - d1.getTime());
-					diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-					//System.out.print("Third: " + diff + "\n");
-					//System.out.print("percentage: " + diff + " " + perc + "\n");
-					st = (diff*100)/perc;
-					if(st <= 0){
-						//System.out.print("percentage: %" + 0);
-						st=0;
-					}else if(st >= 100){
-						//System.out.print("percentage: %" + 100);
-						st = 100;
-					}//else
-						//System.out.print("percentage: %" + st);
-					//System.exit(0);
+					//System.out.print(d2 + "\n");	
 				}
-				
 				sc.close();
 		    }
+		    
+		    diffInMillies = Math.abs(d2.getTime() - d1.getTime());
+			diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+			perc = diff;
+			
+			//System.out.print("difference: " + diff + "\n");
+			diffInMillies = (d3.getTime() - d1.getTime());
+			diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+			//System.out.print("Third: " + diff + "\n");
+			//System.out.print("percentage: " + diff + " " + perc + "\n");
+			st = (diff*100)/perc;
+			if(st <= 0){
+				//System.out.print("percentage: %" + 0);
+				st=0;
+			}else if(st >= 100){
+				//System.out.print("percentage: %" + 100);
+				st = 100;
+			}//else
+				//System.out.print("percentage: %" + st);
+			//System.exit(0);
+
 	    }
-	    
-	    
 	}
 	
 	
