@@ -1,6 +1,6 @@
 package edu.odu.cs.cs350.project_enrollments;
 
-
+import java.io.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -9,6 +9,14 @@ import java.util.ArrayList;
 //import java.util.List;
 import java.util.Scanner;
 //import java.util.Objects;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+import org.jsoup.*;
+import org.jsoup.nodes.*;
+import org.jsoup.select.*;
+
+import java.net.*;
 
 public class FileImports {
 	
@@ -24,6 +32,69 @@ public class FileImports {
 			//System.out.println(path);
 		}
 		return path;
+	}
+	
+	public static boolean validateUrl(String url)
+	{
+		//condition to be met
+		Pattern pattern= Pattern.compile("^(http|https)://", Pattern.CASE_INSENSITIVE);
+		//checks url against condition
+		Matcher matcher=pattern.matcher(url);
+		//see if it matches
+		boolean matchFound=matcher.find();
+		if(matchFound)
+		{
+			return true;
+		}
+		
+		else 
+		{
+			return false;
+		}
+
+	}
+
+	// given a path representing a url, return all links to .csv files and dates.txt files located on that url
+	public static ArrayList<URL> getUrls(String path) {
+		boolean isURL = validateUrl(path);
+		ArrayList<URL> urlsList = new ArrayList<URL>();
+		
+		if (isURL) {
+			String urlString = path;
+			Document doc;
+			try {
+				doc = Jsoup.connect(urlString).get();
+				Elements elements = doc.select("a[href]");
+				
+				for (Element e: elements) {
+					
+					// is it a .csv file or dates.txt?
+					if (e.attr("abs:href").contains(".csv") || e.attr("abs:href").contains("dates.txt")) {
+						// get the absolute url of this element
+						String absoluteURL = e.absUrl("abs:href");
+						
+						// debug output
+						//System.out.println("ABSOLUTEURL="+absoluteURL);
+						
+						URL url = new URL(absoluteURL);
+						// debug output
+						//System.out.println("LINK="+url.toString());
+				
+						urlsList.add(url);
+						
+						//debug output
+						//System.out.println("Added:"+urlsList.get(urlsList.size()-1).toString());
+					}
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {	// not a URL
+			System.err.println("Not a URL: "+path);
+			System.exit(1);
+		}
+		return urlsList;
 	}
 	
 	// Given a path, return the list of files in that path
@@ -58,11 +129,31 @@ public class FileImports {
 	// @param f a .csv file
 	public static ArrayList<Section> getAllSections(File f) {
 		ArrayList<Section> sections = null;
+		sections = new ArrayList<Section>();
+		
+		/*
+		if (isURL) {
+			try {
+				URL url = new URL(f.toString());
+				BufferedReader r = new BufferedReader(new InputStreamReader(url.openStream()));
+				String currLine = r.readLine();	// read in the header line
+				while ((currLine = r.readLine()) != null) {
+					sections.add(extractSection(currLine));
+				}
+				
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		} else {*/
 		Scanner s = null;
 		try {
 			s = new Scanner(f);
 			String currLine = s.nextLine();	// read in the header line
-			sections = new ArrayList<Section>();
 			while (s.hasNextLine()) {
 				currLine = s.nextLine();
 				sections.add(extractSection(currLine));
@@ -73,6 +164,32 @@ public class FileImports {
 		} finally {
 			s.close();
 		}
+		//}
+		
+		return sections;
+	}
+	
+	// get all the sections in .csv file. there is one section per line in the file.
+	// @param u is a url of a .csv file
+	public static ArrayList<Section> getAllSections(URL u) {
+		ArrayList<Section> sections = null;
+		sections = new ArrayList<Section>();
+		
+		try {
+			BufferedReader r = new BufferedReader(new InputStreamReader(u.openStream()));
+			String currLine = r.readLine();	// read in the header line
+			while ((currLine = r.readLine()) != null) {
+				sections.add(extractSection(currLine));
+			}
+			
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return sections;
 	}
 	
@@ -166,13 +283,42 @@ public class FileImports {
 	// Returns true if directory path does not contain a dates.txt file.
 	// Return false if the file is present.
 	public static boolean containsDates(String path) {
+		
+		String errorMessage = "Missing dates.txt";
+		
+		boolean isURL = validateUrl(path);
+		
+		
+		if (isURL) {
+			String url = path;
+			Document doc;
+			try {
+				doc = Jsoup.connect(url).get();
+				Elements links = doc.select("a[href]");
+				
+				// Make sure the remote directory contains dates.txt
+				boolean found = false;
+				for (Element l: links) {
+					found = l.attr("abs:href").contains("dates.txt");
+				}
+				if (!found) {
+					System.err.println(errorMessage);
+				}
+				return found;	// nothing more to do
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
 		Scanner fileScanner = null;
 		boolean verdict = true;
 	    try {
 	        fileScanner = new Scanner(new File(path + "dates.txt"));
 	    } catch(FileNotFoundException e) {
 	    	verdict = false;
-	        System.err.println("Missing dates.txt");
+	        System.err.println(errorMessage);
 	    } finally {
 	        if(fileScanner!= null) {
 	            fileScanner.close();
